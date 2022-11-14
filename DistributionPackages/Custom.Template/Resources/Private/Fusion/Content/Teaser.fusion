@@ -1,0 +1,26 @@
+prototype(Custom.Template:Content.Teaser) < prototype(Neos.Neos:ContentComponent) {
+    title = Neos.Neos:Editable {
+        property = 'title'
+    }
+    src = Neos.Fusion:Case {
+        asset {
+            condition = ${q(node).property('image')}
+            renderer = Neos.Neos:ImageUri {
+                asset = ${q(node).property('image')}
+            }
+        }
+        dummy {
+            condition = ${node.context.inBackend}
+            renderer = Neos.Fusion:ResourceUri {
+                path = 'resource://Neos.Neos/Public/Images/dummy-image.svg'
+            }
+        }
+    }
+
+    renderer = afx`
+        <div {...props.sectionAttributes}>
+			<h1>{props.title}</h1>
+			<img src={props.src} title={props.title} alt={props.alt} class={props.imgClass} @if={props.src} />
+        </div>
+    `
+}

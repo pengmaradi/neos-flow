@@ -1,0 +1,21 @@
+privilegeTargets:
+  Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
+    'Happy.Coding:StandardController':
+      matcher: 'method(Happy\Coding\Controller\StandardController->(.*)Action())'
+  # custom backend module
+  'Neos\Neos\Security\Authorization\Privilege\ModulePrivilege':
+    'Happy.Coding:BackendModule':
+      matcher: 'management/happyModule'
+
+roles:
+  'Neos.Flow:Everybody':
+    privileges:
+      -
+        privilegeTarget: 'Happy.Coding:StandardController'
+        permission: GRANT
+
+  'Neos.Neos:Editor':
+    privileges:
+      -
+        privilegeTarget: 'Happy.Coding:BackendModule'
+        permission: GRANT

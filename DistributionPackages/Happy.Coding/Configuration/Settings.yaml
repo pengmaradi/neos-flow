@@ -1,0 +1,18 @@
+Neos:
+  Flow:
+    mvc:
+      routes:
+        'Happy.Coding':
+          position: 'start'
+  Neos:
+    modules:
+      'management':
+        submodules:
+          'happyModule':
+            label: 'G.E.M. 邓紫棋 - 歌单'
+            controller: 'Happy\Coding\Controller\BackendController'
+            description: 'G.E.M. 邓紫棋 唱片'
+            icon: 'icon-compact-disc'
+    fusion:
+      autoInclude:
+        'Happy.Coding': true

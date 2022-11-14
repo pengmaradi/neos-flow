@@ -1,0 +1,33 @@
+#                                                                        #
+# Default routes configuration for the Welcome package                   #
+#                                                                        #
+
+-
+  name: 'happy screen'
+  uriPattern: 'happy'
+  defaults:
+    '@package':    'Happy.Coding'
+    '@controller': 'Standard'
+    '@action':     'index'
+    '@format':     'html'
+    custom: true
+  routeParts:
+    'node':
+      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
+-
+  name: 'hello screen'
+  uriPattern: 'hello'
+  defaults:
+    '@package':    'Happy.Coding'
+    '@controller': 'Standard'
+    '@action':     'hello'
+    '@format':     'html'
+
+#-
+#  name: 'Redirect to welcome screen'
+#  uriPattern: ''
+#  defaults:
+#    '@package':    'Happy.Coding'
+#    '@controller': 'Standard'
+#    '@action':     'redirect'
+#    '@format':     'html'

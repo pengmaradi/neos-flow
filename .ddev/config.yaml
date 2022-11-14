@@ -1,0 +1,15 @@
+name: flow
+type: php
+docroot: Web
+php_version: "8.1"
+webserver_type: apache-fpm
+router_http_port: "80"
+router_https_port: "443"
+additional_fqdns: [flow.test]
+database:
+  type: mariadb
+  version: "10.4"
+use_dns_when_possible: true
+composer_version: "2"
+nodejs_version: "17"
+

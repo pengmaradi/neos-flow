@@ -1,0 +1,1 @@
+prototype(Custom.Template:Document.Page) < prototype(Custom.Template:Document.AbstractPage)

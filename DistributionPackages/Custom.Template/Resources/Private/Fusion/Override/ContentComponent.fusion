@@ -1,0 +1,16 @@
+prototype(Neos.Neos:ContentComponent) {
+    type = ${q(node).property('_nodeType')}
+
+    sectionAttributes = Neos.Fusion:DataStructure {
+        class {
+            type = ${String.replace(String.replace(q(node).property('_nodeType'), 'Custom.Template:Content.', 'node'), '.', '_')}
+        }
+
+        id = ${props.slug ? props.slug : 'node-'+node.identifier}
+        data-aos = ${node.context.inBackend ? '' : 'fade-up' }
+        data-aos-duration = ${node.context.inBackend ? '' : '1000' }
+    }
+    renderer = Neos.Fusion:Component {
+        @apply.props = ${props}
+    }
+}

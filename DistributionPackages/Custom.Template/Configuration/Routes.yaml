@@ -1,0 +1,95 @@
+##
+# changed Backend login url as typo3 :)
+
+-
+  name:  'Backend'
+  uriPattern: 'typo3/<BackendSubRoutes>'
+  defaults:
+    '@package':    'Neos.Neos.Ui'
+    '@action':     'index'
+    '@format':     'html'
+  subRoutes:
+    'BackendSubRoutes':
+      package: 'Neos.Neos.Ui'
+      suffix:  'Backend'
+
+##
+# Service
+
+-
+  name:  'Backend'
+  uriPattern: 'typo3/ui-services/<ServiceSubRoutes>'
+  defaults:
+    '@package':    'Neos.Neos.Ui'
+    '@action':     'index'
+    '@format':     'html'
+  subRoutes:
+    'ServiceSubRoutes':
+      package: 'Neos.Neos.Ui'
+      suffix:  'Service'
+
+##
+# Authentication
+
+-
+  name:  'Authentication'
+  uriPattern: 'typo3/<AuthenticationSubRoutes>'
+  defaults:
+    '@package':    'Neos.Neos'
+    '@controller': 'Login'
+    '@action':     'index'
+    '@format':     'html'
+  subRoutes:
+    'AuthenticationSubRoutes':
+      package: 'Neos.Neos'
+      suffix:  'Authentication'
+
+##
+# Backend
+
+-
+  name:  'Backend'
+  uriPattern: 'typo3/<BackendSubRoutes>'
+  defaults:
+    '@package':    'Neos.Neos'
+    '@action':     'index'
+    '@format':     'html'
+  subRoutes:
+    'BackendSubRoutes':
+      package: 'Neos.Neos'
+      suffix:  'Backend'
+
+##
+# Service
+
+-
+  name:  'Service'
+  uriPattern: 'typo3/service/<ServiceSubRoutes>'
+  defaults:
+    '@package':    'Neos.Neos'
+    '@action':     'index'
+  subRoutes:
+    'ServiceSubRoutes':
+      package: 'Neos.Neos'
+      suffix:  'Service'
+
+##
+# Frontend
+
+-
+  name:  'Frontend'
+  uriPattern: '<FrontendSubRoutes>'
+  defaults:
+    '@package':    'Neos.Neos'
+    '@controller': 'Frontend\Node'
+    '@action':     'show'
+    '@format':     'html'
+  routeParts:
+    'node':
+      handler:     'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
+  subRoutes:
+    'FrontendSubRoutes':
+      package: 'Neos.Neos'
+      suffix:  'Frontend'
+      variables:
+        'defaultUriSuffix': ''

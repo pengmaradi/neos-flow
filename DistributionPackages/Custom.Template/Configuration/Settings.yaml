@@ -1,0 +1,48 @@
+
+
+Neos:
+  Neos:
+    userInterface:
+      translation:
+        autoInclude:
+          Custom.Template:
+            - Main
+            - 'NodeTypes/*'
+    nodeTypes:
+      groups:
+        news:
+          label: 'News'
+  ContentRepository:
+    contentDimensions:
+      language:
+        label: 'language'
+        icon: icon-language
+        default: cn_CN
+        defaultPreset: cn_CN
+        presets:
+          de:
+            label: German
+            values:
+              - de
+            uriSegment: de
+          cn_CN:
+            label: 'Chinese'
+            values:
+              - cn_CN
+            uriSegment: ''
+#
+#          fr:
+#            label: French
+#            values:
+#              - fr
+#            uriSegment: fr
+
+## @see Routes.yaml
+# New Neos Backend-Url active
+
+  Flow:
+    mvc:
+      routes:
+        'Custom.Template': true
+        'Neos.Neos': false
+        'Neos.Neos.Ui': false

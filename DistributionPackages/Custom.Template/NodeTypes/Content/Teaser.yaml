@@ -1,0 +1,32 @@
+Custom.Template:Content.Teaser:
+  superTypes:
+    'Neos.Neos:Content': true
+
+  ui:
+    label: Custom Teaser
+    icon: icon-picture
+    group: general
+    inspector:
+      groups:
+        image:
+          label: 'Image'
+          icon: 'icon-image'
+          position: 5
+
+  properties:
+    title:
+      type: string
+      defaultValue: 'The Teaser Title'
+      label: 'the Teaser title'
+      ui:
+        inlineEditable: true
+    image:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Teaser Image
+        reloadIfChanged: true
+        inspector:
+          group: 'image'
+
+
+

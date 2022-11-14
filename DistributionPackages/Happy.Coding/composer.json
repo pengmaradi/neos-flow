@@ -1,0 +1,18 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "happy/coding",
+    "require": {
+        "neos/flow": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Happy\\Coding\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Happy.Coding"
+        }
+    }
+}
