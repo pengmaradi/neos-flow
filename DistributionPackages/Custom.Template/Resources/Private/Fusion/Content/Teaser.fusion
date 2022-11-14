@@ -19,7 +19,7 @@ prototype(Custom.Template:Content.Teaser) < prototype(Neos.Neos:ContentComponent
 
     renderer = afx`
         <div {...props.sectionAttributes}>
-			<h1>{props.title}</h1>
+			{props.title}
 			<img src={props.src} title={props.title} alt={props.alt} class={props.imgClass} @if={props.src} />
         </div>
     `
