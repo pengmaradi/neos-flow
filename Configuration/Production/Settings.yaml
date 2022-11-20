@@ -1,0 +1,19 @@
+
+#Neos:
+#  Flow:
+#    persistence:
+#      # For a reference of the possible options, take a look at
+#      # https://www.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html
+#      backendOptions:
+#        dbname: 'flow'       # adjust to your database name
+#        user: ''             # adjust to your database user
+#        password: ''         # adjust to your database password
+
+
+Custom:
+  Template:
+    settings:
+      development: false
+      staging: false     # To enable Staging-Badge
+      debugcss: false   # True to enable debug.css (Break-Points)
+      noindex: false     # To force NOINDEX

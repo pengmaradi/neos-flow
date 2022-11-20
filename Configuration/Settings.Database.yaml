@@ -1,0 +1,10 @@
+Neos:
+  Flow:
+    persistence:
+      backendOptions:
+        charset: utf8mb4
+        driver: pdo_mysql
+        host: '%env:DB_HOST%'
+        dbname: '%env:DB_NAME%'
+        user: '%env:DB_USER%'
+        password: '%env:DB_PASS%'
