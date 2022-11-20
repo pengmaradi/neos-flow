@@ -11,5 +11,15 @@ database:
   version: "10.4"
 use_dns_when_possible: true
 composer_version: "2"
+web_environment:
+  - FLOW_CONTEXT=Development/Ddev
+  - FLOW_PATH_TEMPORARY_BASE=/tmp/Flow
+  - FLOW_REWRITEURLS=1
 nodejs_version: "17"
 
+hooks:
+  post-start:
+    - exec: composer install
+    - exec: ./flow neos.flow:package:rescan
+    - exec: ./flow database:setcharset
+    - exec: ./flow doctrine:migrate
