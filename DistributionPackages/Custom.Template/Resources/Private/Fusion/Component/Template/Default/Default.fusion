@@ -1,18 +1,32 @@
 prototype(Custom.Template:Component.Template.Default) < prototype(Neos.Fusion:Component) {
   # Property API
-  menu = ''
-  content = ''
+    header = ''
+    menu = ''
+    content = ''
+    footer = ''
+
+    divWrapper = Neos.Fusion:DataStructure {
+        class {
+            class = 'bodyWrapper'
+            class1 = ${"level-" + (q(node).property('_depth') - 2)}
+            class2 = ${(q(node).property('_depth') - 2 == 0 ? 'rootpage' : 'subpage')}
+            class3 = ${documentNode.context.inBackend ? 'backend' : 'frontend'}
+        }
+    }
 
   # Template
   renderer = afx`
     <!-- change to your needs -->
-    <header>
-      Header
-      <nav>{props.menu}</nav>
-    </header>
-    <main id="main">
-      {props.content}
-    </main>
-    <footer>Footer</footer>
+    <div {...props.divWrapper}>
+		<header>
+			{props.header}
+			<nav>{props.menu}</nav>
+		</header>
+		<main>
+			{props.content}
+		</main>
+		<footer>{props.footer}</footer>
+    </div>
+
   `
 }

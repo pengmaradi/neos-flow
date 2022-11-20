@@ -1,12 +1,5 @@
 prototype(Custom.Template:Document.AbstractPage) < prototype(Neos.Neos:Page) {
     head {
-        //    headTags = Neos.Fusion:Component {
-//      renderer = afx`
-//        <meta http-equiv="x-ua-compatible" content="ie=edge" />
-//        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-//      `
-//    }
-
         headTags = Custom.Template:Document.Fragment.MetaData
 
         titleTag = Neos.Fusion:Tag {
@@ -15,25 +8,25 @@ prototype(Custom.Template:Document.AbstractPage) < prototype(Neos.Neos:Page) {
         }
 
         # Add stylesheets to your page
-//     stylesheets.site = afx`
-//			<link rel="stylesheet" href={StaticResource.uri('Custom.Template', 'Public/Styles/Main.css')}/>
-//        `
+     //stylesheets.site = afx`
+        //	<link rel="stylesheet" href={StaticResource.uri('Custom.Template', 'Public/Styles/Main.css')}/>
+      //`
         stylesheets.site = Custom.Template:Document.Fragment.StyleSheets
         javascripts.site = Custom.Template:Document.Fragment.JavaScripts
-
-        # Add header javascripts to your page
-//    javascripts.site = afx`
-//			<link type="text/javascript" defer
-//				  href={StaticResource.uri('Custom.Template', 'Public/JavaScript/Main.js')}/>
-//        `
     }
 
+    bodyTag = Neos.Fusion:Tag {
+        // add custom body frontend class
+        attributes.class.@process.addNeosFrontendClass = ${Array.push(value, 'custom')}
+        attributes.class.@process.addNeosFrontendClass.@if.notRenderWhenNotInLiveWorkspace = ${!documentNode.context.inBackend}
+    }
 
     body = Custom.Template:Component.Template.Default {
         @context.node = ${this.node}
 
         # Define template properties
-    menu = Neos.Neos:Menu
+        menu = Neos.Neos:Menu
+
         content = Neos.Fusion:Component {
             main = Neos.Neos:PrimaryContent {
                 nodePath = 'main'
@@ -45,9 +38,9 @@ prototype(Custom.Template:Document.AbstractPage) < prototype(Neos.Neos:Page) {
         }
 
         # Script includes before the closing body tag should go here
-    javascripts = Neos.Fusion:Join
+        javascripts = Neos.Fusion:Join
         # This processor appends the rendered javascripts Array to the rendered template
-    @process.appendJavaScripts = ${value + this.javascripts}
+        @process.appendJavaScripts = ${value + this.javascripts}
     }
 
     bodyJavaScripts = Neos.Fusion:Join
