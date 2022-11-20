@@ -2,79 +2,79 @@
 # changed Backend login url as typo3 :)
 
 -
-  name:  'Backend'
+  name: 'Backend'
   uriPattern: 'typo3/<BackendSubRoutes>'
   defaults:
-    '@package':    'Neos.Neos.Ui'
-    '@action':     'index'
-    '@format':     'html'
+    '@package': 'Neos.Neos.Ui'
+    '@action': 'index'
+    '@format': 'html'
   subRoutes:
     'BackendSubRoutes':
       package: 'Neos.Neos.Ui'
-      suffix:  'Backend'
+      suffix: 'Backend'
 
 ##
 # Service
 
 -
-  name:  'Backend'
+  name: 'Backend'
   uriPattern: 'typo3/ui-services/<ServiceSubRoutes>'
   defaults:
-    '@package':    'Neos.Neos.Ui'
-    '@action':     'index'
-    '@format':     'html'
+    '@package': 'Neos.Neos.Ui'
+    '@action': 'index'
+    '@format': 'html'
   subRoutes:
     'ServiceSubRoutes':
       package: 'Neos.Neos.Ui'
-      suffix:  'Service'
+      suffix: 'Service'
 
 ##
 # Authentication
 
 -
-  name:  'Authentication'
+  name: 'Authentication'
   uriPattern: 'typo3/<AuthenticationSubRoutes>'
   defaults:
-    '@package':    'Neos.Neos'
+    '@package': 'Neos.Neos'
     '@controller': 'Login'
-    '@action':     'index'
-    '@format':     'html'
+    '@action': 'index'
+    '@format': 'html'
   subRoutes:
     'AuthenticationSubRoutes':
       package: 'Neos.Neos'
-      suffix:  'Authentication'
+      suffix: 'Authentication'
 
 ##
 # Backend
 
 -
-  name:  'Backend'
+  name: 'Backend'
   uriPattern: 'typo3/<BackendSubRoutes>'
   defaults:
-    '@package':    'Neos.Neos'
-    '@action':     'index'
-    '@format':     'html'
+    '@package': 'Neos.Neos'
+    '@action': 'index'
+    '@format': 'html'
   subRoutes:
     'BackendSubRoutes':
       package: 'Neos.Neos'
-      suffix:  'Backend'
+      suffix: 'Backend'
 
 ##
 # Service
 
 -
-  name:  'Service'
+  name: 'Service'
   uriPattern: 'typo3/service/<ServiceSubRoutes>'
   defaults:
-    '@package':    'Neos.Neos'
-    '@action':     'index'
+    '@package': 'Neos.Neos'
+    '@action': 'index'
   subRoutes:
     'ServiceSubRoutes':
       package: 'Neos.Neos'
-      suffix:  'Service'
+      suffix: 'Service'
 
 ##
-# https://flow.test/typo3/media/browser/assets/index.html?
+# media
 
 -
   name: 'Image Browser'
@@ -120,29 +120,29 @@
 # preview
 
 -
-  name:          'Preview'
-  uriPattern:    'typo3/preview'
+  name: 'Preview'
+  uriPattern: 'typo3/preview'
   defaults:
-    '@action':   'preview'
+    '@action': 'preview'
   appendExceedingArguments: true
 
 ##
 # Frontend
 
 -
-  name:  'Frontend'
+  name: 'Frontend'
   uriPattern: '<FrontendSubRoutes>'
   defaults:
-    '@package':    'Neos.Neos'
+    '@package': 'Neos.Neos'
     '@controller': 'Frontend\Node'
-    '@action':     'show'
-    '@format':     'html'
+    '@action': 'show'
+    '@format': 'html'
   routeParts:
     'node':
-      handler:     'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
+      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
   subRoutes:
     'FrontendSubRoutes':
       package: 'Neos.Neos'
-      suffix:  'Frontend'
+      suffix: 'Frontend'
       variables:
         'defaultUriSuffix': ''
