@@ -1,0 +1,7 @@
+prototype(Custom.Template:Document.Fragment.MetaData) < prototype(Neos.Fusion:Component) {
+    renderer = afx`
+		<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href={StaticResource.uri('Neos.Neos.Ui', 'Public/Images/favicon-16x16.png')} sizes="16x16" rel="icon" type="image/png" />
+    `
+}

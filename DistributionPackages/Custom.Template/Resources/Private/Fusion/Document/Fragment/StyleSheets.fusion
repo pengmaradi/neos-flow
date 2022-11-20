@@ -1,0 +1,24 @@
+prototype(Custom.Template:Document.Fragment.StyleSheets) < prototype(Neos.Fusion:Component) {
+    @context.settings = Custom.Template:Helper.Settings
+    stylesheet = Neos.Fusion:Case {
+        //development
+        isDebug {
+            condition = ${settings.debugcss}
+            renderer = 'resource://Custom.Template/Public/Styles/Debug.css'
+        }
+
+        default {
+            condition = ${true}
+            renderer = 'resource://Custom.Template/Public/Styles/Main.css'
+        }
+    }
+
+    cssVariables = Custom.Template:Helper.Css.Variables
+    LinkVariables = Custom.Template:Helper.Css.LinkVariables
+
+    renderer = afx`
+		<Custom.Template:Helper.StyleTag path={props.stylesheet} />
+<!--		<style @if.hasTheme={props.cssVariables}>{props.cssVariables}</style>-->
+<!--		<style @if.hasTheme={props.LinkVariables}>{props.LinkVariables}</style>-->
+    `
+}

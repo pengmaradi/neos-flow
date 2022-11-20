@@ -1,0 +1,53 @@
+
+packages:
+  - package: Custom.Template
+    files:
+      - Main.pcss
+      - Debug.pcss
+      - Main.js
+      - Debug.js
+      - Safelist.txt
+#  - package: Vendor.Foo
+#    files: Main.js
+#  - package: Vendor.Theme
+
+esbuild:
+  # Set Neos Flow settings as FLOW variable. If `true` all the settings are passed.
+  # It is recommended to set it to a path (e.g. Flownative.Sentry)
+  # This is the same as passing --path to the ./flow configuration:show command
+  # In Javascript the value is available under the variable FLOW
+  # (e.g. FLOW.Flownative.Sentry)
+  defineFlowSettings: false
+
+  # Set options for esbuild
+  options:
+    # Define a string (for only one function) or an array with functions who can be removed on production builds.
+    # eg. ['console.log','console.info']
+    # https://esbuild.github.io/api/#pure
+    pure: null
+
+    # The log level can be changed to prevent esbuild from printing warning and/or error messages to the terminal.
+    # https://esbuild.github.io/api/#log-level
+    logLevel: info
+
+    # A "legal comment" is considered to be any statement-level comment
+    # that contains @license or @preserve or that starts with //! or /*!.
+    # https://esbuild.github.io/api/#legal-comments
+    legalComments: linked
+
+  plugins:
+    vue:
+      enable: false
+      options: null
+    svelte:
+      enable: false
+      options:
+        compilerOptions:
+          css: true
+    babel:
+      enable: false
+      options: null
+  # additionalPlugins:
+  #   esbuild-envfile-plugin:
+  #     functionName: setup
+  #     options: null

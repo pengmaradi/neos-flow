@@ -1,0 +1,17 @@
+prototype(Custom.Template:Helper.Css.LinkVariables) < prototype(Neos.Fusion:Component) {
+    //externalLinks = ${'a[href^="http://"],a[href^="https://"] { --linkColor: var(--gray) !important; }'}
+    sites = Neos.Fusion:Loop {
+        // todo: create Custom.Template:Document.Root
+        items = ${q(site).context({workspaceName: 'live'}).find('/sites').children('[instanceof Custom.Template:Document.Page]')}
+
+        itemRenderer = Neos.Fusion:Component {
+            nodeLink = Neos.Neos:NodeUri {
+                node = ${item}
+                absolute = TRUE
+            }
+            color = ${Configuration.setting('Custom.Template.settings.themes.' + q(item).property('theme') + '.color')}
+            renderer = ${'a[href^="' + props.nodeLink + '"] { --linkColor: '+ props.color +' !important; }'}
+        }
+    }
+    renderer = ${props.externalLinks + props.sites}
+}

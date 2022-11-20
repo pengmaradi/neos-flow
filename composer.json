@@ -34,14 +34,17 @@
         "neos/redirecthandler-databasestorage": "~5.0",
         "neos/redirecthandler-ui": "~2.4",
         "custom/template": "@dev",
-        "happy/coding": "@dev"
+        "happy/coding": "@dev",
+        "carbon/pipeline": "^0.10.15"
     },
     "require-dev": {
         "neos/buildessentials": "~8.1.0",
         "neos/behat": "~8.1.0",
         "phpunit/phpunit": "~9.0",
         "mikey179/vfsstream": "~1.6",
-        "shel/contentrepository-debugger": "^1.1"
+        "shel/contentrepository-debugger": "^1.1",
+        "t3n/neos-debug": "^2.0",
+        "shel/neos-logs": "^1.3"
     },
     "repositories": {
         "distributionPackages": {

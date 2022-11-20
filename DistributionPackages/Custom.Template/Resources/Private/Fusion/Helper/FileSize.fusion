@@ -1,0 +1,19 @@
+prototype(Custom.Template:Helper.FileSize) < prototype(Neos.Fusion:Component) {
+    asset = null
+    filesize = ${this.asset ? this.asset.resource.filesize : null}
+    byteUnits = ${[' B', ' kB', ' MB', ' GB', ' TB']}
+    roundUnits = ${[0, 0, 1, 2, 2]}
+    factor = 1024
+    threshold = 900
+
+    renderer = Neos.Fusion:Value {
+        @if.filesize = ${Type.isNumeric(props.filesize)}
+        index = ${String.toInteger(Math.floor(Math.log(props.filesize) / Math.log(props.factor)))}
+        fileNumber = ${props.filesize / Math.pow(props.factor, this.index)}
+        finalIndex = ${this.fileNumber > props.threshold ? (this.index + 1) : this.index}
+        byteUnit = ${props.byteUnits[this.finalIndex]}
+        roundUnit = ${props.roundUnits[this.finalIndex]}
+        finalSize = ${Math.round(props.filesize / Math.pow(props.factor, this.finalIndex), this.roundUnit)}
+        value = ${props.filesize > 0 ? this.finalSize + this.byteUnit : 0 + props.byteUnits[0]}
+    }
+}

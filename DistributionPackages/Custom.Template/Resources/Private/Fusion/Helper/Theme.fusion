@@ -1,0 +1,12 @@
+prototype(Custom.Template:Helper.Theme) < prototype(Neos.Fusion:Component) {
+
+    @context.id = ${q(site).property('theme') ? q(site).property('theme') : 'default'}
+    // @context.id = ${'default'}
+
+    renderer = Neos.Fusion:DataStructure {
+        id = ${id}
+        color = ${Configuration.setting('Custom.Template.settings.themes.' + id + '.color')}
+        logo = ${Configuration.setting('Custom.Template.settings.themes.' + id + '.logo')}
+        animation = ${Configuration.setting('Custom.Template.settings.themes.' + id + '.animation')}
+    }
+}

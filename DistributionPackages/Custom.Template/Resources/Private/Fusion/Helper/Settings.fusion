@@ -1,0 +1,3 @@
+prototype(Custom.Template:Helper.Settings) < prototype(Neos.Fusion:Component) {
+    renderer = ${Configuration.setting('Custom.Template.settings')}
+}

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "52e728a908260efea563cea72cc347fe",
+    "content-hash": "4621dee422d631d46fb51bc73de365c5",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -110,6 +110,70 @@
                 }
             ],
             "time": "2022-08-10T22:54:19+00:00"
+        },
+        {
+            "name": "carbon/pipeline",
+            "version": "0.10.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CarbonPackages/Carbon.Pipeline.git",
+                "reference": "04ade3fe1df1c490aae3ddd2a0760944dc170f02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CarbonPackages/Carbon.Pipeline/zipball/04ade3fe1df1c490aae3ddd2a0760944dc170f02",
+                "reference": "04ade3fe1df1c490aae3ddd2a0760944dc170f02",
+                "shasum": ""
+            },
+            "type": "neos-build",
+            "extra": {
+                "neos": {
+                    "installer-resource-folders": [
+                        "/Installer/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Uhlmann",
+                    "email": "hello@uhlmann.pro",
+                    "homepage": "https://www.uhlmann.pro"
+                }
+            ],
+            "description": "Ultra-fast build stack for Neos CMS based on esbuild and PostCSS",
+            "keywords": [
+                "Neos",
+                "Preact",
+                "css",
+                "esbuild",
+                "javascript",
+                "postcss",
+                "react",
+                "sass",
+                "svelte",
+                "tailwind",
+                "typescript",
+                "vue"
+            ],
+            "support": {
+                "issues": "https://github.com/CarbonPackages/Carbon.Pipeline/issues",
+                "source": "https://github.com/CarbonPackages/Carbon.Pipeline/tree/0.10.15"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/Jonnitto/20eur",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/jonnitto",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-11-14T11:22:35+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -11438,6 +11502,109 @@
                 "source": "https://github.com/Sebobo/Shel.NodeTypes.Analyzer/tree/1.1.1"
             },
             "time": "2022-10-07T08:47:21+00:00"
+        },
+        {
+            "name": "shel/neos-logs",
+            "version": "1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Sebobo/Shel.Neos.Logs.git",
+                "reference": "67b7b3149d4233b7b0cf8d3ed68350b6fb06f0b7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Sebobo/Shel.Neos.Logs/zipball/67b7b3149d4233b7b0cf8d3ed68350b6fb06f0b7",
+                "reference": "67b7b3149d4233b7b0cf8d3ed68350b6fb06f0b7",
+                "shasum": ""
+            },
+            "require": {
+                "neos/fusion-afx": "^1.3 || ^7.0 || ^8.0",
+                "neos/neos": "^4.3 || ^5.0 || ^7.0 || ^8.0"
+            },
+            "type": "neos-plugin",
+            "extra": {
+                "neos": {
+                    "package-key": "Shel.Neos.Logs"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Shel\\Neos\\Logs\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian Helzle",
+                    "email": "sebastian@helzle.it",
+                    "homepage": "https://www.helzle.it",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Allows access to logfiles and exceptions from the Neos CMS backend",
+            "keywords": [
+                "Neos",
+                "Viewer",
+                "analyse",
+                "exception",
+                "flow",
+                "log",
+                "logfile",
+                "logging",
+                "neoscms"
+            ],
+            "support": {
+                "issues": "https://github.com/Sebobo/Shel.Neos.Logs/issues",
+                "source": "https://github.com/Sebobo/Shel.Neos.Logs/tree/1.3.1"
+            },
+            "time": "2022-04-06T11:33:19+00:00"
+        },
+        {
+            "name": "t3n/neos-debug",
+            "version": "2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/t3n/neos-debug.git",
+                "reference": "84ccee39a95a7e364f1b4748a53b42c212772ddd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/t3n/neos-debug/zipball/84ccee39a95a7e364f1b4748a53b42c212772ddd",
+                "reference": "84ccee39a95a7e364f1b4748a53b42c212772ddd",
+                "shasum": ""
+            },
+            "require": {
+                "neos/neos": "^7.0 || ^8.0"
+            },
+            "type": "neos-package",
+            "extra": {
+                "neos": {
+                    "package-key": "t3n.Neos.Debug",
+                    "loading-order": {
+                        "after": [
+                            "neos/neos"
+                        ]
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "t3n\\Neos\\Debug\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Helper package to visualize debug inforamations for neos including fusion content cache",
+            "support": {
+                "issues": "https://github.com/t3n/neos-debug/issues",
+                "source": "https://github.com/t3n/neos-debug/tree/2.0.4"
+            },
+            "time": "2022-04-07T07:21:00+00:00"
         },
         {
             "name": "theseer/tokenizer",

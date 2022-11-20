@@ -1,0 +1,22 @@
+prototype(Custom.Template:Helper.ScriptTag) < prototype(Neos.Fusion:Component) {
+    path = null
+    defer = true
+
+    @if.hasPath = ${this.path}
+
+    renderer = Neos.Fusion:Tag {
+        tagName = 'script'
+        attributes {
+            defer = ${props.defer}
+            //type="text/javascript"
+
+            // internal resource
+            @context.srcInternal = Neos.Fusion:ResourceUri {
+                path = ${props.path}
+            }
+            // check if external resouce
+            src = ${!String.startsWith(props.path, 'resource:') ? props.path : srcInternal}
+
+        }
+    }
+}

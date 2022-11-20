@@ -1,0 +1,21 @@
+prototype(Custom.Template:Document.Fragment.JavaScripts) < prototype(Neos.Fusion:Component) {
+    @context.settings = Custom.Template:Helper.Settings
+    script = Neos.Fusion:Case {
+
+        isFrontendDevelopmentDebug {
+            condition = ${!backend && settings.development && settings.debugcss}
+            renderer = 'resource://Custom.Template/Public/Scripts/Debug.js'
+        }
+
+        default {
+            condition = ${true}
+            renderer = 'resource://Custom.Template/Public/Scripts/Main.js'
+        }
+    }
+
+    googleMapsApi = ${settings.googleMapsApi}
+
+    renderer = afx`
+		<Custom.Template:Helper.ScriptTag path={props.script} />
+    `
+}

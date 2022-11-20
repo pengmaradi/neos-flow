@@ -1,48 +1,54 @@
 prototype(Custom.Template:Document.AbstractPage) < prototype(Neos.Neos:Page) {
-  head {
-    headTags = Neos.Fusion:Component {
-      renderer = afx`
-        <meta http-equiv="x-ua-compatible" content="ie=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      `
+    head {
+        //    headTags = Neos.Fusion:Component {
+//      renderer = afx`
+//        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+//        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+//      `
+//    }
+
+        headTags = Custom.Template:Document.Fragment.MetaData
+
+        titleTag = Neos.Fusion:Tag {
+            tagName = 'title'
+            content = ${q(node).property('title')}
+        }
+
+        # Add stylesheets to your page
+//     stylesheets.site = afx`
+//			<link rel="stylesheet" href={StaticResource.uri('Custom.Template', 'Public/Styles/Main.css')}/>
+//        `
+        stylesheets.site = Custom.Template:Document.Fragment.StyleSheets
+        javascripts.site = Custom.Template:Document.Fragment.JavaScripts
+
+        # Add header javascripts to your page
+//    javascripts.site = afx`
+//			<link type="text/javascript" defer
+//				  href={StaticResource.uri('Custom.Template', 'Public/JavaScript/Main.js')}/>
+//        `
     }
 
-    titleTag = Neos.Fusion:Tag {
-      tagName = 'title'
-      content = ${q(node).property('title')}
-    }
 
-    # Add stylesheets to your page
-     stylesheets.site = afx`
-        <link rel="stylesheet" href={StaticResource.uri('Custom.Template', 'Public/site.css')} />
-    `
+    body = Custom.Template:Component.Template.Default {
+        @context.node = ${this.node}
 
-    # Add header javascripts to your page
-    javascripts.site = afx`
-        <link type="text/javascript" defer href={StaticResource.uri('Custom.Template', 'Public/site.js')} />
-    `
-  }
-
-  body = Custom.Template:Component.Template.Default {
-    @context.node = ${this.node}
-
-    # Define template properties
+        # Define template properties
     menu = Neos.Neos:Menu
-    content = Neos.Fusion:Component {
-      main = Neos.Neos:PrimaryContent {
-        nodePath = 'main'
-      }
+        content = Neos.Fusion:Component {
+            main = Neos.Neos:PrimaryContent {
+                nodePath = 'main'
+            }
 
-      renderer = afx`
-        {props.main}
-      `
+            renderer = afx`
+				{props.main}
+            `
+        }
+
+        # Script includes before the closing body tag should go here
+    javascripts = Neos.Fusion:Join
+        # This processor appends the rendered javascripts Array to the rendered template
+    @process.appendJavaScripts = ${value + this.javascripts}
     }
 
-    # Script includes before the closing body tag should go here
-    javascripts = Neos.Fusion:Join
-    # This processor appends the rendered javascripts Array to the rendered template
-    @process.appendJavaScripts = ${value + this.javascripts}
-  }
-
-  bodyJavaScripts = Neos.Fusion:Join
+    bodyJavaScripts = Neos.Fusion:Join
 }

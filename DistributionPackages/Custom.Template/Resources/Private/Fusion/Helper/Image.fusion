@@ -1,0 +1,20 @@
+prototype(Custom.Template:Helper.Image) < prototype(Neos.Fusion:Component) {
+    image = null
+    @context.image = ${this.image}
+
+    preloader = Neos.Neos:ImageUri {
+        asset = ${image}
+        maximumWidth = 2560
+        width = NULL
+        maximumHeight = 2560
+        height = NULL
+    }
+
+    class = null
+
+
+
+    renderer = afx`
+		<img src={props.preloader} title={props.title} alt={props.alt} class={props.class} @if={props.preloader}/>
+    `
+}

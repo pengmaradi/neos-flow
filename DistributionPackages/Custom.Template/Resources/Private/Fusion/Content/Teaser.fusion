@@ -2,6 +2,7 @@ prototype(Custom.Template:Content.Teaser) < prototype(Neos.Neos:ContentComponent
     title = Neos.Neos:Editable {
         property = 'title'
     }
+
     src = Neos.Fusion:Case {
         asset {
             condition = ${q(node).property('image')}
@@ -15,6 +16,10 @@ prototype(Custom.Template:Content.Teaser) < prototype(Neos.Neos:ContentComponent
                 path = 'resource://Neos.Neos/Public/Images/dummy-image.svg'
             }
         }
+    }
+
+    @process.debug = Neos.Fusion:Debug.Console {
+        value = ${node.context}
     }
 
     renderer = afx`
