@@ -1,7 +1,7 @@
 /Build/
 /Configuration/
-!Configuration/Development/*.yaml
-!Configuration/*.yaml
+!/Configuration/Development/*.yaml
+!/Configuration/*.yaml
 
 /Data/
 /Packages/
