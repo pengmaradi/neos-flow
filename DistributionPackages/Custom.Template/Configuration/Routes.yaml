@@ -74,6 +74,59 @@
       suffix:  'Service'
 
 ##
+# https://flow.test/typo3/media/browser/assets/index.html?
+
+-
+  name: 'Image Browser'
+  uriPattern: 'typo3/media/browser/images(/{@action}).{@format}'
+  defaults:
+    '@package': 'Neos.Media.Browser'
+    '@controller': 'Image'
+    '@format': 'html'
+    '@action': 'index'
+  appendExceedingArguments: true
+
+-
+  name: 'Asset Browser'
+  uriPattern: 'typo3/media/browser/assets(/{@action}).{@format}'
+  defaults:
+    '@package': 'Neos.Media.Browser'
+    '@controller': 'Asset'
+    '@format': 'html'
+    '@action': 'index'
+  appendExceedingArguments: true
+
+-
+  name: 'Asset Proxy Service'
+  uriPattern: 'typo3/media/browser/asset-proxies(/{@action}).{@format}'
+  defaults:
+    '@package': 'Neos.Media.Browser'
+    '@controller': 'AssetProxy'
+    '@format': 'json'
+    '@action': 'index'
+  appendExceedingArguments: true
+
+-
+  name: 'ImageVariant Service'
+  uriPattern: 'typo3/media/browser/image-variant(/{@action}).{@format}'
+  defaults:
+    '@package': 'Neos.Media.Browser'
+    '@controller': 'ImageVariant'
+    '@format': 'json'
+    '@action': 'index'
+  appendExceedingArguments: true
+
+##
+# preview
+
+-
+  name:          'Preview'
+  uriPattern:    'typo3/preview'
+  defaults:
+    '@action':   'preview'
+  appendExceedingArguments: true
+
+##
 # Frontend
 
 -
