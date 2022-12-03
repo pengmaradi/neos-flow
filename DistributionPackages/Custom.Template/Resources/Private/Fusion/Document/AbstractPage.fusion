@@ -21,8 +21,11 @@ prototype(Custom.Template:Document.AbstractPage) < prototype(Neos.Neos:Page) {
         attributes.class.@process.addNeosFrontendClass.@if.notRenderWhenNotInLiveWorkspace = ${!documentNode.context.inBackend}
     }
 
+
     body = Custom.Template:Component.Template.Default {
         @context.node = ${this.node}
+
+        logo = ${Configuration.setting('Custom.Template.settings.themes.default.logo')}
 
         # Define template properties
         menu = Neos.Neos:Menu

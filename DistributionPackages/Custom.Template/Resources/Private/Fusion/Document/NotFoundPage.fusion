@@ -1,0 +1,1 @@
+prototype(Custom.Template:Document.NotFoundPage) < prototype(Custom.Template:Document.HomePage)

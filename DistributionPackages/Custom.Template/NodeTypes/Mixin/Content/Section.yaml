@@ -1,0 +1,134 @@
+Custom.Template:Mixin.Content.Section:
+  abstract: true
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    inspector:
+      tabs:
+        section:
+          label: 'Section'
+          icon: 'icon-layer-group'
+          position: 100
+      groups:
+        section:
+          label: 'Section'
+          icon: 'icon-layer-group'
+          tab: section
+
+  properties:
+
+    sectionWidth:
+      type: string
+      ui:
+        label: 'Section Breite'
+        reloadIfChanged: true
+        inspector:
+          group: section
+          hidden: 'ClientEval: node.parent.includes("main@") ? false : true'
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              '':
+                label: 'Container 100%'
+              'md:w-9/12':
+                label: 'schmal (container 80%)'
+              big:
+                label: 'Gesamtbreite (voll)'
+      search:
+        indexing: false
+
+    sectionStyle:
+      type: string
+      ui:
+        label: 'Section Style'
+        reloadIfChanged: true
+        inspector:
+          group: section
+          hidden: 'ClientEval: node.parent.includes("main@") ? false : true'
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              '':
+                label: 'transparent'
+              gray:
+                label: 'grau'
+              theme:
+                label: 'Webseiten-Farbe'
+              image:
+                label: 'Hintergrundbild'
+      search:
+        indexing: false
+
+    sectionBackground:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: Hintergrundbild
+        reloadIfChanged: true
+        inspector:
+          group: section
+          hidden: 'ClientEval: (node.properties.sectionStyle == "image" && node.parent.includes("main@")) ? false : true'
+#          editorOptions:
+#            required: false
+      search:
+        indexing: false
+
+    anchor:
+      type: string
+      ui:
+        label: '#anker-link für Direktlinks'
+        inspector:
+          group: section
+          # 当元素为子件时设置为隐藏
+          hidden: 'ClientEval: node.parent.includes("main@") ? false : true'
+        help:
+          message: 'Bitte nur Kleinbuchstaben und - verwenden'
+      validation:
+        'Neos.Neos/Validation/StringLengthValidator':
+          maximum: 60
+        'Neos.Neos/Validation/RegularExpressionValidator':
+          regularExpression: '/^[a-z0-9\-]+$/'
+      search:
+        indexing: false
+
+    sectionNavigation:
+      type: boolean
+      ui:
+        label: 'Show in Section Navigation'
+        reloadIfChanged: true
+        inspector:
+          group: section
+          hidden: 'ClientEval: node.parent.includes("main@") ? false : true'
+      search:
+        indexing: false
+
+    sectionNavigationTitle:
+      type: string
+      ui:
+        label: 'Section Navigation Title'
+        inspector:
+          group: section
+          hidden: 'ClientEval:node.properties.sectionNavigation ? false : true'
+          editorOptions:
+            placeholder: 'ClientEval:node.properties.title'
+      search:
+        indexing: false
+
+    align:
+      type: string
+      ui:
+        label: 'align position'
+        reloadIfChanged: true
+        inspector:
+          group: section
+          hidden: 'ClientEval: node.parent.includes("main@") ? false : true'
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              text-left:
+                label: 'Default'
+              text-right:
+                label: 'Right'
+              text-center:
+                label: 'Center'
+      search:
+        indexing: false

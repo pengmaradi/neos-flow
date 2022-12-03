@@ -18,7 +18,7 @@ prototype(Custom.Template:Document.Fragment.StyleSheets) < prototype(Neos.Fusion
 
     renderer = afx`
 		<Custom.Template:Helper.StyleTag path={props.stylesheet} />
-<!--		<style @if.hasTheme={props.cssVariables}>{props.cssVariables}</style>-->
-<!--		<style @if.hasTheme={props.LinkVariables}>{props.LinkVariables}</style>-->
+		<style @if={props.cssVariables}>{props.cssVariables}</style>
+		<style @if={props.LinkVariables}>{props.LinkVariables}</style>
     `
 }

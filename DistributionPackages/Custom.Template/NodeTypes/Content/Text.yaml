@@ -1,0 +1,8 @@
+Custom.Template:Content.Text:
+  superTypes:
+    'Custom.Template:Mixin.Content.Text': true
+    'Custom.Template:Mixin.Content.Section': true
+  ui:
+    label: Custom Text
+    icon: icon-file-text
+    group: general

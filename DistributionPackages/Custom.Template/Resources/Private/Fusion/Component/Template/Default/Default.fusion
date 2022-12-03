@@ -1,5 +1,6 @@
 prototype(Custom.Template:Component.Template.Default) < prototype(Neos.Fusion:Component) {
   # Property API
+    logo = ''
     header = ''
     menu = ''
     content = ''
@@ -20,7 +21,13 @@ prototype(Custom.Template:Component.Template.Default) < prototype(Neos.Fusion:Co
     <div {...props.divWrapper}>
 		<header>
 			{props.header}
-			<nav>{props.menu}</nav>
+            <div class="container">
+				<div class="logo" @if={props.logo}>
+					<a href="/">{props.logo}</a>
+				</div>
+				<nav>{props.menu}</nav>
+            </div>
+
 		</header>
 		<main>
 			{props.content}

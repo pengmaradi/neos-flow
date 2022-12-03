@@ -1,0 +1,1 @@
+prototype(Custom.Template:Document.HomePage) < prototype(Custom.Template:Document.Page)

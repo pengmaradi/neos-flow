@@ -1,0 +1,8 @@
+Custom.Template:Content.Title:
+  superTypes:
+    'Custom.Template:Mixin.Content.Title': true
+    'Custom.Template:Mixin.Content.Section': true
+  ui:
+    label: Custom Header
+    icon: icon-header
+    group: general

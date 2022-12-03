@@ -1,0 +1,4 @@
+Custom.Template:Mixin.Content.Text:
+  abstract: true
+  superTypes:
+    'Neos.NodeTypes.BaseMixins:TextMixin': true

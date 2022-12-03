@@ -1,6 +1,7 @@
 Custom.Template:Content.Teaser:
   superTypes:
-    'Neos.Neos:Content': true
+    #'Neos.Neos:Content': true
+    'Custom.Template:Mixin.Content.Section': true
 
   ui:
     label: Custom Teaser

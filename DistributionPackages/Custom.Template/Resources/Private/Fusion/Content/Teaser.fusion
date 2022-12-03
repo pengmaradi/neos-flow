@@ -24,8 +24,13 @@ prototype(Custom.Template:Content.Teaser) < prototype(Neos.Neos:ContentComponent
 
     renderer = afx`
         <div {...props.sectionAttributes}>
-			{props.title}
-			<img src={props.src} title={props.title} alt={props.alt} class={props.imgClass} @if={props.src} />
+            <div class="content">
+                <div class="deco"
+                     @if={props.sectionBackground && props.sectionStyle == 'image'}
+                     style={'background-image: url(' + props.sectionBackground + ');'}></div>
+                {props.title}
+                <img src={props.src} alt={props.alt} class={props.imgClass} @if={props.src} />
+			</div>
         </div>
     `
 }

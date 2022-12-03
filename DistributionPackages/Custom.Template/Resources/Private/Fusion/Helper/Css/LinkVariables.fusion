@@ -3,13 +3,13 @@ prototype(Custom.Template:Helper.Css.LinkVariables) < prototype(Neos.Fusion:Comp
     sites = Neos.Fusion:Loop {
         // todo: create Custom.Template:Document.Root
         items = ${q(site).context({workspaceName: 'live'}).find('/sites').children('[instanceof Custom.Template:Document.Page]')}
-
+        @context.id = ${q(site).property('theme') ? q(site).property('theme') : 'default'}
         itemRenderer = Neos.Fusion:Component {
             nodeLink = Neos.Neos:NodeUri {
                 node = ${item}
-                absolute = TRUE
+                absolute = true
             }
-            color = ${Configuration.setting('Custom.Template.settings.themes.' + q(item).property('theme') + '.color')}
+            color = ${Configuration.setting('Custom.Template.settings.themes.' + id + '.linkColor')}
             renderer = ${'a[href^="' + props.nodeLink + '"] { --linkColor: '+ props.color +' !important; }'}
         }
     }

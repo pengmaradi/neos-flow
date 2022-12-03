@@ -1,15 +1,40 @@
 prototype(Neos.Neos:ContentComponent) {
+    // get properties from Custom.Template:Mixin.Content.Section
+    sectionWidth = ${q(node).property('sectionWidth')}
+    anchor = ${q(node).property('anchor')}
+    sectionNavigation = ${q(node).property('sectionNavigation')}
+    sectionNavigationTitle = ${q(node).property('sectionNavigationTitle')}
+    sectionStyle = ${q(node).property('sectionStyle')}
     type = ${q(node).property('_nodeType')}
+
+    sectionBackground = Neos.Fusion:Case {
+        asset {
+            condition = ${q(node).property('sectionBackground')}
+            renderer = Neos.Neos:ImageUri {
+                asset = ${q(node).property('sectionBackground')}
+            }
+        }
+        dummy {
+            condition = ${node.context.inBackend}
+            renderer = Neos.Fusion:ResourceUri {
+                path = 'resource://Neos.Neos/Public/Images/dummy-image.svg'
+            }
+        }
+    }
 
     sectionAttributes = Neos.Fusion:DataStructure {
         class {
             type = ${String.replace(String.replace(q(node).property('_nodeType'), 'Custom.Template:Content.', 'node'), '.', '_')}
+            container = ${q(node).property('sectionWidth') == 'big' ? '' : 'container'}
+            sectionWidth = ${q(node).property('sectionWidth')}
+            align = ${q(node).property('align')}
+            sectionStyle = ${q(node).property('sectionStyle')}
+            frame = 'frame'
         }
 
         id = ${props.slug ? props.slug : 'node-'+node.identifier}
-        data-aos = ${node.context.inBackend ? '' : 'fade-up' }
-        data-aos-duration = ${node.context.inBackend ? '' : '1000' }
     }
+
     renderer = Neos.Fusion:Component {
         @apply.props = ${props}
     }

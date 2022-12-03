@@ -1,12 +1,12 @@
 prototype(Custom.Template:Helper.Css.Variables) < prototype(Neos.Fusion:Component) {
     // Active Theme
     theme = Custom.Template:Helper.Theme
-    @context.activeTheme = ${':root{--theme:'+ this.theme.color+'!important;}'}
+    @context.activeTheme = ${':root {--theme-color: '+ this.theme.color +' !important;}'}
 
     // Loop trough all Themes and set data-theme
     @context.themes = Neos.Fusion:Loop {
         items = ${Configuration.setting('Custom.Template.settings.themes')  || []}
-        itemRenderer = ${'[data-theme="'+itemKey+'"]{--theme:'+item.color+'!important;}'}
+        itemRenderer = ${'[data-theme="'+itemKey+'"]{--theme: ' + item.color + ' !important;}'}
     }
 
     renderer = ${activeTheme + ' ' + themes}

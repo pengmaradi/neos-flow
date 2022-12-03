@@ -1,0 +1,18 @@
+prototype(Custom.Template:Content.Title) < prototype(Neos.Neos:ContentComponent) {
+    //title = ${q(node).property("title")}
+    title = Neos.Neos:Editable {
+        property = 'title'
+    }
+    title.@process.convertUris = Neos.Neos:ConvertUris
+
+    renderer = afx`
+		<div {...props.sectionAttributes}>
+            <div class="content">
+                <div class="deco"
+                     @if={props.sectionBackground && props.sectionStyle == 'image'}
+                     style={'background-image: url(' + props.sectionBackground + ');'}></div>
+                {props.title}
+            </div>
+		</div>
+    `
+}

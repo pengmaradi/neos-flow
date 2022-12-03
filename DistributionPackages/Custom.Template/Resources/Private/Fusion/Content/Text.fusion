@@ -1,0 +1,16 @@
+prototype(Custom.Template:Content.Text) < prototype(Neos.Neos:ContentComponent) {
+    text = Neos.Neos:Editable {
+        property = 'text'
+    }
+
+    renderer = afx`
+		<div {...props.sectionAttributes}>
+            <div class="content">
+                <div class="deco"
+                     @if={props.sectionBackground && props.sectionStyle == 'image'}
+                     style={'background-image: url(' + props.sectionBackground + ');'}></div>
+                {props.text}
+            </div>
+		</div>
+    `
+}
