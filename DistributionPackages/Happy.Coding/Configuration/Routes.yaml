@@ -23,11 +23,11 @@
     '@action':     'hello'
     '@format':     'html'
 
-#-
-#  name: 'Redirect to welcome screen'
-#  uriPattern: ''
-#  defaults:
-#    '@package':    'Happy.Coding'
-#    '@controller': 'Standard'
-#    '@action':     'redirect'
-#    '@format':     'html'
+-
+  name: 'Backend'
+  uriPattern: 'typo3/management/happymodule'
+  defaults:
+    '@package':    'Happy.Coding'
+    '@controller': 'Backend'
+    '@action':     'create'
+    '@format':     'html'

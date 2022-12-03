@@ -1,22 +1,18 @@
 <f:layout name="Default" />
 
-<f:section name="Title">Index view of Standard controller</f:section>
-
 <f:section name="Content">
-    <h1>A freshly created Fluid template!</h1>
-    <ul>
-        
-        <f:for each="{news}" as="foo">
-            <li>
-				<h2>{foo.title}</h2>
-				<div class="description">
-					{foo.description -> f:format.raw()}
-				</div>
-				<f:if condition="{foo.image}">
-					{foo.image->f:debug()}
-				</f:if>
-			</li>
-        </f:for>
-        
-    </ul>
+	<div id="{identifier}" class="container {properties.align} {properties.sectionWidth} {properties.sectionStyle}">
+		<div class="content">
+			<ul>
+				<f:for each="{news}" as="foo">
+					<li>
+						<h2>{foo.title}</h2>
+						<div class="description">
+							{foo.description -> f:format.raw()}
+						</div>
+					</li>
+				</f:for>
+			</ul>
+		</div>
+	</div>
 </f:section>

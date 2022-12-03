@@ -1,0 +1,19 @@
+Happy.Coding:Content.Plugin:
+  superTypes:
+    'Neos.Neos:Plugin': true
+    'Custom.Template:Mixin.Content.Section': true
+  ui:
+    label: 'News of Custom'
+    group: plugins
+    icon: 'icon-box'
+
+  options:
+    pluginViews:
+      'CollectionShow':
+        label: 'Show News'
+        controllerActions:
+          'Happy\Coding\Controller\StandardController': ['show']
+      'CollectionOverview':
+        label: 'News Overview'
+        controllerActions:
+          'Happy\Coding\Controller\StandardController': ['index']

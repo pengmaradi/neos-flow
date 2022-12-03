@@ -1,0 +1,13 @@
+prototype(Happy.Coding:BodyLayout.Default) < prototype(Neos.Fusion:Component) {
+    content = ''
+    teaserTitle = ''
+    teaserText = ''
+
+    renderer = afx`
+		<main>
+			<h1>{props.teaserTitle}</h1>
+			<p>{props.teaserText}</p>
+			{props.content}
+		</main>
+    `
+}

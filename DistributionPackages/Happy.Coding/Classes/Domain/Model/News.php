@@ -25,10 +25,10 @@ class News
      */
     protected $description;
 
-    /**
-     * @var ImageInterface
-     */
-    protected $image;
+//    /**
+//     * @var ImageInterface
+//     */
+//    protected $image = null;
 
 
     /**
@@ -75,8 +75,10 @@ class News
      * @param ImageInterface $image
      * @return void
      */
-    public function setImage($image)
+    public function setImage(ImageInterface $image = null)
     {
-        $this->image = $image;
+        if (!is_null($image)) {
+            $this->image = $image;
+        }
     }
 }

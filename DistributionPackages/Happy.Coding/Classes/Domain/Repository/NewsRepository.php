@@ -13,6 +13,5 @@ use Neos\Flow\Persistence\Repository;
  */
 class NewsRepository extends Repository
 {
-
     // add customized methods here
 }

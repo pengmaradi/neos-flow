@@ -1,10 +1,31 @@
 <div class="neos-content neos-container-fluid">
 
 	<div class="neos-row-fluid">
-		<h1>Create News</h1>
+		<f:if condition="{news}">
+			<div class="neos-span12">
+				<h2>News List</h2>
+				<table class="neos-table">
+					<thead>
+					<tr>
+						<th>Title</th>
+						<th>Description</th>
+					</tr>
+					</thead>
+					<tbody>
+					<f:for each="{news}" as="news">
+						<tr>
+							<td>{news.title}</td>
+							<td>{news.description -> f:format.raw()}</td>
+						</tr>
+					</f:for>
+					</tbody>
+				</table>
+			</div>
+		</f:if>
 
-		<f:form action="/neos/management/happyModule"
-				controller="BackendController"
+		<h2>Create News</h2>
+		<f:form action="create"
+				controller="Backend"
 				enctype="multipart/form-data"
 				name="news"
 				object="news">
@@ -23,34 +44,13 @@
 					</div>
 				</div>
 				<div class="neos-control-group">
-					<f:form.submit property="save" value="save" class="neos-button neos-button-primary"/>
+					<input type="submit" value="save" class="neos-button neos-button-primary"/>
 				</div>
 			</fieldset>
 
 		</f:form>
 
 
-		<f:if condition="{news}">
-			<div class="neos-span12">
-				<h1>News List</h1>
-				<table class="neos-table">
-					<thead>
-					<tr>
-						<th>Title</th>
-						<th>Description</th>
-					</tr>
-					</thead>
-					<tbody>
-					<tr>
-						<f:for each="{news}" as="news">
 
-							<td>{news.title}</td>
-							<td>{news.description -> f:format.raw()}</td>
-						</f:for>
-					</tr>
-					</tbody>
-				</table>
-			</div>
-		</f:if>
 	</div>
 </div>

@@ -5,6 +5,7 @@ namespace Happy\Coding\Controller;
  * This file is part of the Happy.Coding package.
  */
 
+use Happy\Coding\Domain\Model\News;
 use Happy\Coding\Domain\Repository\NewsRepository;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Http\Helper;
@@ -36,5 +37,34 @@ class BackendController extends ActionController
         $this->view->assign(
             'news', $news
         );
+    }
+
+    public function newAction(): void
+    {
+    }
+
+    public function createAction(News $news): void
+    {
+        $this->newsRepository->add($news);
+        $this->addFlashMessage('Created a new $news.');
+        $this->redirect('index');
+    }
+
+    public function editAction(News $news): void
+    {
+        $this->view->assign('news', $news);
+    }
+
+    public function updateAction(News $news) {
+        $this->newsRepository->update($news);
+        $this->addFlashMessage('Updated the $news.');
+        $this->redirect('index');
+    }
+
+    public function deleteAction(News $news): void
+    {
+        $this->newsRepository->remove($news);
+        $this->addFlashMessage('Deleted a $news.');
+        $this->redirect('index');
     }
 }

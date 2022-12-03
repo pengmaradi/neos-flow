@@ -9,10 +9,10 @@ Neos:
       'management':
         submodules:
           'happyModule':
-            label: 'G.E.M. 邓紫棋 - 歌单'
+            label: 'Custom Test News'
             controller: 'Happy\Coding\Controller\BackendController'
-            description: 'G.E.M. 邓紫棋 唱片'
-            icon: 'icon-compact-disc'
+            description: 'neos custom module - news'
+            icon: 'icon-newspaper'
     fusion:
       autoInclude:
         'Happy.Coding': true

@@ -1,0 +1,5 @@
+prototype(Happy.Coding:Content.Plugin) < prototype(Neos.Neos:Plugin) {
+    package = 'Happy.Coding'
+    controller = 'Standard'
+    action = 'index'
+}
