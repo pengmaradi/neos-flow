@@ -38,20 +38,32 @@ class StandardController extends ActionController
     public function indexAction()
     {
         $news = $this->newsRepository->findAll();
-        $this->view->assignMultiple(
-            [
-                'news' => $news,
-                'identifier' => $this->request->getInternalArgument('__node')->getIdentifier(),
-                'node' => $this->request->getInternalArgument('__node')->getNodeType()->getName(),
-                'properties' => $this->request->getInternalArgument('__node')->getProperties(),
-            ]
-        );
-
+        if ($this->request->getInternalArgument('__node')) {
+            $node = $this->request->getInternalArgument('__node');
+            $this->view->assignMultiple(
+                [
+                    'news' => $news,
+                    'identifier' => $node->getIdentifier(),
+                    'node' => $node->getNodeType()->getName(),
+                    'properties' => $node->getProperties(),
+                ]
+            );
+        } else {
+            $this->view->assignMultiple(
+                [
+                    'news' => $news,
+                ]
+            );
+        }
     }
 
-    public function helloAction(string $name)
+    public function helloAction(string $name = 'neos route testing...')
     {
-        return 'Hello ' . $name;
+        $this->view->assignMultiple(
+            [
+                'name' => $name,
+            ]
+        );
     }
 
     /**
