@@ -1,0 +1,8 @@
+'Custom.Template:Collection.Content.Carousel':
+  superTypes:
+    'Neos.Neos:ContentCollection': true
+  constraints:
+    nodeTypes:
+      '*': false
+      'Custom.Template:Content.Image': true
+      'Custom.Template:Constraint.Content.Carousel': true

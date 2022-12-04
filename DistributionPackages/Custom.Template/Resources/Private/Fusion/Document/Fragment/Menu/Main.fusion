@@ -1,0 +1,18 @@
+prototype(Custom.Template:Document.Fragment.Menu.Main) < prototype(Neos.Neos:Menu) {
+    maximumLevels = 2
+    startingPoint = ${q(site).children('metamenu').get(0)}
+
+    attributes = Neos.Fusion:Attributes {
+        class = "flex h-full space-x-8"
+    }
+
+    active.attributes = Neos.Fusion:Attributes {
+        class = 'flex items-center h-16 underline-offset-8 decoration-2 decoration-secondary animated-underline-navi hover:animated-underline-navi-hover active underline'
+    }
+    current.attributes = Neos.Fusion:Attributes {
+        class = 'flex items-center h-16 underline-offset-8 decoration-2 decoration-secondary animated-underline-navi hover:animated-underline-navi-hover current underline'
+    }
+    normal.attributes = Neos.Fusion:Attributes {
+        class = 'flex items-center h-16 underline-offset-8 decoration-2 decoration-secondary animated-underline-navi hover:animated-underline-navi-hover'
+    }
+}

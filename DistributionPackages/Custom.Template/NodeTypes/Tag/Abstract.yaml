@@ -1,0 +1,33 @@
+'Custom.Template:Tag.Abstract':
+  superTypes:
+    'Neos.Neos:Content': true
+  abstract: true
+
+  ui:
+    label: 'News Kategorie'
+    group: news
+    icon: 'icon-tags'
+    # icon: 'icon-record-vinyl'
+
+    inspector:
+      groups:
+        settings:
+          label: 'Settings'
+
+  properties:
+    title:
+      type: string
+      defaultValue: 'News Kategorie'
+      ui:
+        label: 'Titel News Kategorie'
+        #inlineEditable: true
+        showInCreationDialog: true
+        reloadIfChanged: true
+        inspector:
+          group: settings
+          editorOptions:
+            placeholder: 'Titel News Kategorie'
+      validation:
+        'Neos.Neos/Validation/NotEmptyValidator': []
+        'Neos.Neos/Validation/StringLengthValidator':
+          maximum: 60

@@ -1,0 +1,43 @@
+'Custom.Template:Content.Columns.Two':
+  superTypes:
+    'Custom.Template:Mixin.Content.Section': true
+  ui:
+    label: Custom 2 Columns
+    icon: 'icon-columns'
+    group: 'structure'
+    position: 100
+
+  childNodes:
+    column0:
+      type: 'Custom.Template:Collection.Content.Column'
+    column1:
+      type: 'Custom.Template:Collection.Content.Column'
+
+  properties:
+
+    columOption:
+      type: string
+      ui:
+        label: 'select column'
+        reloadIfChanged: true
+        inspector:
+          group: section
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              columns_6-6:
+                label: 'Default columns 6:6'
+              columns_8-4:
+                label: 'columns 8:4'
+              columns_4-8:
+                label: 'columns 4:8'
+              columns_9-3:
+                label: 'columns 9:3'
+              columns_3-9:
+                label: 'columns 3:9'
+              columns_7-5:
+                label: 'columns 7:5'
+              columns_5-7:
+                label: 'columns 5:7'
+      search:
+        indexing: false

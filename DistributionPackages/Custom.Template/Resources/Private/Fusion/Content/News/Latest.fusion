@@ -1,0 +1,109 @@
+prototype(Custom.Template:Content.News.Latest) < prototype(Neos.Neos:ContentComponent) {
+
+    limit = ${q(node).property('limit')}
+
+    allnews = Neos.Neos:Editable {
+        property = 'allnews'
+    }
+    
+    link = ${q(node).property('link')}
+    link.@process.convertUris = Neos.Neos:ConvertUris
+
+    news = Neos.Fusion:Collection {
+
+        collection = Neos.Fusion:Case {
+            isGlobal {
+                condition = ${q(node).property('displaymode') == 'global' ? true : false}
+                renderer = ${q(site).parent().find('[instanceof Custom.Template:Document.News.Article]').sort('date', 'DESC').get()}
+            }
+
+            isSite {
+                condition = ${q(node).property('displaymode') == 'site' ? true : false}
+                renderer = ${q(site).find('[instanceof Custom.Template:Document.News.Article]').sort('date', 'DESC').get()}
+            }
+
+            fallback {
+                condition = ${true}
+                renderer = ${q(documentNode).find('[instanceof Custom.Template:Document.News.Article]').sort('date', 'DESC').get()}
+            }
+        }
+
+        // Filter by Categories
+        categories = ${q(node).property("categories") ? Array.length(q(node).property("categories")) : 0}
+
+        @context.categories = ${this.categories}
+
+        collection.@process.filterByCategories = ${categories > 0 ? q(value).filterByCategories(q(node).property('categories')).get() : value}
+
+        // Filter by Tags
+        tags = ${q(node).property("tags") ? Array.length(q(node).property("tags")) : 0}
+
+        @context.tags = ${this.tags}
+
+        collection.@process.filterByTags = ${tags > 0 ? q(value).filterByTags(q(node).property('tags')).get() : value}
+
+        // limit news
+        limit = ${q(node).property('limit')}
+
+        @context.limit = ${this.limit}
+
+        collection.@process.filterbylimit = ${limit > 0 ? q(value).slice(0, limit).get() : value}
+
+        itemName = 'node'
+
+        itemRenderer = Custom.Template:Content.News.Teaser {
+            itemClass = 'w-full sm:w-6/12 px-3 lg:px-6 news-item'
+        }
+    }
+
+    // flex flex-wrap
+    sectionAttributes = Neos.Fusion:DataStructure {
+        class {
+            frame = ${setFrame ? 'frame' : 'noframe'}
+            width = ${setFrame ? q(node).property('sectionWidth') : ''}
+            align = ${setFrame ? q(node).property('align') : ''}
+            // just test grid-cols-<*>
+            //grid = ${'grid grid-cols-' + q(node).property('limit') + ' gap-2'}
+            flex = 'flex flex-wrap -mx-3 lg:-mx-6'
+        }
+        id = ${props.slug ? props.slug : 'node-'+node.identifier}
+    }
+
+    listClass = 'news-latest'
+
+    renderer = afx`
+		<div class={props.listClass} @if={props.news}>
+            <div {...props.sectionAttributes} @if={props.news}>
+		        {props.news}
+            </div>
+			<div class="tolist" @if={props.limit}>
+				<a href={props.link}>{props.allnews}</a>
+			</div>
+        </div>
+
+    `
+
+    // Caching
+    @cache {
+        mode = 'cached'
+        entryIdentifier {
+            node = ${node}
+        }
+
+        # Limit Cache-Life to one day
+        maximumLifetime = '86400'
+
+        context {
+            1 = 'node'
+            2 = 'documentNode'
+            3 = 'site'
+        }
+        entryTags {
+            1 = ${Neos.Caching.nodeTag(node)}
+            2 = ${Neos.Caching.nodeTypeTag('Xp.News:News.News', node)}
+            3 = ${Neos.Caching.nodeTypeTag('Xp.News:Document.News.Article', node)}
+            4 = ${Neos.Caching.nodeTypeTag('Xp.News:News.List', node)}
+        }
+    }
+
+}

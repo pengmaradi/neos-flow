@@ -1,0 +1,34 @@
+prototype(Custom.Template:Document.News.Article) < prototype(Custom.Template:Document.AbstractPage) {
+
+    body = Custom.Template:Component.Template.News {
+        headerImage = Neos.Neos:ImageUri {
+            asset = ${q(documentNode).property('image') ? q(documentNode).property('image') : null}
+            width = 2560
+        }
+
+        teaser = ${q(node).property('teaser')}
+
+        tags = ${q(node).property('tags')}
+
+        categories = ${q(node).property('categories')}
+
+        date = ${Date.format(q(node).property('date'), 'd.m.Y')}
+
+        title = ${q(node).property('title')}
+
+        @context.node = ${this.node}
+
+        menu = Custom.Template:Document.Fragment.Menu.Main
+        language = Custom.Template:Document.Fragment.Menu.Language
+
+        content = Custom.Template:Document.Fragment.Content.Main
+
+        footer = Custom.Template:Document.Fragment.Footer
+
+        # Script includes before the closing body tag should go here
+        javascripts = Neos.Fusion:Join
+        # This processor appends the rendered javascripts Array to the rendered template
+        @process.appendJavaScripts = ${value + this.javascripts}
+    }
+
+}

@@ -22,14 +22,17 @@ prototype(Neos.Neos:ContentComponent) {
         }
     }
 
+    // remove child elements frame class
+    @context.setFrame = ${q(node).is("[instanceof Custom.Template:Mixin.Content.Section]") && q(node).parent().parent().is("[instanceof Neos.Neos:Document]") ? true : false }
+
     sectionAttributes = Neos.Fusion:DataStructure {
         class {
             type = ${String.replace(String.replace(q(node).property('_nodeType'), 'Custom.Template:Content.', 'node'), '.', '_')}
-            container = ${q(node).property('sectionWidth') == 'big' ? '' : 'container'}
+            container = ${setFrame ? (q(node).property('sectionWidth') == 'big' ? '' : 'container') : '' }
             sectionWidth = ${q(node).property('sectionWidth')}
             align = ${q(node).property('align')}
             sectionStyle = ${q(node).property('sectionStyle')}
-            frame = 'frame'
+            frame = ${setFrame ? 'frame' : 'noframe'}
         }
 
         id = ${props.slug ? props.slug : 'node-'+node.identifier}

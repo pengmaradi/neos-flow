@@ -1,0 +1,7 @@
+prototype(Custom.Template:Tag.Tag) < prototype(Custom.Template:Tag.Category) {
+    renderer = afx`
+		<div class="tag" @if.backend={backend}>
+			{props.title}
+		</div>
+    `
+}

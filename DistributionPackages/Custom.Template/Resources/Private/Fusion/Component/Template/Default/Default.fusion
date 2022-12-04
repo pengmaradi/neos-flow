@@ -1,8 +1,10 @@
 prototype(Custom.Template:Component.Template.Default) < prototype(Neos.Fusion:Component) {
   # Property API
+    headerImage = ''
     logo = ''
     header = ''
     menu = ''
+    language = ''
     content = ''
     footer = ''
 
@@ -15,17 +17,21 @@ prototype(Custom.Template:Component.Template.Default) < prototype(Neos.Fusion:Co
         }
     }
 
-  # Template
   renderer = afx`
-    <!-- change to your needs -->
     <div {...props.divWrapper}>
-		<header>
+        <div class="headerImage" data-aos="fade-up" data-aos-duration="1000" @if={props.headerImage}>
+            <img class="w-full" src={props.headerImage} />
+        </div>
+		<header class="header z-10 sticky top-0 bg-white">
 			{props.header}
             <div class="container">
-				<div class="logo" @if={props.logo}>
-					<a href="/">{props.logo}</a>
-				</div>
-				<nav>{props.menu}</nav>
+				<div class="flex justify-between self-center my-auto w-full">
+                    <div class="logo" @if={props.logo}>
+                        <a href="/">{props.logo}</a>
+                    </div>
+                    <nav class="flex items-center self-center max-w-screen-lg">{props.menu}</nav>
+                    {props.language}
+                </div>
             </div>
 
 		</header>

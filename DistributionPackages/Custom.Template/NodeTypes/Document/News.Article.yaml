@@ -1,0 +1,130 @@
+'Custom.Template:Document.News.Article':
+  superTypes:
+    'Custom.Template:Document.Page': true
+
+  # Page Settings
+  ui:
+    label: 'News-Article'
+    icon: icon-newspaper
+    position: 201
+    group: 'news'
+    inspector:
+      groups:
+        newssettings:
+          label: 'News-Einstellungen'
+          position: 902
+          icon: 'icon-newspaper'
+  # no children pages
+  constraints:
+    nodeTypes:
+      '*': false
+      'Neos.Neos:Document': false
+      'Custom.Template:Document.News.Article': false
+      'Custom.Template:Document.Homepage': false
+      'Custom.Template:Constraint.Document.PageChild': false
+      'Custom.Template:Document.Page': false
+      'Custom.Template:Document.Shortcut': false
+      'Custom.Template:Document.News': false
+
+
+  # Allowed Content Elements
+  childNodes:
+    main:
+      constraints:
+        nodeTypes:
+          'Custom.Template:Content.News.List': false
+          'Custom.Template:Content.News.Latest': false
+          'Flowpack.Neos.FrontendLogin:LoginForm': false
+
+    teaser: []
+
+  # News Article Properties
+  properties:
+    headerImage: []
+    title:
+      validation:
+        'Neos.Neos/Validation/StringLengthValidator':
+          maximum: 80
+    date:
+      type: DateTime
+      ui:
+        label: 'News Datum'
+        reloadIfChanged: true
+        showInCreationDialog: true
+        inspector:
+          group: 'newssettings'
+          position: 1
+          editorOptions:
+            format: 'd.m.Y'
+      validation:
+        'Neos.Neos/Validation/NotEmptyValidator': []
+
+    teaser:
+      type: string
+      ui:
+        label: 'News Teaser'
+        reloadIfChanged: true
+        showInCreationDialog: true
+        inspector:
+          group: 'newssettings'
+          editor: 'Neos.Neos/Inspector/Editors/TextAreaEditor'
+          editorOptions:
+            placeholder: 'News Teaser...(maximum 400 characters)'
+          position: 1
+      validation:
+        'Neos.Neos/Validation/StringLengthValidator':
+          maximum: 400
+
+    image:
+      type: 'Neos\Media\Domain\Model\ImageInterface'
+      ui:
+        label: 'News Bild (3:1)'
+        reloadIfChanged: true
+        inspector:
+          group: 'newssettings'
+          editorOptions:
+            crop:
+              aspectRatio:
+                locked:
+                  width: 3
+                  height: 1
+    # hide in menus by default
+    _hiddenInIndex:
+      defaultValue: true
+
+    categories:
+      type: references
+      ui:
+        label: News Kategorie(n)
+        inspector:
+          group: newssettings
+          editorOptions:
+            nodeTypes: ['Custom.Template:Tag.Category']
+            placeholder: 'Kategorie(n) auswählen'
+            threshold: 1
+            startingPoint: /sites
+    tags:
+      type: references
+      ui:
+        label: News Tag(s)
+        inspector:
+          group: newssettings
+          editorOptions:
+            nodeTypes: ['Custom.Template:Tag.Tag']
+            placeholder: 'Tag(s) auswählen'
+            threshold: 1
+            startingPoint: /sites
+
+
+  # DEMO Nodes
+  options:
+    template:
+      childNodes:
+        main:
+          name: 'main'
+          childNodes:
+            content:
+              type: 'Xp.Template:Content.Text'
+              properties:
+                text: ${'<p>Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros...</p>'}
+

@@ -1,0 +1,43 @@
+prototype(Custom.Template:Content.Columns.Four) < prototype(Neos.Neos:ContentComponent) {
+
+    column0 = Neos.Neos:ContentCollection {
+        nodePath = 'column0'
+    }
+
+    column1 = Neos.Neos:ContentCollection {
+        nodePath = 'column1'
+    }
+    column2 = Neos.Neos:ContentCollection {
+        nodePath = 'column2'
+    }
+    column3 = Neos.Neos:ContentCollection {
+        nodePath = 'column3'
+    }
+
+    cloumClassAttribute = Neos.Fusion:DataStructure {
+        class {
+            grid = 'flex flex-wrap'
+        }
+    }
+
+//    sectionAttributes = Neos.Fusion:DataStructure {
+//        class {
+//            container = ${q(node).property('sectionWidth') == 'big' ? '' : ''}
+//        }
+//    }
+
+    @context.colUnit = 'w-full'
+
+    col4 = ${colUnit + ' sm:w-3/12'}
+
+    renderer = afx`
+        <div {...props.sectionAttributes}>
+            <div {...props.cloumClassAttribute}>
+                <div class={props.col4}>{props.column0}</div>
+                <div class={props.col4}>{props.column1}</div>
+                <div class={props.col4}>{props.column2}</div>
+                <div class={props.col4}>{props.column3}</div>
+            </div>
+        </div>
+    `
+}

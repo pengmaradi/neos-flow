@@ -1,0 +1,19 @@
+'Custom.Template:Content.Columns.Four':
+  superTypes:
+    'Custom.Template:Mixin.Content.Section': true
+  ui:
+    label: Custom 4 Columns
+    icon: 'icon-columns'
+    group: 'structure'
+    position: 400
+
+  childNodes:
+    column0:
+      type: 'Custom.Template:Collection.Content.Column'
+    column1:
+      type: 'Custom.Template:Collection.Content.Column'
+    column2:
+      type: 'Custom.Template:Collection.Content.Column'
+    column3:
+      type: 'Custom.Template:Collection.Content.Column'
+

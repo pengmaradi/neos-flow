@@ -1,0 +1,13 @@
+##
+# The footer content collection
+#
+'Custom.Template:Collection.Content.Footer':
+  superTypes:
+    Neos.Neos:ContentCollection: true
+  constraints:
+    nodeTypes:
+      '*': false
+      'Custom.Template:Content.Headline': true
+      'Custom.Template:Content.Text': true
+      'Custom.Template:Content.Image': true
+      'Custom.Template:Content.Columns.Two': true

@@ -1,0 +1,9 @@
+prototype(Custom.Template:Tag.Category) < prototype(Neos.Neos:ContentComponent) {
+    title = ${q(node).property('title')}
+
+    renderer = afx`
+		<div class="category" @if.backend={backend}>
+			{props.title}
+		</div>
+    `
+}

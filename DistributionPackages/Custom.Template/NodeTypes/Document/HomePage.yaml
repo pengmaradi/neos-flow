@@ -1,10 +1,12 @@
-
 'Custom.Template:Document.HomePage':
   superTypes:
-    'Neos.Neos:Document': true
+    'Custom.Template:Document.Abstract': true
   ui:
     icon: 'resource://Custom.Template/Images/home.svg'
     label: 'Custom Home Page'
   childNodes:
-    main:
-      type: 'Neos.Neos:ContentCollection'
+    'notfound':
+      type: 'Custom.Template:Document.NotFoundPage'
+    'footer':
+      position: 'end'
+      type: 'Custom.Template:Collection.Content.Footer'

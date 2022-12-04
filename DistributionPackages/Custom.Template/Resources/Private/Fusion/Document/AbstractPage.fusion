@@ -23,12 +23,19 @@ prototype(Custom.Template:Document.AbstractPage) < prototype(Neos.Neos:Page) {
 
 
     body = Custom.Template:Component.Template.Default {
+        headerImage = Neos.Neos:ImageUri {
+            asset = ${q(documentNode).property('headerImage') ? q(documentNode).property('headerImage') : null}
+            width = 2560
+        }
+
         @context.node = ${this.node}
 
         logo = ${Configuration.setting('Custom.Template.settings.themes.default.logo')}
 
         # Define template properties
-        menu = Neos.Neos:Menu
+        //menu = Neos.Neos:Menu
+        menu = Custom.Template:Document.Fragment.Menu.Main
+        language = Custom.Template:Document.Fragment.Menu.Language
 
         content = Neos.Fusion:Component {
             main = Neos.Neos:PrimaryContent {
@@ -39,6 +46,8 @@ prototype(Custom.Template:Document.AbstractPage) < prototype(Neos.Neos:Page) {
 				{props.main}
             `
         }
+
+        footer = Custom.Template:Document.Fragment.Footer
 
         # Script includes before the closing body tag should go here
         javascripts = Neos.Fusion:Join

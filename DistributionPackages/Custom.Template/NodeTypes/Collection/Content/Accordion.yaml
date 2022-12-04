@@ -1,0 +1,9 @@
+'Custom.Template:Collection.Content.Accordion':
+  superTypes:
+    'Neos.Neos:ContentCollection': true
+  constraints:
+    nodeTypes:
+      '*': false
+      'Custom.Template:Content.Header': true
+      'Custom.Template:Content.Text': true
+      'Custom.Template:Constraint.Content.Accordion': true

@@ -1,0 +1,99 @@
+prototype(Custom.Template:Content.Columns.Two) < prototype(Neos.Neos:ContentComponent) {
+
+//    sectionAttributes = Neos.Fusion:DataStructure {
+//        class {
+//            container = ${q(node).property('sectionWidth') == 'big' ? '' : ''}
+//        }
+//    }
+    column0 = Neos.Neos:ContentCollection {
+        nodePath = 'column0'
+    }
+
+    column1 = Neos.Neos:ContentCollection {
+        nodePath = 'column1'
+    }
+
+    @context.columOption = ${q(node).property('columOption')}
+    @context.colUnit = 'w-full sm:w'
+
+    cloumClassAttribute = Neos.Fusion:DataStructure {
+        class {
+            grid = 'flex flex-wrap'
+        }
+    }
+
+    colleft = Neos.Fusion:Case {
+        isColumns_8-4 {
+            condition = ${columOption == 'columns_8-4'}
+            renderer = ${colUnit + '-8/12'}
+        }
+
+        isColumns_4-8 {
+            condition = ${columOption == 'columns_4-8'}
+            renderer = ${colUnit + '-4/12'}
+        }
+
+        isColumns_9-3 {
+            condition = ${columOption == 'columns_9-3'}
+            renderer = ${colUnit + '-9/12'}
+        }
+        isColumns_3-9 {
+            condition = ${columOption == 'columns_3-9'}
+            renderer = ${colUnit + '-3/12'}
+        }
+        isColumns_7-5 {
+            condition = ${columOption == 'columns_7-5'}
+            renderer = ${colUnit + '-7/12'}
+        }
+        isColumns_5-7 {
+            condition = ${columOption == 'columns_5-7'}
+            renderer = ${colUnit + '-5/12'}
+        }
+
+        fallback {
+            condition = true
+            renderer = ${colUnit + '-6/12'}
+        }
+    }
+
+    colright = Neos.Fusion:Case {
+        isColumns_8-4 {
+            condition = ${columOption == 'columns_8-4'}
+            renderer = ${colUnit + '-4/12'}
+        }
+        isColumns_4-8 {
+            condition = ${columOption == 'columns_4-8'}
+            renderer = ${colUnit + '-8/12'}
+        }
+        isColumns_9-3 {
+            condition = ${columOption == 'columns_9-3'}
+            renderer = ${colUnit + '-3/12'}
+        }
+        isColumns_3-9 {
+            condition = ${columOption == 'columns_3-9'}
+            renderer = ${colUnit + '-9/12'}
+        }
+        isColumns_7-5 {
+            condition = ${columOption == 'columns_7-5'}
+            renderer = ${colUnit + '-5/12'}
+        }
+        isColumns_5-7 {
+            condition = ${columOption == 'columns_5-7'}
+            renderer = ${colUnit + '-7/12'}
+        }
+
+        fallback {
+            condition = true
+            renderer = ${colUnit + '-6/12'}
+        }
+    }
+
+    renderer = afx`
+        <div {...props.sectionAttributes}>
+            <div {...props.cloumClassAttribute}>
+                <div class={props.colleft}>{props.column0}</div>
+                <div class={props.colright}>{props.column1}</div>
+            </div>
+        </div>
+    `
+}

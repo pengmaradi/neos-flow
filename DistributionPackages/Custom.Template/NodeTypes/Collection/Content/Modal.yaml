@@ -1,0 +1,13 @@
+##
+# The Modal content collection
+#
+'Custom.Template:Collection.Content.Modal':
+  superTypes:
+    Neos.Neos:ContentCollection: true
+  constraints:
+    nodeTypes:
+      '*': false
+      'Custom.Template:Content.Headline': true
+      'Custom.Template:Content.Text': true
+      'Custom.Template:Content.Image': true
+      'Flowpack.Neos.FrontendLogin:LoginForm': true

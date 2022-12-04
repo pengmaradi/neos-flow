@@ -1,0 +1,17 @@
+'Custom.Template:Content.Columns.Three':
+  superTypes:
+    'Custom.Template:Mixin.Content.Section': true
+  ui:
+    label: Custom 3 Columns
+    icon: 'icon-columns'
+    group: 'structure'
+    position: 200
+
+  childNodes:
+    column0:
+      type: 'Custom.Template:Collection.Content.Column'
+    column1:
+      type: 'Custom.Template:Collection.Content.Column'
+    column2:
+      type: 'Custom.Template:Collection.Content.Column'
+

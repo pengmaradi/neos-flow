@@ -1,0 +1,107 @@
+'Custom.Template:Content.News.List':
+  superTypes:
+    'Custom.Template:Mixin.Content.Section': true
+    'Custom.Template:Content.Title': true
+
+  ui:
+    label: 'News Liste'
+    group: news
+    icon: 'icon-newspaper'
+    inspector:
+      groups:
+        settings:
+          label: 'Settings'
+
+  properties:
+#    showPages:
+#      type: boolean
+#      ui:
+#        label: 'Show pagination'
+#        reloadIfChanged: true
+#        inspector:
+#          group: settings
+#          position: 1
+
+    title:
+      defaultValue: 'News'
+
+    limit:
+      type: string
+      defaultValue: 0
+      ui:
+        label: 'Max. Anzahl Artikel (0 = alle)'
+        reloadIfChanged: true
+        inspector:
+          group: settings
+          position: 2
+      validation:
+        'Neos.Neos/Validation/NotEmptyValidator': [ ]
+        'Neos.Neos/Validation/NumberRangeValidator':
+          minimum: 0
+          maximum: 99
+
+    categories:
+      type: references
+      ui:
+        label: News nach Kategorie(n) filtern
+        reloadIfChanged: true
+        inspector:
+          group: settings
+          editorOptions:
+            nodeTypes: [ 'Xp.News:Tag.Category' ]
+            placeholder: 'Kategorie(n) auswählen'
+            threshold: 1
+            startingPoint: /sites
+
+    tags:
+      type: references
+      ui:
+        label: News nach Tag(s) filtern
+        reloadIfChanged: true
+        inspector:
+          group: settings
+          editorOptions:
+            nodeTypes: [ 'Xp.News:Tag.Tag' ]
+            placeholder: 'Tag(s) auswählen'
+            threshold: 1
+            startingPoint: /sites
+
+    displaymode:
+      type: string
+      defaultValue: 'site'
+      ui:
+        label: 'News Anzeigen von'
+        inspector:
+          group: 'settings'
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              page:
+                label: 'aktuelle Seite'
+                icon: 'icon-file'
+              site:
+                label: 'ganze Webseite'
+                icon: 'icon-globe'
+              global:
+                label: 'alle Webseiten'
+                icon: 'icon-layer-group'
+
+    allnews:
+      type: string
+      defaultValue: 'alle News anzeigen'
+      ui:
+        label: 'Link zur alle News'
+        inspector:
+          group: settings
+          position: 3
+          hidden: 'ClientEval: (node.properties.limit == 0) ? true : false'
+
+    link:
+      type: string
+      ui:
+        reloadIfChanged: true
+        inspector:
+          group: settings
+          position: 4
+          hidden: 'ClientEval: (node.properties.limit == 0) ? true : false'
+          editor: 'Neos.Neos/Inspector/Editors/LinkEditor'

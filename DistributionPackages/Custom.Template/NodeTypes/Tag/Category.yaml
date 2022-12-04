@@ -1,0 +1,3 @@
+'Custom.Template:Tag.Category':
+  superTypes:
+    'Custom.Template:Tag.Abstract': true

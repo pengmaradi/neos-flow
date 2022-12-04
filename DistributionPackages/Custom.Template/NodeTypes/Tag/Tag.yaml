@@ -1,0 +1,21 @@
+'Custom.Template:Tag.Tag':
+  superTypes:
+    'Custom.Template:Tag.Abstract': true
+
+  ui:
+    label: 'News Tag'
+    group: news
+    icon: 'icon-tag'
+
+  properties:
+    title:
+      type: string
+      defaultValue: 'News Tag'
+      ui:
+        label: 'Titel News Tag'
+        inspector:
+          group: settings
+          editorOptions:
+            placeholder: 'Titel News Tag'
+      search:
+        fulltextExtractor: '${Indexing.extractInto("h2", value)}'

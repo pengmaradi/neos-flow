@@ -1,0 +1,59 @@
+'Custom.Template:Document.News':
+  superTypes:
+    'Custom.Template:Document.Page': true
+
+  # Page Settings
+  ui:
+    label: 'News-Container'
+    icon: 'icon-neos'
+    position: 200
+    group: 'news'
+    inspector:
+      groups:
+        newssettings:
+          label: 'News-Einstellungen'
+          position: 902
+          icon: 'icon-newspaper'
+
+  # Only allow 'News.Article' as children
+  constraints:
+    nodeTypes:
+      '*': false
+      'Custom.Template:Document.News': false
+      'Custom.Template:Document.Page': false
+      'Custom.Template:Document.Shortcut': false
+      'Custom.Template:Document.News.Article': true
+  # Allowed Content Elements
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': false
+          'Custom.Template:Content.Title': true
+          'Custom.Template:Content.Text': true
+          'Custom.Template:Content.Image': true
+          'Custom.Template:Content.Columns.Two': true
+          'Custom.Template:Content.Columns.Three': true
+          'Custom.Template:Content.Columns.Four': true
+          'Custom.Template:Content.TextWithImage': true
+          'Custom.Template:Content.YouTube': true
+          'Custom.Template:Content.News.List': true
+          'Custom.Template:Content.News.Latest': false
+          'Custom.Template:Tag.Category': true
+          'Custom.Template:Tag.Tag': true
+
+#    tags:
+#      type: 'Custom.Template:Tag.Tag'
+#      position: 'before main'
+#      constraints:
+#        nodeTypes:
+#          '*': false
+#          'Custom.Template:Tag.Tag': true
+    categories:
+      type: 'Custom.Template:Tag.Category'
+      position: 'before main'
+      constraints:
+        nodeTypes:
+          '*': false
+          'Custom.Template:Tag.Category': true

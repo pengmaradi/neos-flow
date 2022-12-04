@@ -21,12 +21,12 @@ Neos:
         defaultPreset: cn_CN
         presets:
           de:
-            label: German
+            label: Deutsch
             values:
               - de
             uriSegment: de
           cn_CN:
-            label: 'Chinese'
+            label: '汉语'
             values:
               - cn_CN
             uriSegment: ''

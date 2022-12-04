@@ -1,0 +1,21 @@
+# News List Plugin
+'Custom.Template:Content.News.Latest':
+  superTypes:
+    'Custom.Template:Content.News.List': true
+
+  ui:
+    label: 'News Latest'
+    group: news
+    inspector:
+      groups:
+        settings:
+          label: 'Settings'
+
+  properties:
+    limit:
+      defaultValue: 4
+      validation:
+        'Neos.Neos/Validation/NotEmptyValidator': []
+        'Neos.Neos/Validation/NumberRangeValidator':
+          minimum: 0
+          maximum: 8

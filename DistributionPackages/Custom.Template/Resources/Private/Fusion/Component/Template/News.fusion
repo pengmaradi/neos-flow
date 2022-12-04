@@ -1,0 +1,68 @@
+prototype(Custom.Template:Component.Template.News) < prototype(Neos.Fusion:Component) {
+    # Property API
+    menu = ''
+    content = ''
+    # news teaser ...
+    teaser = ''
+    tags = null
+    categories = null
+    date = null
+    title = ''
+
+    headerImage = ''
+    footer = ''
+
+    currentUrl = Neos.Neos:NodeUri {
+        node = ${node}
+        absolute = true
+        #section = 'test'
+    }
+
+    # Template
+  renderer = afx`
+		<div class="headerImage" data-aos="fade-up" data-aos-duration="1000" @if={props.headerImage}>
+			<img class="w-full" src={props.headerImage} />
+		</div>
+		<header class="header z-10 sticky top-0 bg-white">
+			{props.header}
+			<div class="container">
+				<div class="flex justify-between self-center my-auto w-full">
+					<div class="logo" @if={props.logo}>
+						<a href="/">{props.logo}</a>
+					</div>
+					<nav class="flex items-center self-center max-w-screen-lg">{props.menu}</nav>
+					{props.language}
+				</div>
+			</div>
+		</header>
+		<main id="main" class="news-container mx-auto">
+            <div class="container">
+				<h1 @if={props.title}>{props.title}</h1>
+				<p @if={props.date}>{props.date}</p>
+
+				<ul class="category" @if={props.categories}>
+					<Neos.Fusion:Loop items={props.categories} itemName="category" iterationName="iterator">
+						<li class={'category__' + iterator.index}>{category.properties.title}</li>
+					</Neos.Fusion:Loop>
+				</ul>
+				<ul class="tag" @if={props.tags}>
+					<Neos.Fusion:Loop items={props.tags} itemName="tag" iterationName="iterator">
+						<li class={'tag__' + iterator.index}>{tag.properties.title}</li>
+					</Neos.Fusion:Loop>
+				</ul>
+				<div class="teaser" @if={props.teaser}>{props.teaser}</div>
+            </div>
+
+
+			{props.content}
+		</main>
+
+		<footer class="mx-auto text-center lg:text-left bg-gray-100 text-gray-600">
+            <div class="footer-container">
+			    <div class="border-b border-gray-300">
+					{props.footer}
+				</div>
+			</div>
+		</footer>
+    `
+}

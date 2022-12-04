@@ -1,0 +1,16 @@
+'Custom.Template:Document.Shortcut':
+  superTypes:
+    'Neos.Neos:Shortcut': true
+    'Custom.Template:Document.Abstract': true
+    'Custom.Template:Constraint.Document.PageChild': true
+  ui:
+    label: 'custom Shortcut'
+  constraints:
+    nodeTypes:
+      'Custom.Template:Constraint.Document.PageChild': true
+  properties:
+    target:
+      ui:
+        inspector:
+          editorOptions:
+            startingPoint: '/sites'

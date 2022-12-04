@@ -1,0 +1,85 @@
+'Custom.Template:Document.Abstract':
+  abstract: true
+  superTypes:
+    'Neos.Neos:Document': true
+  label: "${String.cropAtWord(String.trim(String.stripTags(String.pregReplace(q(node).property('navigationTitle') || q(node).property('title') || q(node).property('text') || ((I18n.translate(node.nodeType.label) || node.nodeType.name) + (node.autoCreated ? ' (' + node.name + ')' : '')), '/<br\\W*?\\/?>|\\x{00a0}|[[^:print:]]|\\s+/u', ' '))), 100, '...')}"
+
+  ui:
+    inspector:
+      groups:
+        pagesettings:
+          label: 'Seiten-Einstellungen'
+          position: 901
+          icon: 'icon-file'
+          collapsed: true
+
+        settings:
+          label: 'Einstellungen'
+          position: 902
+          icon: 'icon-tools'
+
+  # Allowed Documents
+  constraints:
+    nodeTypes:
+      '*': false
+      'Neos.Neos:Document': false
+      # no homepage as children
+      'Custom.Template:Document.Homepage': false
+      'Custom.Template:Constraint.Document.PageChild': false
+      # allow type of pages
+      'Custom.Template:Document.Page': true
+      'Custom.Template:Document.Shortcut': true
+      # allow news plugins
+      'Custom.Template:Document.News': true
+      'Custom.Template:Document.News.Article': false
+
+  # Allowed Content Elements
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'
+
+  properties:
+    uriPathSegment:
+      ui:
+        help:
+          message: 'Bitte nur Kleinbuchstaben, Zahlen und - verwenden'
+
+    navigationTitle:
+      type: string
+      ui:
+        label: 'Navigation Title'
+        reloadPageIfChanged: true
+        inspector:
+          group: 'document'
+        help:
+          message: 'Titel welcher in der Navigation (Menu) verwendet wird'
+      validation:
+        'Neos.Neos/Validation/StringLengthValidator':
+          maximum: 150
+
+    # INDEX Meta Description and Keywords
+    metaDescription:
+      search:
+        fulltextExtractor: '${Indexing.extractHtmlTags(value)}'
+
+    metaKeywords:
+      search:
+        fulltextExtractor: '${Indexing.extractHtmlTags(value)}'
+
+    headerImage:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: 'Header Bild'
+        reloadIfChanged: true
+        inspector:
+          group: settings
+          editorOptions:
+            required: true
+            features:
+              crop: true
+            crop:
+              aspectRatio:
+                forceCrop: true
+                locked:
+                  width: 177
+                  height: 60
