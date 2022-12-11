@@ -16,6 +16,8 @@
 
 node_modules/
 
-DistributionPackages/Custom.Template/Resources/Public/
+!DistributionPackages/Custom.Template/Resources/Public/
+
+DistributionPackages/Custom.Template/Resources/Public/*
 !DistributionPackages/Custom.Template/Resources/Public/Images/
 
