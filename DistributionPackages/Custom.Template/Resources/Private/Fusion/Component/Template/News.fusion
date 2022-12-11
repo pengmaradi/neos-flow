@@ -20,8 +20,8 @@ prototype(Custom.Template:Component.Template.News) < prototype(Neos.Fusion:Compo
 
     # Template
   renderer = afx`
-		<div class="headerImage" data-aos="fade-up" data-aos-duration="1000" @if={props.headerImage}>
-			<img class="w-full" src={props.headerImage} />
+		<div class="headerImage flex items-center justify-center bg-contain bg-fixed bg-top" data-aos="fade-up" data-aos-duration="1000" @if={props.headerImage} style={'background-image: url(' +  props.headerImage + ');'}>
+			<img class="w-full invisible" src={props.headerImage} />
 		</div>
 		<header class="header z-10 sticky top-0 bg-white">
 			{props.header}

@@ -27,7 +27,8 @@ prototype(Neos.Neos:ContentComponent) {
 
     sectionAttributes = Neos.Fusion:DataStructure {
         class {
-            type = ${String.replace(String.replace(q(node).property('_nodeType'), 'Custom.Template:Content.', 'node'), '.', '_')}
+            //type = ${String.replace(String.replace(q(node).property('_nodeType'), 'Custom.Template:Content.', 'node'), '.', '_')}
+            type = ${String.toLowerCase(String.pregReplace(q(node).property('_nodeType'), "/[[:^alnum:]]/", "_"))}
             container = ${setFrame ? (q(node).property('sectionWidth') == 'big' ? '' : 'container') : '' }
             sectionWidth = ${q(node).property('sectionWidth')}
             align = ${q(node).property('align')}

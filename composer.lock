@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e1e3f844f5aa329d92b42678b454853",
+    "content-hash": "3c4841645274767ba876b59bba6b7a81",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -802,6 +802,32 @@
                 }
             ],
             "time": "2022-02-25T21:32:43+00:00"
+        },
+        {
+            "name": "custom/team",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "./DistributionPackages/Custom.Team",
+                "reference": "8e3103a287fe1ff081a93343b773a96fbb8218c1"
+            },
+            "require": {
+                "neos/flow": "*"
+            },
+            "type": "neos-package",
+            "extra": {
+                "neos": {
+                    "package-key": "Custom.Team"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Custom\\Team\\": "Classes/"
+                }
+            },
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "custom/template",
@@ -11779,7 +11805,8 @@
     "stability-flags": {
         "neos/neos-setup": 20,
         "custom/template": 20,
-        "happy/coding": 20
+        "happy/coding": 20,
+        "custom/team": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

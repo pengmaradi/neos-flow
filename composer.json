@@ -36,7 +36,8 @@
         "custom/template": "@dev",
         "happy/coding": "@dev",
         "carbon/pipeline": "^0.10.15",
-        "flowpack/listable": "^3.5"
+        "flowpack/listable": "^3.5",
+        "custom/team": "@dev"
     },
     "require-dev": {
         "neos/buildessentials": "~8.1.0",

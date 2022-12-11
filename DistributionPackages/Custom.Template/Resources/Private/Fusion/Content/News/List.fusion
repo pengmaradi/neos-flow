@@ -1,36 +1,31 @@
 prototype(Custom.Template:Content.News.List) < prototype(Flowpack.Listable:PaginatedCollection) {
 
     collection = ${q(site).parent().find('[instanceof Custom.Template:Document.News.Article]').sort('date', 'DESC').get()}
-    itemsPerPage = 3
+    itemsPerPage = 6
     maximumNumberOfLinks = 10
     showPreviousNextLinks = true
     showPages = ${q(node).property('showPages')}
+
+    @context.container = ${(q(node).property('sectionWidth') == 'big' ? '' : 'container')}
 
     prototype(Flowpack.Listable:Pagination) {
         class = 'pagination'
         itemClass = 'pagination__item page-item'
         currentItemClass = 'isCurrent'
 
-        //renderer = Neos.Fusion:Loop {
-          //  @process.tmpl = ${'<nav class="nav-pagination"><ul class="' + props.class + '">' + value + '</ul></nav>'}
-        //}
         renderer = Neos.Fusion:Collection {
-            @process.tmpl = ${'<nav class="nav-pagination"><ul class="' + props.class + '">' + value + '</ul></nav>'}
+            @process.tmpl = ${'<nav class="'+ container +' nav-pagination"><ul class="' + props.class + '">' + value + '</ul></nav>'}
         }
-
     }
 
     prototype(Flowpack.Listable:Collection) {
         @context.title = ${q(documentNode).property('title')}
-
-        @process.tmpl = ${'<div class="article-list"><div class="listable grid grid-cols-3 gap-3">' + value + '</div></div>'}
+        @process.tmpl = ${'<div class="'+ container +' article-list"><div class="listable grid grid-cols-3 gap-3">' + value + '</div></div>'}
 
         itemRenderer.@process.tmpl = ${value}
         itemName = 'node'
         iterationName = 'iterator'
         itemRenderer = Custom.Template:Content.News.Teaser
         itemName = 'node'
-
     }
-
 }

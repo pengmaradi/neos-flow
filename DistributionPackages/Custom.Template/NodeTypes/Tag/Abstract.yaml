@@ -4,7 +4,7 @@
   abstract: true
 
   ui:
-    label: 'News Kategorie'
+    label: 'Kategory'
     group: news
     icon: 'icon-tags'
     # icon: 'icon-record-vinyl'
@@ -17,16 +17,16 @@
   properties:
     title:
       type: string
-      defaultValue: 'News Kategorie'
+      defaultValue: 'Kategory'
       ui:
-        label: 'Titel News Kategorie'
+        label: 'Kategory'
         #inlineEditable: true
         showInCreationDialog: true
         reloadIfChanged: true
         inspector:
           group: settings
           editorOptions:
-            placeholder: 'Titel News Kategorie'
+            placeholder: 'Kategory'
       validation:
         'Neos.Neos/Validation/NotEmptyValidator': []
         'Neos.Neos/Validation/StringLengthValidator':

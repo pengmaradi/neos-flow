@@ -52,35 +52,32 @@ prototype(Custom.Template:Content.News.Latest) < prototype(Neos.Neos:ContentComp
         itemName = 'node'
 
         itemRenderer = Custom.Template:Content.News.Teaser {
-            itemClass = 'w-full sm:w-6/12 px-3 lg:px-6 news-item'
+            itemClass = 'w-full sm:w-6/12 news-item'
         }
     }
 
     // flex flex-wrap
     sectionAttributes = Neos.Fusion:DataStructure {
         class {
-            frame = ${setFrame ? 'frame' : 'noframe'}
-            width = ${setFrame ? q(node).property('sectionWidth') : ''}
-            align = ${setFrame ? q(node).property('align') : ''}
-            // just test grid-cols-<*>
-            //grid = ${'grid grid-cols-' + q(node).property('limit') + ' gap-2'}
-            flex = 'flex flex-wrap -mx-3 lg:-mx-6'
+            width = ${q(node).property('sectionWidth')}
+            align = ${q(node).property('align')}
+            container = ${(q(node).property('sectionWidth') == 'big' ? '' : 'container')}
+            listClass = 'news-latest'
         }
         id = ${props.slug ? props.slug : 'node-'+node.identifier}
     }
 
-    listClass = 'news-latest'
+
 
     renderer = afx`
-		<div class={props.listClass} @if={props.news}>
-            <div {...props.sectionAttributes} @if={props.news}>
-		        {props.news}
-            </div>
-			<div class="tolist" @if={props.limit}>
-				<a href={props.link}>{props.allnews}</a>
-			</div>
-        </div>
+        <div {...props.sectionAttributes} @if={props.news}>
 
+            {props.news}
+
+            <div class="tolist" @if={props.limit}>
+                <a href={props.link}>{props.allnews}</a>
+            </div>
+        </div>
     `
 
     // Caching

@@ -17,7 +17,7 @@ prototype(Custom.Template:Content.News.Teaser) < prototype(Neos.Neos:ContentComp
 
     renderer = afx`
         <div class={props.itemClass}>
-			<div class="news-container relative flex flex-col justify-center items-center text-white hover:text-black rounded-lg shadow-md m-2 hover:shadow-2xl cursor-pointer bg-center relative"
+			<div class="news-container relative flex flex-col justify-center items-center text-white hover:text-black rounded-lg shadow-md hover:shadow-2xl cursor-pointer bg-center relative"
                  style={'background: url(' + props.imageUri +  ');background-size: cover;height:300px;background-position: center;'}>
 				<h2>{props.title}</h2>
 				<p>{props.date}</p>
