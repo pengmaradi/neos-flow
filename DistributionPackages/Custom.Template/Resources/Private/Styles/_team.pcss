@@ -1,0 +1,62 @@
+.custom_team_content_persioncart {
+
+    .persioncart {
+        position: relative;
+        display: inline-flex;
+        &__potot {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0px 0px 20px 4px #95959578;
+
+            .photo {
+                width: auto;
+                height: 100%;
+
+                &.photo-1 {
+                    visibility: visible;
+                }
+                &.photo-2 {
+                    visibility: hidden;
+                    height: 0;
+                }
+            }
+
+        }
+
+        &__text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: transparent;
+        }
+
+        &:hover {
+            .photo-1 {
+                visibility: hidden;
+                height: 0;
+            }
+            .photo-2 {
+                visibility: visible;
+                height: auto;
+                filter: grayscale(1);
+                transition: filter 2s;
+            }
+
+            .persioncart__text {
+                background: #fff;
+                border-radius: 50%;
+                width: 100%;
+                height: 100%;
+                color: black;
+                transition: color 4s, width 4s, height 4s, background 6s;
+            }
+        }
+    }
+}

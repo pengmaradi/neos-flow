@@ -1,0 +1,13 @@
+.news {
+    filter: drop-shadow(5px 6px 5px rgba(50, 50, 50, 0.5));
+
+    &-container {
+        clip-path: polygon(0 10%, 100% 0%, 100% 90%, 0% 100%);
+        filter: grayscale(0);
+        transition: clip-path 1s, filter 5s;
+        &:hover {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            filter: grayscale(100%);
+        }
+    }
+}
