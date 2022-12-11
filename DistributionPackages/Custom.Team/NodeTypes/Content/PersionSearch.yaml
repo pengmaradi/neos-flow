@@ -1,0 +1,14 @@
+Custom.Team:Content.PersionSearch:
+  superTypes:
+    'Neos.Neos:Content': true
+    'Custom.Template:Mixin.Content.Title': true
+    'Custom.Template:Mixin.Content.Section': true
+  ui:
+    label: Search Team Person
+    icon: icon-user
+    group: team
+    inspector:
+      groups:
+        team:
+          label: Custom
+  label: "${Neos.Node.labelForNode(node).properties('name', 'title') + ' ' + 'Search Team Person'}"

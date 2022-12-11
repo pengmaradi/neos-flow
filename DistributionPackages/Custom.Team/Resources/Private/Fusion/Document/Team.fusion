@@ -1,0 +1,12 @@
+prototype(Custom.Team:Document.Team) < prototype(Custom.Template:Document.AbstractPage) {
+    body = Custom.Template:Component.Template.Team {
+
+        categories = ${q(site).find('[instanceof Custom.Template:Tag.Category]').get()}
+
+//        categories.@process.debug = Neos.Fusion:Debug {
+//            title = 'Debug title again'
+//            documentTitle = ${q(documentNode).property('uriPathSegment')}
+//            documentPath = ${q(site).find('[instanceof Custom.Template:Tag.Category]').get()}
+//        }
+    }
+}

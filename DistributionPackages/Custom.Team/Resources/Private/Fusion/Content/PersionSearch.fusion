@@ -1,0 +1,26 @@
+prototype(Custom.Team:Content.PersionSearch) < prototype(Neos.Neos:ContentComponent) {
+    title = Neos.Neos:Editable {
+        property = 'title'
+    }
+
+    // get global Category
+    //categories = ${q(site).find('[instanceof Custom.Template:Tag.Category]').get()}
+    // get page content Category
+    categories = ${q(documentNode).children().find('[instanceof Custom.Template:Tag.Category]').get()}
+
+    renderer = afx`
+        <div {...props.sectionAttributes}>
+			<div class="personform bg-white shadow-md rounded p-5" @if={props.categories}>
+				<form action="#" class="flex justify-around">
+                    <legend>{props.title}</legend>
+					<select name="cat" class="personform__select shadow appearance-none border rounded text-gray-700 leading-tight">
+						<option value="">show all</option>
+						<Neos.Fusion:Loop items={props.categories} itemName="category" iterationName="iterator">
+							<option class={'category__' + iterator.index} value={category.identifier}>{category.properties.title}</option>
+						</Neos.Fusion:Loop>
+					</select>
+				</form>
+			</div>
+        </div>
+    `
+}

@@ -1,0 +1,88 @@
+prototype(Custom.Team:Content.PersionCart) < prototype(Neos.Neos:ContentComponent) {
+    photo1 = ${q(node).property('photo1')}
+    photo2 = ${q(node).property('photo2')}
+
+    src1 = Neos.Fusion:Case {
+        asset {
+            condition = ${q(node).property('photo1')}
+            renderer = Neos.Neos:ImageUri {
+                asset = ${q(node).property('photo1')}
+            }
+        }
+        dummy {
+            condition = ${node.context.inBackend}
+            renderer = Neos.Fusion:ResourceUri {
+                path = 'resource://Neos.Neos/Public/Images/dummy-image.svg'
+            }
+        }
+    }
+
+    src2 = Neos.Fusion:Case {
+        asset {
+            condition = ${q(node).property('photo2')}
+            renderer = Neos.Neos:ImageUri {
+                asset = ${q(node).property('photo2')}
+            }
+        }
+        dummy {
+            condition = ${node.context.inBackend}
+            renderer = Neos.Fusion:ResourceUri {
+                path = 'resource://Neos.Neos/Public/Images/dummy-image.svg'
+            }
+        }
+    }
+
+    title = Neos.Neos:Editable {
+        property = 'title'
+    }
+
+    name = Neos.Neos:Editable {
+        property = 'name'
+    }
+
+    description = Neos.Neos:Editable {
+        property = 'description'
+    }
+    email = Neos.Neos:Editable {
+        property = 'email'
+    }
+    categories = ${q(node).property('categories')}
+
+    cats = Neos.Fusion:Loop {
+        items = ${q(node).property('categories')}
+        itemName = 'item'
+        itemRenderer = Neos.Fusion:Join {
+            item = ${item.identifier + ' '}
+        }
+    }
+
+    // override sectionAttributes!!!
+    sectionAttributes {
+        class {
+            //container = 'container inline-flex'
+            //width = 'w-1/3'
+        }
+    }
+    renderer = afx`
+        <div {...props.sectionAttributes}>
+            <div class={'persioncart ' + props.cats}>
+                <div class="persioncart__potot">
+                    <img src={props.src1} alt={props.alt} class="photo photo-1" @if={props.src1} />
+                    <img src={props.src2} alt={props.alt} class="photo photo-2" @if={props.src2} />
+                </div>
+                <div class="persioncart__text">
+                    <h2>{props.title}</h2>
+                    <p>{props.name}</p>
+                    <p>{props.email}</p>
+                    <p>{props.description}</p>
+                </div>
+            </div>
+            <ul class="category" @if={props.categories && documentNode.context.inBackend}>
+                <li>Catagorires [only backend]</li>
+                <Neos.Fusion:Loop items={props.categories} itemName="category" iterationName="iterator">
+                    <li data-identifier={category.identifier} class={'category category__' + iterator.index}>{category.properties.title}</li>
+                </Neos.Fusion:Loop>
+            </ul>
+        </div>
+    `
+}

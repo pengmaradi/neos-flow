@@ -1,0 +1,18 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "custom/team",
+    "require": {
+        "neos/flow": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Custom\\Team\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Custom.Team"
+        }
+    }
+}

@@ -1,0 +1,98 @@
+Custom.Team:Content.PersionCart:
+  superTypes:
+    'Neos.Neos:Content': true
+    'Custom.Template:Mixin.Content.Title': true
+    'Custom.Template:Mixin.Content.Section': true
+  ui:
+    label: Team Person
+    icon: icon-user
+    group: team
+    inspector:
+      groups:
+        team:
+          label: Custom
+  label: "${Neos.Node.labelForNode(node).properties('name', 'title') + ' ' + '(team)'}"
+  properties:
+    photo1:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: photo1
+        reloadIfChanged: true
+        inspector:
+          group: team
+          editorOptions:
+            crop:
+              aspectRatio:
+                locked:
+                  width: 1
+                  height: 1
+
+    photo2:
+      type: Neos\Media\Domain\Model\ImageInterface
+      ui:
+        label: photo2
+        reloadIfChanged: true
+        inspector:
+          group: team
+          editorOptions:
+            crop:
+              aspectRatio:
+                locked:
+                  width: 1
+                  height: 1
+
+    name:
+      type: string
+      defaultValue: 'Name'
+      ui:
+        label: 'Name'
+        inlineEditable: true
+      validation:
+        Neos.Neos/Validation/NotEmptyValidator: true
+
+    email:
+      type: string
+      defaultValue: 'name@domain.tld'
+      ui:
+        label: 'E-Mail'
+        inlineEditable: true
+      validation:
+        Neos.Neos/Validation/EmailAddressValidator: true
+
+    description:
+      type: 'string'
+      defaultValue: ''
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            formatting:
+              strong: true
+              em: true
+              sub: true
+              sup: true
+              p: true
+              removeFormat: true
+              table: true
+              a: true
+              ol: true
+              ul: true
+              underline: false
+              strikethrough: false
+            autoparagraph: true
+            placeholder: 'lorem ipsum'
+      validation:
+        'Neos.Neos/Validation/StringLengthValidator':
+          maximum: 600
+
+    categories:
+      type: references
+      ui:
+        label: Team Kategorie
+        inspector:
+          group: team
+          editorOptions:
+            nodeTypes: ['Custom.Template:Tag.Category']
+            placeholder: 'Kategorie auswählen'
+            threshold: 1
+            startingPoint: /sites

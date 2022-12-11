@@ -1,0 +1,15 @@
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        'Custom.Team': true
+    userInterface:
+      translation:
+        autoInclude:
+          Custom.Team:
+            - Main
+            - 'NodeTypes/*'
+    nodeTypes:
+      groups:
+        team:
+          label: 'Team'

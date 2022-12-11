@@ -1,0 +1,35 @@
+Custom.Team:Document.Team:
+  superTypes:
+    'Custom.Template:Document.Page': true
+
+  ui:
+    label: Team page
+    icon: 'icon-user'
+    group: team
+    inspector:
+      groups:
+        team:
+          label: Team
+          icon: 'icon-user'
+
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': false
+          'Custom.Template:Content.Title': true
+          'Custom.Template:Content.Text': true
+          'Custom.Team:Content.PersionCart': true
+          'Custom.Team:Content.PersionSearch': true
+
+    categories:
+      type: 'Custom.Template:Tag.Category'
+      position: 'before main'
+      constraints:
+        nodeTypes:
+          '*': false
+          'Custom.Template:Tag.Category': true
+
+
+
