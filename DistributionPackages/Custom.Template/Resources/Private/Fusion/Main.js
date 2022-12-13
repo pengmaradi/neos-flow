@@ -7,7 +7,10 @@
 // console.log('next try');
 
 import Team from '../JavaScript/team';
+import Slider from '../JavaScript/slider';
 
 document.addEventListener('DOMContentLoaded', () => {
     new Team();
+
+    new Slider('.image-slider');
 });

@@ -1,0 +1,41 @@
+prototype(Custom.Template:Content.Gallery) < prototype(Neos.Neos:ContentComponent) {
+    gallery = ${q(node).property('gallery')}
+
+    title = Neos.Neos:Editable {
+        property = 'title'
+    }
+
+//    gallery.@process.debug = Neos.Fusion:Debug {
+//        title = 'Debug of hello world'
+//        documentTitle = ${node.context}
+//        documentPath = ${q(node).property('gallery')}
+//    }
+
+    imageAssets = Neos.Fusion:Loop {
+        items = ${q(node).property('gallery')}
+        itemName = 'item'
+        itemRenderer = Neos.Fusion:Join {
+            first = '<div class="swiper-slide"><img class="block w-full" src='
+            //@glue = ';'
+            item = Neos.Fusion:ResourceUri {
+                resource = ${item.resource}
+            }
+            last = '></div>'
+        }
+    }
+
+    renderer = afx`
+        <div {...props.sectionAttributes}>
+            {props.title}
+			<div class="image-slider swiper">
+				<div class="swiper-wrapper">
+                    {props.imageAssets}
+                </div>
+                <div class="swiper-scrollbar"></div>
+                <div class="swiper-pagination"></div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+            </div>
+        </div>
+    `
+}

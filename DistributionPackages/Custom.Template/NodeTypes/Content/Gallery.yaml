@@ -1,0 +1,23 @@
+Custom.Template:Content.Gallery:
+  superTypes:
+    'Custom.Template:Mixin.Content.Section': true
+    'Custom.Template:Mixin.Content.Title': true
+  ui:
+    icon: icon-picture
+    label: Gallery
+    group: general
+    inspector:
+      groups:
+        image:
+          label: 'Image'
+          icon: 'icon-files-o'
+          position: 20
+
+  properties:
+    gallery:
+      type: array<Neos\Media\Domain\Model\Asset>
+      ui:
+        label: gallery
+        inspector:
+          group: 'image'
+        reloadIfChanged: true

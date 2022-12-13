@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "alpinejs": "^3.10.5",
+    "swiper": "^8.4.5",
     "tailwindcss-aspect-ratio": "^3.0.0",
     "tw-elements": "^1.0.0-alpha12"
   }
