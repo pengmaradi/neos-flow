@@ -78,7 +78,7 @@ prototype(Custom.Team:Content.PersionCart) < prototype(Neos.Neos:ContentComponen
                 </div>
             </div>
             <ul class="category" @if={props.categories && documentNode.context.inBackend}>
-                <li>Catagorires [only backend]</li>
+                <li>Categorires [backend only]</li>
                 <Neos.Fusion:Loop items={props.categories} itemName="category" iterationName="iterator">
                     <li data-identifier={category.identifier} class={'category category__' + iterator.index}>{category.properties.title}</li>
                 </Neos.Fusion:Loop>

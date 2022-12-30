@@ -2,6 +2,10 @@
     --theme-color: #808080;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Kameron', serif;
     font-size: 20px;
@@ -14,6 +18,32 @@ h1,h2,h3,h4,h5,h6 {
 
 .gray-box-shadow {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes background-image-disappear {
+
+}
+
+@keyframes display-white-background {
+    0% {
+        background: rgba(255, 255, 255, 0);
+    }
+
+    25% {
+        background: rgba(255, 255, 255, 0.25);
+    }
+
+    50% {
+        background: rgba(255, 255, 255, 0.5);
+    }
+
+    75% {
+        background: rgba(255, 255, 255, 0.75);
+    }
+
+    100% {
+        background: rgba(255, 255, 255, 1);
+    }
 }
 
 .frame {
@@ -30,9 +60,13 @@ h1,h2,h3,h4,h5,h6 {
 
     &:hover {
         box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-
         .deco {
             filter: grayscale(100%);
+
+            &:before {
+                animation-name: display-white-background;
+                animation-duration: 5s;
+            }
         }
     }
 }
@@ -60,10 +94,18 @@ h1,h2,h3,h4,h5,h6 {
             background-position: center center;
             background-size: cover;
             z-index: -1;
+
+            &:before {
+                position: absolute;
+                content: '';
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+            }
         }
     }
 }
-
 
 .pagination {
     @apply flex flex-wrap mt-4;
@@ -96,7 +138,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 .bg-gray-100 {
     --tw-bg-opacity: 1;
-    background-color: rgb(243 244 246/var(--tw-bg-opacity));
+    background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
 .text-transparent {
@@ -152,7 +194,6 @@ a[href^="mailto:"] {
         transform: translateY(-50%);
     }
 }
-
 
 .perspective {
     &-image {
