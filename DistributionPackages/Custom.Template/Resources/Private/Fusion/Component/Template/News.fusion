@@ -37,8 +37,10 @@ prototype(Custom.Template:Component.Template.News) < prototype(Neos.Fusion:Compo
 		</header>
 		<main id="main" class="news-container mx-auto">
             <div class="container">
-				<h1 @if={props.title}>{props.title}</h1>
-				<p @if={props.date}>{props.date}</p>
+                <div class="header pt-10">
+					<h1 @if={props.title}>{props.title}</h1>
+					<p @if={props.date}>{props.date}</p>
+                </div>
 
 				<ul class="category" @if={props.categories}>
 					<Neos.Fusion:Loop items={props.categories} itemName="category" iterationName="iterator">
