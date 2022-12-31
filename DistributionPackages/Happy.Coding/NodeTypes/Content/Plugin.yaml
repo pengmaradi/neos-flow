@@ -3,7 +3,7 @@ Happy.Coding:Content.Plugin:
     'Neos.Neos:Plugin': true
     'Custom.Template:Mixin.Content.Section': true
   ui:
-    label: 'News of Custom'
+    label: 'Custom simple News'
     group: plugins
     icon: 'icon-box'
 
