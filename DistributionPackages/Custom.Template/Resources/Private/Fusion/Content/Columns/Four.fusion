@@ -17,6 +17,7 @@ prototype(Custom.Template:Content.Columns.Four) < prototype(Neos.Neos:ContentCom
     cloumClassAttribute = Neos.Fusion:DataStructure {
         class {
             grid = 'flex flex-wrap'
+            mx = '-mx-3 lg:-mx-6'
         }
     }
 
@@ -26,7 +27,7 @@ prototype(Custom.Template:Content.Columns.Four) < prototype(Neos.Neos:ContentCom
 //        }
 //    }
 
-    @context.colUnit = 'w-full'
+    @context.colUnit = 'w-full px-3 lg:px-6'
 
     col4 = ${colUnit + ' sm:w-3/12'}
 

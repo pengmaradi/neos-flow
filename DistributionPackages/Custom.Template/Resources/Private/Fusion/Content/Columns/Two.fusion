@@ -14,11 +14,12 @@ prototype(Custom.Template:Content.Columns.Two) < prototype(Neos.Neos:ContentComp
     }
 
     @context.columOption = ${q(node).property('columOption')}
-    @context.colUnit = 'w-full sm:w'
+    @context.colUnit = 'w-full px-3 lg:px-6 sm:w'
 
     cloumClassAttribute = Neos.Fusion:DataStructure {
         class {
             grid = 'flex flex-wrap'
+            mx = '-mx-3 lg:-mx-6'
         }
     }
 
