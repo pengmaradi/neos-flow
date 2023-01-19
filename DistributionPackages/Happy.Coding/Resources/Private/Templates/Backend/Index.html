@@ -1,3 +1,4 @@
+{namespace f=Neos\FluidAdaptor\ViewHelpers}
 <div class="neos-content neos-container-fluid">
 
 	<div class="neos-row-fluid">
@@ -9,6 +10,8 @@
 					<tr>
 						<th>Title</th>
 						<th>Description</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
 					</tr>
 					</thead>
 					<tbody>
@@ -16,6 +19,20 @@
 						<tr>
 							<td>{news.title}</td>
 							<td>{news.description -> f:format.raw()}</td>
+                            <td>
+                                <f:link.action
+                                    action="edit"
+                                    arguments="{news:news}"
+                                    controller="Backend"
+                                    package="Happy.Coding"
+                            >edit</f:link.action></td>
+                            <td>
+                                <f:link.action
+                                        action="delete"
+                                        arguments="{news:news}"
+                                        controller="Backend"
+                                        package="Happy.Coding"
+                                >delete</f:link.action></td>
 						</tr>
 					</f:for>
 					</tbody>
@@ -30,7 +47,6 @@
 				name="news"
 				object="news">
 			<fieldset class="neos-span5">
-				<legend>Test News</legend>
 				<div class="neos-control-group">
 					<label class="neos-control-label" for="title">Title</label>
 					<div class="neos-controls neos-controls-row">
@@ -47,10 +63,7 @@
 					<input type="submit" value="save" class="neos-button neos-button-primary"/>
 				</div>
 			</fieldset>
-
 		</f:form>
-
-
 
 	</div>
 </div>

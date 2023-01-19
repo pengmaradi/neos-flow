@@ -53,9 +53,20 @@ class BackendController extends ActionController
     public function editAction(News $news): void
     {
         $this->view->assign('news', $news);
+        $identifier = $this->persistenceManager->getIdentifierByObject($news);
+        $this->view->assign('identifier', $identifier);
     }
 
-    public function updateAction(News $news) {
+    public function updateAction()
+    {
+        $arguments = $this->request->getArguments();
+        $identifier = $arguments['news']['identifier'];
+        $title = $arguments['news']['title'];
+        $description = $arguments['news']['description'];
+        $news = $this->newsRepository->findByIdentifier($identifier);
+        $news->setTitle($title);
+        $news->setDescription($description);
+
         $this->newsRepository->update($news);
         $this->addFlashMessage('Updated the $news.');
         $this->redirect('index');

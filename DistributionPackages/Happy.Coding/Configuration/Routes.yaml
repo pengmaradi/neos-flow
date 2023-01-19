@@ -2,6 +2,7 @@
 # Default routes configuration for the Welcome package                   #
 #                                                                        #
 
+# frontend url: http://flow.test/happy
 -
   name: 'happy screen'
   uriPattern: 'happy'
@@ -14,6 +15,7 @@
   routeParts:
     'node':
       handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
+# frontend url: http://flow.test/hello?name=<name>
 -
   name: 'hello screen'
   uriPattern: 'hello'
@@ -22,12 +24,12 @@
     '@controller': 'Standard'
     '@action':     'hello'
     '@format':     'html'
-
+# backend url: http://flow.test/typo3/management/happyModule
 -
   name: 'Backend'
   uriPattern: 'typo3/management/happymodule'
   defaults:
     '@package':    'Happy.Coding'
     '@controller': 'Backend'
-    '@action':     'create'
+    '@action':     'create,edit,update,delete'
     '@format':     'html'
