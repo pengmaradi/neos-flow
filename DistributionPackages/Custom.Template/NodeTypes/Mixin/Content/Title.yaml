@@ -2,3 +2,28 @@ Custom.Template:Mixin.Content.Title:
   abstract: true
   superTypes:
     'Neos.NodeTypes.BaseMixins:TitleMixin': true
+
+  properties:
+    title:
+      type: string
+      defaultValue: '<h1>Enter headline here</h1>'
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            formatting:
+              p: false
+              h1: true
+              h2: true
+              h3: true
+              h4: true
+              h5: true
+              h6: true
+              removeFormat: true
+              a: true
+            #
+            inlineStyling:
+              fontColor: false
+              fontSize: true
+            blockStyling:
+              indent: true

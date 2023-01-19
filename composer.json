@@ -37,7 +37,8 @@
         "happy/coding": "@dev",
         "carbon/pipeline": "^0.10.15",
         "flowpack/listable": "^3.5",
-        "custom/team": "@dev"
+        "custom/team": "@dev",
+        "techdivision/ckstyles": "^1.5"
     },
     "require-dev": {
         "neos/buildessentials": "~8.1.0",

@@ -1,0 +1,38 @@
+#Settings.CkStyles
+
+TechDivision:
+  CkStyles:
+    InlineStyles:
+      presets:
+        'fontColor':
+          label: 'Custom Styles'
+          options:
+            'primary':
+              label: 'Red Text'
+              cssClass: 'my-class-red'
+            'secondary':
+              label: 'Green Text'
+              cssClass: 'my-class-green'
+            'Tertiary':
+              label: 'Try class'
+              cssClass: 'custom-class-try'
+        'fontSize':
+          label: 'Font size'
+          options:
+            'small':
+              label: 'Small'
+              cssClass: 'my-class-size-small'
+            'big':
+              label: 'Large'
+              cssClass: 'my-class-size-large'
+    BlockStyles:
+      presets:
+        'indent':
+          label: 'Indentation'
+          options:
+            'primary':
+              label: '2 rem'
+              cssClass: 'my-class-indent-2'
+            'secondary':
+              label: '4 rem'
+              cssClass: 'my-class-indent-4'
