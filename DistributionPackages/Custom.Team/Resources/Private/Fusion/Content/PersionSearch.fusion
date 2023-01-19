@@ -14,7 +14,7 @@ prototype(Custom.Team:Content.PersionSearch) < prototype(Neos.Neos:ContentCompon
 				<form action="#" class="flex justify-around">
                     <legend>{props.title}</legend>
 					<select name="cat" class="personform__select shadow appearance-none border rounded text-gray-700 leading-tight">
-						<option value="">show all</option>
+						<option value="">全部</option>
 						<Neos.Fusion:Loop items={props.categories} itemName="category" iterationName="iterator">
 							<option class={'category__' + iterator.index} value={category.identifier}>{category.properties.title}</option>
 						</Neos.Fusion:Loop>
