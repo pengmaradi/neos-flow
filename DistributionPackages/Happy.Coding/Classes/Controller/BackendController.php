@@ -75,6 +75,7 @@ class BackendController extends ActionController
     public function deleteAction(News $news): void
     {
         $this->newsRepository->remove($news);
+        $this->persistenceManager->persistAll();
         $this->addFlashMessage('Deleted a $news.');
         $this->redirect('index');
     }
