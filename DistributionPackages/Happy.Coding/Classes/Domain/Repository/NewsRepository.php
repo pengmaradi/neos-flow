@@ -13,5 +13,11 @@ use Neos\Flow\Persistence\Repository;
  */
 class NewsRepository extends Repository
 {
+    /**
+     * @var array
+     */
+    protected $defaultOrderings = [
+        'title' => \Neos\Flow\Persistence\QueryInterface::ORDER_DESCENDING
+    ];
     // add customized methods here
 }
