@@ -29,7 +29,7 @@ Neos:
             label: '汉语'
             values:
               - cn_CN
-            uriSegment: ''
+            uriSegment: cn
 #
 #          fr:
 #            label: French

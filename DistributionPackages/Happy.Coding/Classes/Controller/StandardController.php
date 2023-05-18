@@ -15,6 +15,7 @@ use Neos\Flow\Package\Exception\UnknownPackageException;
 use Neos\Flow\Package\PackageManager;
 use Neos\Neos\Controller\Exception\NodeNotFoundException;
 use Neos\Neos\View\FusionView;
+use const Neos\Flow\var_dump;
 
 class StandardController extends ActionController
 {

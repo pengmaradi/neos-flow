@@ -15,7 +15,6 @@ web_environment:
   - FLOW_CONTEXT=Development/Ddev
   - FLOW_PATH_TEMPORARY_BASE=/tmp/Flow
   - FLOW_REWRITEURLS=1
-nodejs_version: "17"
 
 hooks:
   post-start:
