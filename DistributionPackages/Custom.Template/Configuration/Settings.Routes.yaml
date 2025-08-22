@@ -1,9 +1,0 @@
-
-Neos:
-  Flow:
-    mvc:
-      routes:
-        'Happy.Coding':
-          position: 'befor Neos.Neos'
-
-

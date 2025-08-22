@@ -1,23 +1,38 @@
-/Build/
-/Configuration/
-!/Configuration/Development/*.yaml
-!/Configuration/*.yaml
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-/Data/
-/Packages/
-/Web/
-/bin/
-/Readme.rst
-/Upgrading.rst
-/flow
-/flow.bat
+node_modules
+dist
+dist-ssr
+*.local
 
-.idea/
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-node_modules/
-
-!DistributionPackages/Custom.Template/Resources/Public/
-
-DistributionPackages/Custom.Template/Resources/Public/*
-!DistributionPackages/Custom.Template/Resources/Public/Images/
-
+# neos 
+Data
+Web
+DistributionPackages/**/Public
+Packages
+Build
+*.example
+*.map
+bin
+flow
+flow.bat
+index.html
+Configuration/README

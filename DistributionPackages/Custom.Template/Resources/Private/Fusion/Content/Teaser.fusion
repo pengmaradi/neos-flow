@@ -11,7 +11,7 @@ prototype(Custom.Template:Content.Teaser) < prototype(Neos.Neos:ContentComponent
             }
         }
         dummy {
-            condition = ${node.context.inBackend}
+            condition = ${renderingMode.isEdit}
             renderer = Neos.Fusion:ResourceUri {
                 path = 'resource://Neos.Neos/Public/Images/dummy-image.svg'
             }

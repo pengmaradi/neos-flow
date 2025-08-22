@@ -12,33 +12,7 @@ Neos:
       groups:
         news:
           label: 'News'
-  ContentRepository:
-    contentDimensions:
-      language:
-        label: 'language'
-        icon: icon-language
-        default: cn_CN
-        defaultPreset: cn_CN
-        presets:
-          de:
-            label: Deutsch
-            values:
-              - de
-            uriSegment: de
-          cn_CN:
-            label: '汉语'
-            values:
-              - cn_CN
-            uriSegment: cn
-#
-#          fr:
-#            label: French
-#            values:
-#              - fr
-#            uriSegment: fr
-
-## @see Routes.yaml
-# New Neos Backend-Url active
+  
 
   Flow:
     mvc:

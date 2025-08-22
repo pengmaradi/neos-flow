@@ -1,0 +1,9 @@
+Neos:
+  # The following is optional, but will redirect all mails directly to ddev's MailHog
+  SwiftMailer:
+    transport:
+      type: 'Swift_SmtpTransport'
+      options:
+        host: 'localhost'
+        port: 1025
+        encryption: ~

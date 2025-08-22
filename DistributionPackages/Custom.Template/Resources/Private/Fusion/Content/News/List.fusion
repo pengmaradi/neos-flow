@@ -13,7 +13,7 @@ prototype(Custom.Template:Content.News.List) < prototype(Flowpack.Listable:Pagin
         itemClass = 'pagination__item page-item'
         currentItemClass = 'isCurrent'
 
-        renderer = Neos.Fusion:Collection {
+        renderer = Neos.Fusion:Loop {
             @process.tmpl = ${'<nav class="'+ container +' nav-pagination"><ul class="' + props.class + '">' + value + '</ul></nav>'}
         }
     }

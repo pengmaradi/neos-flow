@@ -11,33 +11,33 @@ prototype(Custom.Template:Component.Template.Default) < prototype(Neos.Fusion:Co
     divWrapper = Neos.Fusion:DataStructure {
         class {
             class = 'bodyWrapper'
-            class1 = ${"level-" + (q(node).property('_depth') - 2)}
-            class2 = ${(q(node).property('_depth') - 2 == 0 ? 'rootpage' : 'subpage')}
+            class1 = ${"level-" + (Neos.Node.depth(node) - 2)}
+            class2 = ${(Neos.Node.depth(node) - 2 == 0 ? 'rootpage' : 'subpage')}
             class3 = ${documentNode.context.inBackend ? 'backend' : 'frontend'}
         }
     }
 
   renderer = afx`
-    <div {...props.divWrapper}>
+    <div >
         <div class="headerImage flex items-center justify-center bg-contain bg-fixed bg-top" data-aos="fade-up" data-aos-duration="1000" @if={props.headerImage} style={'background-image: url(' +  props.headerImage + ');'}>
             <img class="w-full invisible" src={props.headerImage} />
         </div>
-		<header class="header z-10 sticky top-0 bg-white shadow-black">
-			{props.header}
-            <div class="container">
-				<div class="flex justify-between self-center my-auto w-full">
-                    <div class="logo" @if={props.logo}>
-                        <a href="/">{props.logo}</a>
-                    </div>
-                    <nav class="flex items-center self-center max-w-screen-lg">{props.menu}</nav>
-                    {props.language}
-                </div>
-            </div>
-		</header>
-		<main>
-			{props.content}
-		</main>
-		<footer>{props.footer}</footer>
+      <header class="header z-10 sticky top-0 bg-white shadow-black">
+        {props.header}
+        <div class="container">
+          <div class="flex justify-between self-center my-auto w-full">
+                      <div class="logo" @if={props.logo}>
+                          <a href="/">{props.logo}</a>
+                      </div>
+                      <nav class="flex items-center self-center max-w-screen-lg">{props.menu}</nav>
+                      {props.language}
+                  </div>
+              </div>
+      </header>
+      <main>
+        {props.content}
+      </main>
+      <footer>{props.footer}</footer>
     </div>
 
   `

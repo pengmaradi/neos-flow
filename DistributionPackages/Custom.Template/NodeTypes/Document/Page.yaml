@@ -2,6 +2,7 @@
 'Custom.Template:Document.Page':
   superTypes:
     'Custom.Template:Document.Abstract': true
+    'Neos.Neos:Site': true
   ui:
     icon: 'resource://Custom.Template/Images/simple-language.svg' #file
     label: 'Custom.Template Page'

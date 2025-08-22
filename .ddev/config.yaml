@@ -1,24 +1,27 @@
 name: flow
 type: php
 docroot: Web
-php_version: "8.1"
-webserver_type: apache-fpm
-router_http_port: "80"
-router_https_port: "443"
+php_version: "8.3"
+webserver_type: nginx-fpm
 additional_fqdns: [flow.test]
 database:
   type: mariadb
-  version: "10.4"
+  version: "10.11"
+hooks:
+    post-start:
+        - exec: composer install
+        - exec: ./flow neos.flow:package:rescan
+        - exec: ./flow database:setcharset
+        - exec: ./flow doctrine:migrate
 use_dns_when_possible: true
 composer_version: "2"
 web_environment:
-  - FLOW_CONTEXT=Development/Ddev
-  - FLOW_PATH_TEMPORARY_BASE=/tmp/Flow
-  - FLOW_REWRITEURLS=1
-
-hooks:
-  post-start:
-    - exec: composer install
-    - exec: ./flow neos.flow:package:rescan
-    - exec: ./flow database:setcharset
-    - exec: ./flow doctrine:migrate
+    - FLOW_CONTEXT=Development/Ddev
+    - FLOW_PATH_TEMPORARY_BASE=/tmp/Flow
+    - FLOW_REWRITEURLS=1
+    - DB_HOST=db
+    - DB_NAME=db
+    - DB_USER=db
+    - DB_PASS=db
+corepack_enable: false
+disable_upload_dirs_warning: true

@@ -24,7 +24,7 @@ Custom.Template:Mixin.Content.Section:
         reloadIfChanged: true
         inspector:
           group: section
-          hidden: 'ClientEval: node.parent.includes("main@") ? false : true'
+          hidden: 'ClientEval: q(node).parent().get(0).includes("main@") ? false : true'
           editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
           editorOptions:
             values:
@@ -44,7 +44,7 @@ Custom.Template:Mixin.Content.Section:
         reloadIfChanged: true
         inspector:
           group: section
-          hidden: 'ClientEval: node.parent.includes("main@") ? false : true'
+          hidden: 'ClientEval: q(node).parent().get(0).includes("main@") ? false : true'
           editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
           editorOptions:
             values:
@@ -66,7 +66,7 @@ Custom.Template:Mixin.Content.Section:
         reloadIfChanged: true
         inspector:
           group: section
-          hidden: 'ClientEval: (node.properties.sectionStyle == "image" && node.parent.includes("main@")) ? false : true'
+          hidden: 'ClientEval: (node.properties.sectionStyle == "image" && q(node).parent().get(0).includes("main@")) ? false : true'
 #          editorOptions:
 #            required: false
       search:
@@ -79,7 +79,7 @@ Custom.Template:Mixin.Content.Section:
         inspector:
           group: section
           # 当元素为子件时设置为隐藏
-          hidden: 'ClientEval: node.parent.includes("main@") ? false : true'
+          hidden: 'ClientEval: q(node).parent().get(0).includes("main@") ? false : true'
         help:
           message: 'Bitte nur Kleinbuchstaben und - verwenden'
       validation:
@@ -97,7 +97,7 @@ Custom.Template:Mixin.Content.Section:
         reloadIfChanged: true
         inspector:
           group: section
-          hidden: 'ClientEval: node.parent.includes("main@") ? false : true'
+          hidden: 'ClientEval: q(node).parent().get(0).includes("main@") ? false : true'
       search:
         indexing: false
 
@@ -120,7 +120,7 @@ Custom.Template:Mixin.Content.Section:
         reloadIfChanged: true
         inspector:
           group: section
-          hidden: 'ClientEval: node.parent.includes("main@") ? false : true'
+          hidden: 'ClientEval: q(node).parent().get(0).includes("main@") ? false : true'
           editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
           editorOptions:
             values:

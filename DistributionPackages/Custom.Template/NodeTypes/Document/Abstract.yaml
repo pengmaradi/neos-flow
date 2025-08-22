@@ -2,7 +2,8 @@
   abstract: true
   superTypes:
     'Neos.Neos:Document': true
-  label: "${String.cropAtWord(String.trim(String.stripTags(String.pregReplace(q(node).property('navigationTitle') || q(node).property('title') || q(node).property('text') || ((I18n.translate(node.nodeType.label) || node.nodeType.name) + (node.autoCreated ? ' (' + node.name + ')' : '')), '/<br\\W*?\\/?>|\\x{00a0}|[[^:print:]]|\\s+/u', ' '))), 100, '...')}"
+    'Neos.Neos:Site': true
+  label: "${String.cropAtWord(String.trim(String.stripTags(String.pregReplace(q(node).property('navigationTitle') || q(node).property('title') || q(node).property('text') || ((I18n.translate(node.nodeType.label) || node.nodeTypeName) + (node.classification.tethered ? ' (' + node.name + ')' : '')), '/<br\\W*?\\/?>|\\x{00a0}|[[^:print:]]|\\s+/u', ' '))), 100, '...')}"
 
   ui:
     inspector:

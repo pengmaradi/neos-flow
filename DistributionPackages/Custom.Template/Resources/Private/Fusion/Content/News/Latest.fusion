@@ -9,7 +9,7 @@ prototype(Custom.Template:Content.News.Latest) < prototype(Neos.Neos:ContentComp
     link = ${q(node).property('link')}
     link.@process.convertUris = Neos.Neos:ConvertUris
 
-    news = Neos.Fusion:Collection {
+    news = Neos.Fusion:Loop {
 
         collection = Neos.Fusion:Case {
             isGlobal {
@@ -64,7 +64,7 @@ prototype(Custom.Template:Content.News.Latest) < prototype(Neos.Neos:ContentComp
             container = ${(q(node).property('sectionWidth') == 'big' ? '' : 'container')}
             listClass = 'news-latest'
         }
-        id = ${props.slug ? props.slug : 'node-'+node.identifier}
+        id = ${props.slug ? props.slug : 'node-'+node.aggregateId}
     }
 
 
@@ -81,26 +81,26 @@ prototype(Custom.Template:Content.News.Latest) < prototype(Neos.Neos:ContentComp
     `
 
     // Caching
-    @cache {
-        mode = 'cached'
-        entryIdentifier {
-            node = ${node}
-        }
+    // @cache {
+    //     mode = 'cached'
+    //     entryIdentifier {
+    //         node = ${node}
+    //     }
 
-        # Limit Cache-Life to one day
-        maximumLifetime = '86400'
+    //     # Limit Cache-Life to one day
+    //     maximumLifetime = '86400'
 
-        context {
-            1 = 'node'
-            2 = 'documentNode'
-            3 = 'site'
-        }
-        entryTags {
-            1 = ${Neos.Caching.nodeTag(node)}
-            2 = ${Neos.Caching.nodeTypeTag('Xp.News:News.News', node)}
-            3 = ${Neos.Caching.nodeTypeTag('Xp.News:Document.News.Article', node)}
-            4 = ${Neos.Caching.nodeTypeTag('Xp.News:News.List', node)}
-        }
-    }
+    //     context {
+    //         1 = 'node'
+    //         2 = 'documentNode'
+    //         3 = 'site'
+    //     }
+    //     entryTags {
+    //         1 = ${Neos.Caching.nodeTag(node)}
+    //         2 = ${Neos.Caching.nodeTypeTag('Xp.News:News.News', node)}
+    //         3 = ${Neos.Caching.nodeTypeTag('Xp.News:Document.News.Article', node)}
+    //         4 = ${Neos.Caching.nodeTypeTag('Xp.News:News.List', node)}
+    //     }
+    // }
 
 }

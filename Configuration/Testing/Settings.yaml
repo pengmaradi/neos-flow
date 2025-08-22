@@ -8,8 +8,8 @@
 # possible configuration options.                                        #
 #                                                                        #
 
-#Neos:
-#  Flow:
-#    persistence:
-#      backendOptions:
-#        dbname: 'flow_functional_testing'
+Neos:
+  Flow:
+    persistence:
+      backendOptions:
+        dbname: 'flow_functional_testing'

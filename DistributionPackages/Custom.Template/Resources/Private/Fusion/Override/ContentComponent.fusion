@@ -15,7 +15,7 @@ prototype(Neos.Neos:ContentComponent) {
             }
         }
         dummy {
-            condition = ${node.context.inBackend}
+            condition = ${renderingMode.isEdit}
             renderer = Neos.Fusion:ResourceUri {
                 path = 'resource://Neos.Neos/Public/Images/dummy-image.svg'
             }
@@ -36,7 +36,7 @@ prototype(Neos.Neos:ContentComponent) {
             frame = ${setFrame ? 'frame' : 'noframe'}
         }
 
-        id = ${props.slug ? props.slug : 'node-'+node.identifier}
+        id = ${props.slug ? props.slug : 'node-'+node.aggregateId}
     }
 
     renderer = Neos.Fusion:Component {

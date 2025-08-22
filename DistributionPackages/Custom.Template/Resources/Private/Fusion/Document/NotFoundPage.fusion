@@ -4,22 +4,4 @@ prototype(Custom.Template:Document.NotFoundPage) < prototype(Custom.Template:Doc
             statusCode = 404
         }
     }
-
-    @cache {
-        mode = 'uncached'
-
-        context {
-            1 = 'node'
-            2 = 'documentNode'
-            3 = 'site'
-        }
-
-        entryIdentifier {
-            documentNode = ${documentNode}
-        }
-        entryTags {
-            1 = ${Neos.Caching.nodeTag(node)}
-            2 = ${Neos.Caching.nodeTypeTag('Neos.Neos:Document', documentNode)}
-        }
-    }
 }
