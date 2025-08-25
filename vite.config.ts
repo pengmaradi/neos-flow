@@ -16,7 +16,6 @@ const VITE_ENTRYPOINTS = [
 
 
 export default defineConfig({
-  //root: './',
   plugins: [
     tailwindcss(),
     viteStaticCopy({
@@ -36,13 +35,12 @@ export default defineConfig({
 
   build: {
     manifest: true,
-    outDir: './DistributionPackages/Custom.Template/Resources/Public',
-    assetsDir: 'Public/assets',
+    outDir: 'DistributionPackages/Custom.Template/Resources/Public',
     emptyOutDir: true,
     sourcemap: true,
     rollupOptions: {
-      //input: resolve(__dirname, 'assets/main.ts'),
       input: VITE_ENTRYPOINTS.map((entry) => resolve(rootPath, entry)),
+
       output: {
         entryFileNames: '[name].js',
         chunkFileNames: '[name].js',
