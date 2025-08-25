@@ -6,11 +6,15 @@ prototype(Custom.Template:Helper.StyleTag) < prototype(Neos.Fusion:Component) {
 
     renderer = Neos.Fusion:Tag {
         tagName = 'link'
-        attributes.rel = 'stylesheet'
-        attributes.href = Neos.Fusion:ResourceUri {
+
+        @context.srcInternal = Neos.Fusion:ResourceUri {
             path = ${props.path}
-            package = ${props.package}
         }
-        attributes.media = ${props.media ? props.media : 'all'}
+
+        attributes {
+            rel = 'stylesheet'
+            href = ${!String.startsWith(props.path, 'resource:') ? props.path : srcInternal}
+            media = ${props.media ? props.media : 'all'}
+        }
     }
 }

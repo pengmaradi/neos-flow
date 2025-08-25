@@ -12,7 +12,6 @@ const initializeComponents = () => {
   // call all components here!!!
   console.log(`start components 😂...`);
   
-  // VideoElements()
 }
 
 document.addEventListener('DOMContentLoaded', () => {

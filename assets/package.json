@@ -1,13 +1,11 @@
 {
-  "name": "neos-flow",
+  "license": "UNLICENSED",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "watch": "vite build --watch --mode development",
-    "preview": "vite preview --port 8989 --host 0.0.0.0",
-    "watch-serve": "npm run watch & npm run preview",
     "build": "tsc && vite build"
   },
   "devDependencies": {

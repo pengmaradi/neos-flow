@@ -1,10 +1,10 @@
 prototype(Custom.Template:Document.Fragment.StyleSheets) < prototype(Neos.Fusion:Component) {
     @context.settings = Custom.Template:Helper.Settings
     stylesheet = Neos.Fusion:Case {
-        //development
+        // development
         isDebug {
-            condition = ${settings.debugcss}
-            renderer = 'resource://Custom.Template/Public/main.css'
+            condition = ${settings.watchServe}
+            renderer = 'http://localhost:8989/main.css'
         }
 
         default {
@@ -18,6 +18,7 @@ prototype(Custom.Template:Document.Fragment.StyleSheets) < prototype(Neos.Fusion
 
     renderer = afx`
 		<Custom.Template:Helper.StyleTag path={props.stylesheet} />
+		<Custom.Template:Helper.StyleTag @if={settings.debugcss} path={'resource://Custom.Template/Public/debug.css'} />
 		<style @if={props.cssVariables}>{props.cssVariables}</style>
 		<style @if={props.LinkVariables}>{props.LinkVariables}</style>
     `

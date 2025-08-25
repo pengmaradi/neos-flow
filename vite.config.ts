@@ -15,22 +15,36 @@ const VITE_ENTRYPOINTS = [
 ];
 
 
-export default defineConfig({
-  plugins: [
-    tailwindcss(),
-    viteStaticCopy({
-      targets: [
-        {
-          src: resolve(rootPath, 'assets/images'),
-          dest: 'Images'
-        }
-      ],
-    }),
-  ],
+export default defineConfig(({command, mode}) => {
+  const plugins = [tailwindcss(),]
+  if (command === 'build' && mode === 'production') {
+    plugins.push(
+      viteStaticCopy({
+        targets: [
+          {
+            src: resolve(rootPath, 'assets/Images'),
+            dest: '',
+            // overwrite: false
+          }
+        ],
+        // watch: {
+        //   reloadPageOnChange: false
+        // },
+        // silent: false,
+        // structured: false,
+      }),
+    )
+  }
+
+  return {
+  base: '/',
+  plugins: plugins,
 
   server: {
     host: '0.0.0.0',
     port: 8989,
+    origin: 'http://localhost:8989',
+    open: false,
   },
 
   build: {
@@ -46,6 +60,13 @@ export default defineConfig({
         chunkFileNames: '[name].js',
         assetFileNames: '[name].css',
       }
+    },
+
+    watch: {
+      skipWrite: true,
+      exclude: ['node_modules', 'Packages', 'Data', 'Web', 'Public', 'Confuguration'],
+      buildDelay: 100,
+
     }
   }
-})
+}})
