@@ -33,48 +33,63 @@ html {
     }
 }
 
-@screen xs {
+@media (min-width: 20rem) {
     html:after {
-        content: 'XS';
-        color: #C7C329;
+        content: "XS";
+        color: #c7c329;
     }
 }
 
-@screen ty {
+@media (min-width: 30rem) {
     html:after {
-        content: 'TY';
-        color: #C51E14;
+        content: "TY";
+        color: #f0f;
         bottom: 40px;
     }
 }
 
-@screen sm {
+@media (min-width: 40rem) {
     html:after {
-        content: 'SM';
-        color: #C839C5;
+        content: "SM";
+        color: #c839c5;
     }
 }
 
-@screen md {
+@media (min-width: 48rem) {
     html:after {
-        content: 'MD';
+        content: "MD";
         color: #00adfe;
     }
 }
 
-@screen lg {
+@media (min-width: 64rem) {
     html:after {
-        content: 'LG';
+        content: "LG";
         color: #63ff56;
     }
 }
 
-@screen xl {
+@media (min-width: 80rem) {
     html:after {
-        content: 'XL';
-        color: #AAAAAA;
+        content: "XL";
+        color: #aaaaaa;
     }
 }
+
+@media (min-width: 96rem) {
+    html:after {
+        content: "2XL";
+        color: #aaaaaa;
+    }
+}
+
+@media (min-width: 120rem) {
+    html:after {
+        content: "3XL";
+        color: #aaaaaa;
+    }
+}
+
 
 @media print {
     html {

@@ -1,5 +1,6 @@
 prototype(Custom.Template:Component.Template.Default) < prototype(Neos.Fusion:Component) {
   # Property API
+    title = ''
     headerImage = ''
     logo = ''
     header = ''
@@ -23,11 +24,11 @@ prototype(Custom.Template:Component.Template.Default) < prototype(Neos.Fusion:Co
             <img class="w-full invisible" src={props.headerImage} />
         </div>
       <header class="header z-10 sticky top-0 bg-white shadow-black">
-        {props.header}
+        
         <div class="container">
           <div class="flex justify-between self-center my-auto w-full">
-                      <div class="logo" @if={props.logo}>
-                          <a class="h-5 w-5" href="/">{props.logo}</a>
+                      <div class="logo h-5 w-5" @if={props.logo}>
+                          <a class="h-5 w-5 inline-block" href="/">{props.logo}</a>
                       </div>
                       <nav class="flex items-center self-center max-w-screen-lg">{props.menu}</nav>
                       {props.language}
@@ -35,6 +36,7 @@ prototype(Custom.Template:Component.Template.Default) < prototype(Neos.Fusion:Co
               </div>
       </header>
       <main {...props.divWrapper}>
+        <h1 class="text-sky-500 text-3xl">{props.title}</h1>
         {props.content}
       </main>
 

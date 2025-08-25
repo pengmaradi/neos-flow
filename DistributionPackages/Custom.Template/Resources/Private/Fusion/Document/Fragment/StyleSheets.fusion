@@ -4,12 +4,12 @@ prototype(Custom.Template:Document.Fragment.StyleSheets) < prototype(Neos.Fusion
         //development
         isDebug {
             condition = ${settings.debugcss}
-            renderer = 'resource://Custom.Template/Public/Styles/Debug.css'
+            renderer = 'resource://Custom.Template/Public/main.css'
         }
 
         default {
             condition = ${true}
-            renderer = 'resource://Custom.Template/Public/Styles/Main.css'
+            renderer = 'resource://Custom.Template/Public/main.css'
         }
     }
 

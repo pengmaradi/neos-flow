@@ -24,6 +24,8 @@ prototype(Custom.Template:Document.AbstractPage) < prototype(Neos.Neos:Page) {
             width = 2560
         }
 
+        title = ${q(documentNode).property('title')}
+
         logo = ${Configuration.setting('Custom.Template.settings.themes.default.logo')}
 
         menu = Custom.Template:Document.Fragment.Menu.Main
