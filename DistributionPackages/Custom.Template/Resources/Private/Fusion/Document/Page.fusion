@@ -1,5 +1,18 @@
 prototype(Custom.Template:Document.Page) < prototype(Custom.Template:Document.AbstractPage) {
+    body = Custom.Template:Component.Template.Default {
+        // override the property
+        //logo = 'logo'
+    }
+
+    // or override the body
+    //body = Custom.Template:Component.Template.SubPage
+}
+
+prototype(Custom.Template:Component.Template.SubPage) < prototype(Neos.Fusion:Component) {
     renderer = afx`
-        you see me on sub page
+        {props.logo}
+        {props.menu}
+        {props.content}
+        {props.footer}
     `
 }

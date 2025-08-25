@@ -1,4 +1,5 @@
 'Custom.Template:Document.HomePage':
+  final: true
   superTypes:
     'Custom.Template:Document.Abstract': true
     

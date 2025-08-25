@@ -22,10 +22,10 @@
   # Allowed Documents
   constraints:
     nodeTypes:
-      '*': false
       'Neos.Neos:Document': false
       # no homepage as children
       'Custom.Template:Document.Homepage': false
+      # 'Custom.Template:Document.NotFoundPage': false
       'Custom.Template:Constraint.Document.SubPage': false
       # allow type of pages
       'Custom.Template:Document.Page': true

@@ -8,12 +8,12 @@ prototype(Custom.Template:Document.Fragment.Menu.Language) < prototype(Neos.Fusi
 			<ul class="flex items-center justify-between self-center space-x-8">
 				<Neos.Fusion:Loop items={props.menuItems}>
 					<li @if.hasNode={item.node} class={item.state}>
-						<Neos.Neos:NodeLink node={item.node} >
-							<span class="language-menu-short" title={item.label}>{Configuration.setting('Neos.ContentRepositoryRegistry.contentRepositories.default.contentDimensions.language.' + item.targetDimensions.language.value + '.label')}</span>
+						<Neos.Neos:NodeLink node={item.node}>
+							<span class="language-menu" title={item.label}>{item.label}</span>
 						</Neos.Neos:NodeLink>
 					</li>
 					<li @if.hasNoNode={!item.node}>
-						<span class="language-menu-short" title={item.label}>{Configuration.setting('Neos.ContentRepositoryRegistry.contentRepositories.default.contentDimensions.language.' + item.targetDimensions.language.value + '.label')}</span>
+						<span class="language-menu-short" title={item.label}>{item.label}</span>
 					</li>
 				</Neos.Fusion:Loop>
 			</ul>

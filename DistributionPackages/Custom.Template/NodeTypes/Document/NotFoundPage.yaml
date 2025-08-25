@@ -2,16 +2,13 @@
 # A new Document NodeType "NotFoundPage"
 #
 'Custom.Template:Document.NotFoundPage':
+  final: true
   superTypes:
     'Custom.Template:Document.Page': true
   ui:
     label: '404 notfound'
-    icon: 'times'
+    icon: 'times-circle'
 
-  # no further sub documents are allowed here
-  constraints:
-    nodeTypes:
-      'Neos.Neos:Document': false
   properties:
 
     # default title for autocreated document
@@ -28,9 +25,17 @@
       defaultValue: true
 
     # hide in menus by default
-    _hiddenInIndex:
+    hiddenInMenu:
       defaultValue: true
 
     # set meta no-index by default
     metaRobotsNoindex:
       defaultValue: true
+
+  childNodes:
+    'footer': ~
+
+  constraints:
+    nodeTypes:
+      '*': false
+      'Neos.Neos:Document': false

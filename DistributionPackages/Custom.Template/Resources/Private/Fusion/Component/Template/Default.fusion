@@ -27,7 +27,7 @@ prototype(Custom.Template:Component.Template.Default) < prototype(Neos.Fusion:Co
         <div class="container">
           <div class="flex justify-between self-center my-auto w-full">
                       <div class="logo" @if={props.logo}>
-                          <a href="/">{props.logo}</a>
+                          <a class="h-5 w-5" href="/">{props.logo}</a>
                       </div>
                       <nav class="flex items-center self-center max-w-screen-lg">{props.menu}</nav>
                       {props.language}

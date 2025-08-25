@@ -1,14 +1,20 @@
 
 'Custom.Template:Document.Page':
   superTypes:
-    'Custom.Template:Document.Abstract': true
-    'Neos.Neos:Site': true
+    'Custom.Template:Document': true
+    'Custom.Template:Constraint.Document.SubPage': true
   ui:
-    icon: 'resource://Custom.Template/Images/simple-language.svg' #file
-    label: 'Custom.Template Page'
+    icon: 'resource://Custom.Template/Images/simple-language.svg'
+    label: 'Custom sub Page'
+    help:
+      message: 'A Page'
+  constraints:
+    nodeTypes:
+      'Neos.Neos:Document': false
+      'Custom.Template:Document.NotFoundPage': false
+      'Custom.Template:Document.News.Article': false
+      'Custom.Template:Constraint.Document.SubPage': true
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'
-    'footer':
-      position: 'end'
-      type: 'Custom.Template:Collection.Content.Footer'
+    'footer': ~
