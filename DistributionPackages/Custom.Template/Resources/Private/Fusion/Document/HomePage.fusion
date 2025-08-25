@@ -1,1 +1,3 @@
-prototype(Custom.Template:Document.HomePage) < prototype(Custom.Template:Document.Page)
+prototype(Custom.Template:Document.HomePage) < prototype(Custom.Template:Document.AbstractPage) {
+    
+}

@@ -12,25 +12,23 @@ prototype(Custom.Template:Document.AbstractPage) < prototype(Neos.Neos:Page) {
         javascripts.site = Custom.Template:Document.Fragment.JavaScripts
     }
 
-    // bodyTag = Neos.Fusion:Tag {
-    //     // add custom body frontend class
-    //     attributes.class.@process.addNeosFrontendClass = ${Array.push(value, 'custom')}
-    //     attributes.class.@process.addNeosFrontendClass.@if.notRenderWhenNotInLiveWorkspace = ${!documentNode.context.inBackend}
-    // }
+    bodyTag = Neos.Fusion:Tag {
+        // add custom body frontend class
+        attributes.class.@process.addNeosFrontendClass = ${Array.push(value, 'custom')}
+        attributes.class.@process.addNeosFrontendClass.@if.notRenderWhenNotInLiveWorkspace = ${!documentNode.context.inBackend}
+    }
 
     body = Custom.Template:Component.Template.Default {
         headerImage = Neos.Neos:ImageUri {
             asset = ${q(documentNode).property('headerImage') ? q(documentNode).property('headerImage') : null}
             width = 2560
         }
-        @context.node = ${this.node}
 
         logo = ${Configuration.setting('Custom.Template.settings.themes.default.logo')}
 
-        # Define template properties
-        //menu = Neos.Neos:Menu
         menu = Custom.Template:Document.Fragment.Menu.Main
         language = Custom.Template:Document.Fragment.Menu.Language
+        footer = Custom.Template:Document.Fragment.Footer
 
         content = Neos.Fusion:Component {
             main = Neos.Neos:ContentCollection {
@@ -42,7 +40,7 @@ prototype(Custom.Template:Document.AbstractPage) < prototype(Neos.Neos:Page) {
             `
         }
 
-        footer = Custom.Template:Document.Fragment.Footer
+        
 
         # Script includes before the closing body tag should go here
         javascripts = Neos.Fusion:Join

@@ -1,4 +1,4 @@
-prototype(Custom.Template:Document.NotFoundPage) < prototype(Custom.Template:Document.Page) {
+prototype(Custom.Template:Document.NotFoundPage) < prototype(Custom.Template:Document.AbstractPage) {
     prototype(Neos.Neos:Page) {
         httpResponseHead {
             statusCode = 404

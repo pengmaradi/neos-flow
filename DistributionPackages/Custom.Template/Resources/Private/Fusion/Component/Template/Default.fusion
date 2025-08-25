@@ -18,7 +18,7 @@ prototype(Custom.Template:Component.Template.Default) < prototype(Neos.Fusion:Co
     }
 
   renderer = afx`
-    <div >
+    <div class="container mx-auto">
         <div class="headerImage flex items-center justify-center bg-contain bg-fixed bg-top" data-aos="fade-up" data-aos-duration="1000" @if={props.headerImage} style={'background-image: url(' +  props.headerImage + ');'}>
             <img class="w-full invisible" src={props.headerImage} />
         </div>
@@ -34,9 +34,10 @@ prototype(Custom.Template:Component.Template.Default) < prototype(Neos.Fusion:Co
                   </div>
               </div>
       </header>
-      <main>
+      <main {...props.divWrapper}>
         {props.content}
       </main>
+
       <footer>{props.footer}</footer>
     </div>
 

@@ -26,7 +26,7 @@
       'Neos.Neos:Document': false
       # no homepage as children
       'Custom.Template:Document.Homepage': false
-      'Custom.Template:Constraint.Document.PageChild': false
+      'Custom.Template:Constraint.Document.SubPage': false
       # allow type of pages
       'Custom.Template:Document.Page': true
       'Custom.Template:Document.Shortcut': true

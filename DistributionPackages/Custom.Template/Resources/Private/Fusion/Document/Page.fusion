@@ -1,1 +1,5 @@
-prototype(Custom.Template:Document.Page) < prototype(Custom.Template:Document.AbstractPage)
+prototype(Custom.Template:Document.Page) < prototype(Custom.Template:Document.AbstractPage) {
+    renderer = afx`
+        you see me on sub page
+    `
+}

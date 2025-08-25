@@ -21,7 +21,7 @@
       'Neos.Neos:Document': false
       'Custom.Template:Document.News.Article': false
       'Custom.Template:Document.Homepage': false
-      'Custom.Template:Constraint.Document.PageChild': false
+      'Custom.Template:Constraint.Document.SubPage': false
       'Custom.Template:Document.Page': false
       'Custom.Template:Document.Shortcut': false
       'Custom.Template:Document.News': false

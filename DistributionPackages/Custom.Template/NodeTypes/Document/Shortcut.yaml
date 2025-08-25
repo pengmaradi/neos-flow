@@ -2,12 +2,12 @@
   superTypes:
     'Neos.Neos:Shortcut': true
     'Custom.Template:Document.Abstract': true
-    'Custom.Template:Constraint.Document.PageChild': true
+    'Custom.Template:Constraint.Document.SubPage': true
   ui:
     label: 'custom Shortcut'
   constraints:
     nodeTypes:
-      'Custom.Template:Constraint.Document.PageChild': true
+      'Custom.Template:Constraint.Document.SubPage': true
   properties:
     target:
       ui:
