@@ -20,3 +20,7 @@ Neos:
         'Custom.Template': true
         'Neos.Neos': false
         'Neos.Neos.Ui': false
+  
+  Fusion:
+    defaultContext:
+      'Custom.Template.Env': 'Custom\Template\Eel\EnvironmentHelper'
