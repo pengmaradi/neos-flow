@@ -1,5 +1,5 @@
 prototype(Custom.Template:Document.Fragment.Menu.Main) < prototype(Neos.Neos:Menu) {
-    maximumLevels = 2
+    maximumLevels = 1
 
     // attributes = Neos.Fusion:Attributes {
     //     class = "flex h-full space-x-8"

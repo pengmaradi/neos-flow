@@ -1,0 +1,53 @@
+prototype(Custom.Template:Document.NewsList) < prototype(Custom.Template:Document.AbstractPage) {
+    body = Custom.Template:Component.News {
+        limit = ${q(node).property('limit') || 3}
+        news = ${q(documentNode).find('[instanceof Custom.Template:Document.News]').slice(0, this.limit).get()}
+        currentUrl = ${q(documentNode).property('uriPathSegment')}
+    }
+}
+
+
+
+prototype(Custom.Template:Component.News) < prototype(Custom.Template:Component.Template.Default) {
+    limit = 3
+    news = null
+
+
+
+    renderer = afx`
+        <div class="container mx-auto">
+            <div class="headerImage flex items-center justify-center bg-contain bg-fixed bg-top" data-aos="fade-up" data-aos-duration="1000" @if={props.headerImage} style={'background-image: url(' +  props.headerImage + ');'}>
+                <img class="w-full invisible" src={props.headerImage} />
+            </div>
+            <header class="header z-10 sticky top-0 bg-white shadow-black">
+                <div class="container">
+                    <div class="flex justify-between self-center my-auto w-full">
+                            <div class="logo h-5 w-5" @if={props.logo}>
+                                <a class="h-5 w-5 inline-block" href="/">{props.logo}</a>
+                            </div>
+                            <nav class="flex items-center self-center max-w-screen-lg">{props.menu}</nav>
+                            {props.language}
+                    </div>
+                </div>
+            </header>
+            <main class="container mx-auto min-h-[77vh]">
+                <Neos.Fusion:Loop items={props.news} itemName="news" iterationName="iterator">
+                    <div class={'mb-5 news-item news-item_' + iterator.index}>
+                        <h2 class="text-sky-500 text-2xl">{news.properties.title}</h2>
+                        <span>{Date.format(news.properties.date, 'd.m.Y')}</span>
+                        <p class="text-sm">{news.properties.description}</p>
+
+                                <Neos.Neos:ImageTag
+                                    @if={news.properties.image}
+                                    preset="newsThumbnail"
+                                    asset={news.properties.image} 
+                                    alt={news.properties.title}
+                                />
+                        <a class="text-green" href={props.currentUrl + '/' +  news.properties.uriPathSegment}>Read more</a>
+                    </div>
+                </Neos.Fusion:Loop>
+            </main>
+            <footer>{props.footer}</footer>
+        </div>
+    `
+}

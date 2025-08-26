@@ -31,8 +31,8 @@
       'Custom.Template:Document.Page': true
       'Custom.Template:Document.Shortcut': true
       # allow news plugins
-      'Custom.Template:Document.News': true
-      'Custom.Template:Document.News.Article': false
+      'Custom.Template:Document.News': false
+      'Custom.Template:Document.News.List': true
 
   # Allowed Content Elements
   childNodes:
