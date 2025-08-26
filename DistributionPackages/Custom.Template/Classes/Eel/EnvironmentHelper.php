@@ -9,7 +9,6 @@ class EnvironmentHelper implements ProtectedContextAwareInterface
 {
     public function get(string $name, $default = ''): string
     {
-        //var_dump($_ENV);die('on line' . __LINE__);
         return $_ENV[$name] ?? getenv($name) ?: $default;
     }
 
