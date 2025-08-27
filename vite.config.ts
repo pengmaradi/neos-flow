@@ -12,11 +12,10 @@ const rootPath = resolve(currentDir, VITE_NEOS_ROOT);
 const VITE_ENTRYPOINTS = [
     resolve(__dirname, 'assets/main.ts'),
     resolve(__dirname, 'assets/Styles/debug.pcss'),
-];
-
+]
+const plugins = [tailwindcss()]
 
 export default defineConfig(({command, mode}) => {
-  const plugins = [tailwindcss(),]
   if (command === 'build' && mode === 'production') {
     plugins.push(
       viteStaticCopy({
@@ -24,49 +23,42 @@ export default defineConfig(({command, mode}) => {
           {
             src: resolve(rootPath, 'assets/Images'),
             dest: '',
-            // overwrite: false
           }
         ],
-        // watch: {
-        //   reloadPageOnChange: false
-        // },
-        // silent: false,
-        // structured: false,
+        watch: {
+          reloadPageOnChange: false
+        },
+        silent: false,
+        structured: false,
       }),
-    )
+    )    
   }
 
   return {
-  base: '/',
-  plugins: plugins,
+    base: '/',
+    plugins: plugins,
 
-  server: {
-    host: '0.0.0.0',
-    port: 8989,
-    origin: 'http://localhost:8989',
-    open: false,
-  },
-
-  build: {
-    manifest: true,
-    outDir: 'DistributionPackages/Custom.Template/Resources/Public',
-    emptyOutDir: true,
-    sourcemap: true,
-    rollupOptions: {
-      input: VITE_ENTRYPOINTS.map((entry) => resolve(rootPath, entry)),
-
-      output: {
-        entryFileNames: '[name].js',
-        chunkFileNames: '[name].js',
-        assetFileNames: '[name].css',
-      }
+    server: {
+      host: '0.0.0.0',
+      port: 8989,
+      origin: 'http://localhost:8989',
+      open: false,
     },
 
-    watch: {
-      skipWrite: true,
-      exclude: ['node_modules', 'Packages', 'Data', 'Web', 'Public', 'Confuguration'],
-      buildDelay: 100,
+    build: {
+      manifest: true,
+      outDir: 'DistributionPackages/Custom.Template/Resources/Public',
+      emptyOutDir: true,
+      sourcemap: true,
+      rollupOptions: {
+        input: VITE_ENTRYPOINTS.map((entry) => resolve(rootPath, entry)),
 
+        output: {
+          entryFileNames: '[name].js',
+          chunkFileNames: '[name].js',
+          assetFileNames: '[name].css',
+        }
+      },
     }
   }
-}})
+})
