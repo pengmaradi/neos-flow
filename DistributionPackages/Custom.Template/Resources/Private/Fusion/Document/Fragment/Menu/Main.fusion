@@ -1,17 +1,14 @@
 prototype(Custom.Template:Document.Fragment.Menu.Main) < prototype(Neos.Neos:Menu) {
-    maximumLevels = 1
 
-    // attributes = Neos.Fusion:Attributes {
-    //     class = "flex h-full space-x-8"
-    // }
+    maximumLevels = 3
 
-    // active.attributes = Neos.Fusion:Attributes {
-    //     class = 'flex items-center h-16 underline-offset-8 decoration-2 decoration-secondary animated-underline-navi hover:animated-underline-navi-hover active underline'
-    // }
-    // current.attributes = Neos.Fusion:Attributes {
-    //     class = 'flex items-center h-16 underline-offset-8 decoration-2 decoration-secondary animated-underline-navi hover:animated-underline-navi-hover current underline'
-    // }
-    // normal.attributes = Neos.Fusion:Attributes {
-    //     class = 'flex items-center h-16 underline-offset-8 decoration-2 decoration-secondary animated-underline-navi hover:animated-underline-navi-hover'
-    // }
+    // set News not in menu
+    filter = 'Neos.Neos:Document,!Custom.Template:Document.News'
+
+    // default set li normal, current class
+    calculateItemStates = true
+
+    attributes = Neos.Fusion:DataStructure {
+        class = "flex h-full space-x-8"
+    }
 }

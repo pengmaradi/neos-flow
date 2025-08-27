@@ -18,12 +18,6 @@ prototype(Custom.Template:Content.Columns.Three) < prototype(Neos.Neos:ContentCo
         }
     }
 
-//    sectionAttributes = Neos.Fusion:DataStructure {
-//        class {
-//            container = ${q(node).property('sectionWidth') == 'big' ? '' : ''}
-//        }
-//    }
-
     @context.colUnit = 'w-full px-3 lg:px-6'
 
     col3 = ${colUnit + ' sm:w-4/12'}

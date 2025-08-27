@@ -5,7 +5,7 @@ prototype(Neos.Neos:ContentComponent) {
     sectionNavigation = ${q(node).property('sectionNavigation')}
     sectionNavigationTitle = ${q(node).property('sectionNavigationTitle')}
     sectionStyle = ${q(node).property('sectionStyle')}
-    type = ${q(node).property('_nodeType')}
+    // type = ${node.nodeTypeName}
 
     sectionBackground = Neos.Fusion:Case {
         asset {
@@ -27,16 +27,16 @@ prototype(Neos.Neos:ContentComponent) {
 
     sectionAttributes = Neos.Fusion:DataStructure {
         class {
-            //type = ${String.replace(String.replace(q(node).property('_nodeType'), 'Custom.Template:Content.', 'node'), '.', '_')}
-            type = ${String.toLowerCase(String.pregReplace(q(node).property('_nodeType'), "/[[:^alnum:]]/", "_"))}
+            //@process.nodeType = ${Array.push(value, String.toLowerCase(String.pregReplace(node.nodeTypeName, '/[[:^alnum:]]/', '-')))}
+            type = ${String.toLowerCase(String.pregReplace(node.nodeTypeName, '/[[:^alnum:]]/', '-'))}
             container = ${setFrame ? (q(node).property('sectionWidth') == 'big' ? '' : 'container') : '' }
             sectionWidth = ${q(node).property('sectionWidth')}
             align = ${q(node).property('align')}
             sectionStyle = ${q(node).property('sectionStyle')}
-            frame = ${setFrame ? 'frame' : 'noframe'}
+            frame = ${setFrame ? 'frame section' : 'noframe section'}
         }
 
-        id = ${props.slug ? props.slug : 'node-'+node.aggregateId}
+        id = ${props.slug ? props.slug : 'node-' + node.aggregateId}
     }
 
     renderer = Neos.Fusion:Component {

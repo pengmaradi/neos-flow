@@ -1,31 +1,41 @@
 prototype(Custom.Template:Content.News.List) < prototype(Flowpack.Listable:PaginatedCollection) {
-
-    collection = ${q(site).parent().find('[instanceof Custom.Template:Document.News.Article]').sort('date', 'DESC').get()}
-    itemsPerPage = 6
+    
+    itemsPerPage = ${q(node).property('limit')}
     maximumNumberOfLinks = 10
-    showPreviousNextLinks = true
+    // showPreviousNextLinks = true
     showPages = ${q(node).property('showPages')}
+    
+    @process.list = Flowpack.Listable:List {
+        wrapClass = 'news list my-5'
+        listTitle = ${q(node).property('title')}
+        listTitleClass = 'text-xl text-sky-400/90 mb-5'
+        archiveLink = ${q(node).property('link')}
+        archveLinkTitle = ${q(node).property('allnews')}
+    }
+    
+    collection = ${q(site).parent().find('[instanceof Custom.Template:Document.News]').sort('date', 'DESC').get()}
 
     @context.container = ${(q(node).property('sectionWidth') == 'big' ? '' : 'container')}
 
     prototype(Flowpack.Listable:Pagination) {
-        class = 'pagination'
-        itemClass = 'pagination__item page-item'
-        currentItemClass = 'isCurrent'
+        class = 'pagination inline-flex -space-x-px rounded-md'
+        itemClass = 'relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 inset-ring inset-ring-gray-700 hover:bg-white/5 focus:z-20 focus:outline-offset-0'
+        currentItemClass = 'isCurrent bg-indigo-500'
+
+        currentPage = ${request.arguments.currentPage}
 
         renderer = Neos.Fusion:Loop {
-            @process.tmpl = ${'<nav class="'+ container +' nav-pagination"><ul class="' + props.class + '">' + value + '</ul></nav>'}
+            @process.tmpl = ${'<nav class="nav-pagination my-5"><ul class="' + props.class + '">' + value + '</ul></nav>'}
         }
     }
 
     prototype(Flowpack.Listable:Collection) {
         @context.title = ${q(documentNode).property('title')}
-        @process.tmpl = ${'<div class="'+ container +' article-list"><div class="listable grid grid-cols-3 gap-3">' + value + '</div></div>'}
+        @process.tmpl = ${'<div class="article-list"><div class="listable grid grid-cols-3 gap-3">' + value + '</div></div>'}
 
         itemRenderer.@process.tmpl = ${value}
         itemName = 'node'
         iterationName = 'iterator'
         itemRenderer = Custom.Template:Content.News.Teaser
-        itemName = 'node'
     }
 }

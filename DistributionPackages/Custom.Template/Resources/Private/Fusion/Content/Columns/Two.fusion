@@ -1,10 +1,5 @@
 prototype(Custom.Template:Content.Columns.Two) < prototype(Neos.Neos:ContentComponent) {
 
-//    sectionAttributes = Neos.Fusion:DataStructure {
-//        class {
-//            container = ${q(node).property('sectionWidth') == 'big' ? '' : ''}
-//        }
-//    }
     column0 = Neos.Neos:ContentCollection {
         nodePath = 'column0'
     }
@@ -13,6 +8,7 @@ prototype(Custom.Template:Content.Columns.Two) < prototype(Neos.Neos:ContentComp
         nodePath = 'column1'
     }
 
+    sectionWidth = ${q(node).property('sectionWidth')}
     @context.columOption = ${q(node).property('columOption')}
     @context.colUnit = 'w-full px-3 lg:px-6 sm:w'
 

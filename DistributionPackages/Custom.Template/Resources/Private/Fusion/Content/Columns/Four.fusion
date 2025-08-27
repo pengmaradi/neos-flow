@@ -21,12 +21,6 @@ prototype(Custom.Template:Content.Columns.Four) < prototype(Neos.Neos:ContentCom
         }
     }
 
-//    sectionAttributes = Neos.Fusion:DataStructure {
-//        class {
-//            container = ${q(node).property('sectionWidth') == 'big' ? '' : ''}
-//        }
-//    }
-
     @context.colUnit = 'w-full px-3 lg:px-6'
 
     col4 = ${colUnit + ' sm:w-3/12'}

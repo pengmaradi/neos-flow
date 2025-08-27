@@ -21,7 +21,8 @@
         "custom/team": "^1.0",
         "neos/media": "^9.0",
         "neos/form-builder": "^3.0",
-        "vlucas/phpdotenv": "^5.6"
+        "vlucas/phpdotenv": "^5.6",
+        "flowpack/listable": "^4.0"
     },
     "require-dev": {
         "neos/buildessentials": "~9.0.0",

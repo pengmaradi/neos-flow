@@ -1,0 +1,15 @@
+Neos:
+  Media:
+    thumbnailPresets:
+      newsThumbnail:
+        width: 600
+        height: 400
+        quality: 90
+        maximumWidth: 600
+        maximumHeight: 400
+      newsDetailThumbnail:
+        width: 1200
+        height: 600
+        quality: 90
+        maximumWidth: 1500
+        maximumHeight: 700

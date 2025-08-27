@@ -14,17 +14,17 @@ prototype(Custom.Template:Content.News.Latest) < prototype(Neos.Neos:ContentComp
         collection = Neos.Fusion:Case {
             isGlobal {
                 condition = ${q(node).property('displaymode') == 'global' ? true : false}
-                renderer = ${q(site).parent().find('[instanceof Custom.Template:Document.News.Article]').sort('date', 'DESC').get()}
+                renderer = ${q(site).parent().find('[instanceof Custom.Template:Document.News]').sort('date', 'DESC').get()}
             }
 
             isSite {
                 condition = ${q(node).property('displaymode') == 'site' ? true : false}
-                renderer = ${q(site).find('[instanceof Custom.Template:Document.News.Article]').sort('date', 'DESC').get()}
+                renderer = ${q(site).find('[instanceof Custom.Template:Document.News]').sort('date', 'DESC').get()}
             }
 
             fallback {
                 condition = ${true}
-                renderer = ${q(documentNode).find('[instanceof Custom.Template:Document.News.Article]').sort('date', 'DESC').get()}
+                renderer = ${q(documentNode).find('[instanceof Custom.Template:Document.News]').sort('date', 'DESC').get()}
             }
         }
 
@@ -51,7 +51,7 @@ prototype(Custom.Template:Content.News.Latest) < prototype(Neos.Neos:ContentComp
 
         itemName = 'node'
 
-        itemRenderer = Custom.Template:Content.News.Teaser {
+        itemRenderer = Custom.Template:Content.News {
             itemClass = 'w-full sm:w-6/12 news-item'
         }
     }
@@ -79,28 +79,5 @@ prototype(Custom.Template:Content.News.Latest) < prototype(Neos.Neos:ContentComp
             </div>
         </div>
     `
-
-    // Caching
-    // @cache {
-    //     mode = 'cached'
-    //     entryIdentifier {
-    //         node = ${node}
-    //     }
-
-    //     # Limit Cache-Life to one day
-    //     maximumLifetime = '86400'
-
-    //     context {
-    //         1 = 'node'
-    //         2 = 'documentNode'
-    //         3 = 'site'
-    //     }
-    //     entryTags {
-    //         1 = ${Neos.Caching.nodeTag(node)}
-    //         2 = ${Neos.Caching.nodeTypeTag('Xp.News:News.News', node)}
-    //         3 = ${Neos.Caching.nodeTypeTag('Xp.News:Document.News.Article', node)}
-    //         4 = ${Neos.Caching.nodeTypeTag('Xp.News:News.List', node)}
-    //     }
-    // }
 
 }
