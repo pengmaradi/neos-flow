@@ -1,10 +1,14 @@
 prototype(Custom.Template:Content.News.List) < prototype(Flowpack.Listable:PaginatedCollection) {
     
-    itemsPerPage = ${q(node).property('limit')}
+    itemsPerPage = ${q(node).property('limit') || '10'}
     maximumNumberOfLinks = 10
     // showPreviousNextLinks = true
     showPages = ${q(node).property('showPages')}
-    
+
+    // 1. reset news page as `news-p` in Setings.yaml
+    // 2. use EEL helper `Custom.Template.Argument` get `news-p`
+    currentPage = ${Custom.Template.Argument.get('news-p')}
+
     @process.list = Flowpack.Listable:List {
         wrapClass = 'news list my-5'
         listTitle = ${q(node).property('title')}
@@ -21,8 +25,6 @@ prototype(Custom.Template:Content.News.List) < prototype(Flowpack.Listable:Pagin
         class = 'pagination inline-flex -space-x-px rounded-md'
         itemClass = 'relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 inset-ring inset-ring-gray-700 hover:bg-white/5 focus:z-20 focus:outline-offset-0'
         currentItemClass = 'isCurrent bg-indigo-500'
-
-        currentPage = ${request.arguments.currentPage}
 
         renderer = Neos.Fusion:Loop {
             @process.tmpl = ${'<nav class="nav-pagination my-5"><ul class="' + props.class + '">' + value + '</ul></nav>'}

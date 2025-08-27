@@ -24,3 +24,4 @@ Neos:
   Fusion:
     defaultContext:
       'Custom.Template.Env': 'Custom\Template\Eel\EnvironmentHelper'
+      'Custom.Template.Argument': 'Custom\Template\Eel\ArgumentHelper'

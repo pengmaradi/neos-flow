@@ -1,0 +1,8 @@
+Neos:
+  Flow:
+    mvc:
+      routes:
+        'Flowpack.Listable':
+          position: 'before Neos.Neos'
+          variables:
+            pageSeparator: "~news-p"
