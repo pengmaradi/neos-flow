@@ -3,28 +3,32 @@ Custom.Template:Mixin.Content.Section:
   superTypes:
     'Neos.Neos:Content': true
   ui:
+    label: 'Custom Sections'
+    icon: 'icon-layer-group'
+    # group: structure
+    position: 100
     inspector:
       tabs:
         section:
           label: 'Section'
           icon: 'icon-layer-group'
-          position: 100
+          position: 10
       groups:
         section:
-          label: 'Section'
-          icon: 'icon-layer-group'
           tab: section
 
   properties:
 
-    sectionWidth:
+    widthOption:
       type: string
+      search:
+        indexing: false
       ui:
         label: 'Section Breite'
         reloadIfChanged: true
         inspector:
           group: section
-          hidden: 'ClientEval: q(node).parent().get(0).includes("main@") ? false : true'
+          # hidden: 'ClientEval: q(node).parent().get(0).includes("main@") ? false : true'
           editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
           editorOptions:
             values:
@@ -34,17 +38,18 @@ Custom.Template:Mixin.Content.Section:
                 label: 'schmal (container 80%)'
               big:
                 label: 'Gesamtbreite (voll)'
+
+
+    styleOption:
+      type: string
       search:
         indexing: false
-
-    sectionStyle:
-      type: string
       ui:
         label: 'Section Style'
         reloadIfChanged: true
         inspector:
           group: section
-          hidden: 'ClientEval: q(node).parent().get(0).includes("main@") ? false : true'
+          # hidden: 'ClientEval: q(node).parent().get(0).includes("main@") ? false : true'
           editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
           editorOptions:
             values:
@@ -56,21 +61,19 @@ Custom.Template:Mixin.Content.Section:
                 label: 'Webseiten-Farbe'
               image:
                 label: 'Hintergrundbild'
+
+    backgroundOption:
+      type: Neos\Media\Domain\Model\ImageInterface
       search:
         indexing: false
-
-    sectionBackground:
-      type: Neos\Media\Domain\Model\ImageInterface
       ui:
         label: Hintergrundbild
         reloadIfChanged: true
         inspector:
           group: section
-          hidden: 'ClientEval: (node.properties.sectionStyle == "image" && q(node).parent().get(0).includes("main@")) ? false : true'
+          # hidden: 'ClientEval: (node.properties.sectionStyle == "image" && q(node).parent().get(0).includes("main@")) ? false : true'
 #          editorOptions:
 #            required: false
-      search:
-        indexing: false
 
     anchor:
       type: string
@@ -79,7 +82,7 @@ Custom.Template:Mixin.Content.Section:
         inspector:
           group: section
           # 当元素为子件时设置为隐藏
-          hidden: 'ClientEval: q(node).parent().get(0).includes("main@") ? false : true'
+          # hidden: 'ClientEval: q(node).parent().get(0).includes("main@") ? false : true'
         help:
           message: 'Bitte nur Kleinbuchstaben und - verwenden'
       validation:
@@ -92,35 +95,37 @@ Custom.Template:Mixin.Content.Section:
 
     sectionNavigation:
       type: boolean
+      search:
+        indexing: false
       ui:
         label: 'Show in Section Navigation'
         reloadIfChanged: true
         inspector:
           group: section
-          hidden: 'ClientEval: q(node).parent().get(0).includes("main@") ? false : true'
-      search:
-        indexing: false
+          # hidden: 'ClientEval: q(node).parent().get(0).includes("main@") ? false : true'
 
     sectionNavigationTitle:
       type: string
+      search:
+        indexing: false
       ui:
         label: 'Section Navigation Title'
         inspector:
           group: section
-          hidden: 'ClientEval:node.properties.sectionNavigation ? false : true'
+          # hidden: 'ClientEval:node.properties.sectionNavigation ? false : true'
           editorOptions:
             placeholder: 'ClientEval:node.properties.title'
-      search:
-        indexing: false
 
     align:
       type: string
+      search:
+        indexing: false
       ui:
         label: 'align position'
         reloadIfChanged: true
         inspector:
           group: section
-          hidden: 'ClientEval: q(node).parent().get(0).includes("main@") ? false : true'
+          # hidden: 'ClientEval: q(node).parent().get(0).includes("main@") ? false : true'
           editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
           editorOptions:
             values:
@@ -130,5 +135,3 @@ Custom.Template:Mixin.Content.Section:
                 label: 'Right'
               text-center:
                 label: 'Center'
-      search:
-        indexing: false

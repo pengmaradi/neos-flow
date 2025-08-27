@@ -5,4 +5,72 @@ Custom.Template:Content.Text:
   ui:
     label: Custom Text
     icon: icon-file-text
-    group: general
+    # position: 100
+    # inspector:
+    #   tabs:
+    #     section:
+    #       label: 'Section'
+    #       icon: 'icon-layer-group'
+    #       position: 10
+    #   groups:
+    #     section:
+    #       tab: section
+
+  # properties:
+
+  #   widthOption:
+  #     type: string
+  #     ui:
+  #       label: 'Section Breite'
+  #       reloadIfChanged: true
+  #       help:
+  #         message: set section Breite
+  #       inspector:
+  #         group: section
+  #         editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+  #         editorOptions:
+  #           values:
+  #             '':
+  #               label: 'Container 100%'
+  #             'md:w-9/12':
+  #               label: 'schmal (container 80%)'
+  #             big:
+  #               label: 'Gesamtbreite (voll)'
+  #     search:
+  #       indexing: false
+
+  #   styleOption:
+  #     type: string
+  #     search:
+  #       indexing: false
+  #     ui:
+  #       label: 'select Style'
+  #       reloadIfChanged: true
+  #       help:
+  #         message: set select Style
+  #       inspector:
+  #         group: section
+  #         editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+  #         # hidden: 'ClientEval: q(node).parent().get(0).includes("main@") ? false : true'
+  #         editorOptions:
+  #           values:
+  #             '':
+  #               label: 'transparent'
+  #             gray:
+  #               label: 'grau'
+  #             theme:
+  #               label: 'Webseiten-Farbe'
+  #             image:
+  #               label: 'Hintergrundbild'
+
+
+
+
+
+
+
+
+
+
+
+

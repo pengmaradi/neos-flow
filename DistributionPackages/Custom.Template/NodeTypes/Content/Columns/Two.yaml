@@ -1,11 +1,21 @@
 'Custom.Template:Content.Columns.Two':
   superTypes:
+    'Neos.Neos:Content': true
     'Custom.Template:Mixin.Content.Section': true
   ui:
     label: Custom 2 Columns
     icon: 'icon-columns'
-    group: 'structure'
+    group: structure
     position: 100
+    inspector:
+      tabs:
+        section:
+          label: 'Section'
+          icon: 'icon-layer-group'
+          position: 10
+      groups:
+        section:
+          tab: section
 
   childNodes:
     column0:
@@ -20,6 +30,8 @@
       ui:
         label: 'select column'
         reloadIfChanged: true
+        help:
+          message: select column
         inspector:
           group: section
           editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
@@ -41,3 +53,4 @@
                 label: 'columns 5:7'
       search:
         indexing: false
+

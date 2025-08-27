@@ -38,6 +38,21 @@
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': false
+          'Custom.Template:Content.Gallery': true
+          'Custom.Template:Content.Teaser': true
+          'Custom.Template:Content.Title': true
+          'Custom.Template:Content.Text': true
+          'Custom.Template:Content.Columns.Two': true
+          'Custom.Template:Content.Columns.Three': true
+          'Custom.Template:Content.Columns.Four': true
+          'Custom.Template:Content.News.Latest': true
+          'Custom.Template:Content.News.List': true
+          'Neos.NodeTypes.ContentReferences:ContentReferences': true
+          'Neos.NodeTypes.Navigation:Navigation': false
+          'Neos.NodeTypes.AssetList:AssetList': false
 
   properties:
     uriPathSegment:

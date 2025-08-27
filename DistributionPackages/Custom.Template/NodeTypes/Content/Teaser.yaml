@@ -24,9 +24,11 @@ Custom.Template:Content.Teaser:
           editorOptions:
             formatting:
               p: false
-              h1: true
+              h1: false
               h2: true
               h3: true
+              h4: true
+              h5: true
               removeFormat: true
               a: true
     image:

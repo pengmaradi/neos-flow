@@ -13,14 +13,6 @@
           label: 'Settings'
 
   properties:
-#    showPages:
-#      type: boolean
-#      ui:
-#        label: 'Show pagination'
-#        reloadIfChanged: true
-#        inspector:
-#          group: settings
-#          position: 1
 
     title:
       defaultValue: 'News'
@@ -48,10 +40,9 @@
         inspector:
           group: settings
           editorOptions:
-            nodeTypes: [ 'Xp.News:Tag.Category' ]
+            nodeTypes: [ 'Custom.Template:Tag.Category' ]
             placeholder: 'Kategorie(n) auswählen'
-            threshold: 1
-            startingPoint: /sites
+
 
     tags:
       type: references
@@ -61,10 +52,9 @@
         inspector:
           group: settings
           editorOptions:
-            nodeTypes: [ 'Xp.News:Tag.Tag' ]
+            nodeTypes: [ 'Custom.Template:Tag.Tag' ]
             placeholder: 'Tag(s) auswählen'
-            threshold: 1
-            startingPoint: /sites
+
 
     displaymode:
       type: string
@@ -90,7 +80,7 @@
       type: string
       defaultValue: 'alle News anzeigen'
       ui:
-        label: 'Link zur alle News'
+        label: 'text of Link'
         inspector:
           group: settings
           position: 3
@@ -99,6 +89,7 @@
     link:
       type: string
       ui:
+        label: 'the news list'
         reloadIfChanged: true
         inspector:
           group: settings
