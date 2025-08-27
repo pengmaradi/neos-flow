@@ -19,6 +19,7 @@ final class ArgumentHelper implements ProtectedContextAwareInterface
     {
         $this->request = ServerRequest::fromGlobals();
     }
+
     public function get(string $name): int
     {
         $path = $this->request?->getUri()?->getPath();
