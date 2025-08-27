@@ -47,41 +47,45 @@ prototype(Custom.Template:Component.Template.News) < prototype(Neos.Fusion:Compo
 
     # Template
   renderer = afx`
-        <header class="header z-10 sticky top-0 bg-white shadow-black">
-            <div class="container">
-                <div class="flex justify-between self-center my-auto w-full">
-                    <div class="logo h-5 w-5" @if={props.logo}>
-                        <Neos.Neos:NodeLink node={q(site).get(0)} class="h-5 w-5 inline-block">{props.logo}</Neos.Neos:NodeLink>
-                    </div>
-                    <nav class="flex items-center self-center max-w-screen-lg">{props.menu}</nav>
-                </div>
+		<div class="container mx-auto">
+            <div class="headerImage flex items-center justify-center bg-contain bg-fixed bg-top" data-aos="fade-up" data-aos-duration="1000" @if={props.headerImage} style={'background-image: url(' +  props.headerImage + ');'}>
+                <img class="w-full invisible" src={props.headerImage} />
             </div>
-        </header>
-		<main class="container mx-auto min-h-[77vh]">
-            <Neos.Neos:ImageTag
-                preset="newsDetailThumbnail"
-                asset={q(documentNode).property('image')}
-                alt={props.title}
-            />
-			<h1 @if={props.title} class="my-5 text-2xl text-sky-500">{props.title}</h1>
+            <header class="header z-10 sticky top-0 bg-white shadow-black">
+                <div class="container">
+                    <div class="flex justify-between self-center my-auto w-full">
+                        <div class="logo h-5 w-5" @if={props.logo}>
+                            <Neos.Neos:NodeLink node={q(site).get(0)} class="h-5 w-5 inline-block">{props.logo}</Neos.Neos:NodeLink>
+                        </div>
+                        <nav class="flex items-center self-center max-w-screen-lg">{props.menu}</nav>
+                    </div>
+                </div>
+            </header>
+            <main class="min-h-[77vh]">
+                <!--
+                <Neos.Neos:ImageTag preset="newsDetailThumbnail" asset={q(documentNode).property('image')} alt={props.title} />
+                -->
+                <h1 @if={props.title} class="my-5 text-2xl text-sky-500">{props.title}</h1>
+    
+                <a href={props.url} class="text-blue-300 relative mb-5 inline-block" target="_blank">{props.source_name}</a>
+                <p @if={props.date} class="text-sm mb-5">{props.date}</p>
+                <div class="description indent-8">{props.description}</div>
+                <div class="teaser">{props.teaser}</div>
+    
+                <ul class="category mt-10 text-xs" @if={props.categories}>
+                    <Neos.Fusion:Loop items={props.categories} itemName="category" iterationName="iterator">
+                        <li class={'category__' + iterator.index}>cat: {category.properties.title}</li>
+                    </Neos.Fusion:Loop>
+                </ul>
+                <ul class="tag mt-10 text-xs" @if={props.tags}>
+                    <Neos.Fusion:Loop items={props.tags} itemName="tag" iterationName="iterator">
+                        <li class={'tag__' + iterator.index}>tag: {tag.properties.title}</li>
+                    </Neos.Fusion:Loop>
+                </ul>
+                {props.content}
+            </main>
 
-            <a href={props.url} class="text-blue-300 relative mb-5 inline-block" target="_blank">{props.source_name}</a>
-            <p @if={props.date} class="text-sm mb-5">{props.date}</p>
-            <div class="description indent-8">{props.description}</div>
-            <div class="teaser">{props.teaser}</div>
-
-			<ul class="category mt-10 text-xs" @if={props.categories}>
-				<Neos.Fusion:Loop items={props.categories} itemName="category" iterationName="iterator">
-					<li class={'category__' + iterator.index}>cat: {category.properties.title}</li>
-				</Neos.Fusion:Loop>
-			</ul>
-			<ul class="tag mt-10 text-xs" @if={props.tags}>
-				<Neos.Fusion:Loop items={props.tags} itemName="tag" iterationName="iterator">
-					<li class={'tag__' + iterator.index}>tag: {tag.properties.title}</li>
-				</Neos.Fusion:Loop>
-			</ul>
-			{props.content}
-		</main>
+		</div>
 		
         <footer class="container mx-auto mt-30 p-5 bg-gray-600">
             {props.footer}

@@ -27,9 +27,9 @@ prototype(Custom.Template:Component.News) < prototype(Custom.Template:Component.
                 </div>
             </header>
             <main class="container mx-auto">
-                <div class="gap-4 grid grid-cols-3 lg:grid-cols-4">
+                <div class="gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     <Neos.Fusion:Loop items={props.news} itemName="news" iterationName="iterator">
-                        <div class={'news relative p-4 border rounded bg-sky-500/50 news_' + iterator.index}>
+                        <div class={'news relative p-4 border border-transparent  rounded-xl bg-sky-500/20 hover:bg-sky-500/50 shadow-xl/30 animate news_' + iterator.index}>
                             <h2 class="text-red-900 text-xl mb-5">{String.crop(news.properties.title, 15, '...')}</h2>
                             <Neos.Neos:ImageTag
                                 @if={news.properties.image}

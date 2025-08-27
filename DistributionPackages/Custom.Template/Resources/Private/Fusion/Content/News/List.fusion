@@ -33,7 +33,7 @@ prototype(Custom.Template:Content.News.List) < prototype(Flowpack.Listable:Pagin
 
     prototype(Flowpack.Listable:Collection) {
         @context.title = ${q(documentNode).property('title')}
-        @process.tmpl = ${'<div class="article-list"><div class="listable grid grid-cols-3 gap-3">' + value + '</div></div>'}
+        @process.tmpl = ${'<div class="article-list"><div class="listable grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">' + value + '</div></div>'}
 
         itemRenderer.@process.tmpl = ${value}
         itemName = 'node'

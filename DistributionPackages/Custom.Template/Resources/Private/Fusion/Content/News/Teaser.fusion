@@ -17,17 +17,14 @@ prototype(Custom.Template:Content.News.Teaser) < prototype(Neos.Neos:ContentComp
 
     renderer = afx`
         <div class={props.itemClass}>
-			<div class="news-container relative flex flex-col justify-center items-center text-white hover:text-black rounded-lg shadow-md hover:shadow-2xl cursor-pointer bg-center relative"
+			<div class="news-container relative flex flex-col justify-center items-center text-white hover:text-black rounded-lg shadow-2xl hover:shadow-xl/30 cursor-pointer bg-center group relative"
                  style={'background: url(' + props.imageUri +  ');background-size: cover;height:300px;background-position: center;'}>
-				<h2>{props.title}</h2>
+				<h3 class="p-2 w-full text-sky-500 group-hover:text-white group-hover:shadow-lg/30 group-hover:bg-gray-400/50 animate">{String.crop(props.title, 10, '...')}</h3>
 				<p>{props.date}</p>
-				<div class="teaser">
-					{props.teaser}
-				</div>
 				<Neos.Neos:NodeLink
                     node={node}
                     attributes.title={props.title}
-                    attributes.class="unclickable embed-responsive embed-responsive-3by2 card-img-top absolute inset-0">
+                    attributes.class="absolute inset-0">
 				</Neos.Neos:NodeLink>
 			</div>
         </div>
