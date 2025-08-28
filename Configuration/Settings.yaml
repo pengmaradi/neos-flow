@@ -4,3 +4,53 @@ Neos:
     mvc:
       routes:
         Neos.Flow: true
+
+  ContentRepositoryRegistry:
+      presets:
+        'default':
+          contentGraphProjection:
+            catchUpHooks:
+              'Neos.ContentRepository.Search:RealtimeIndex':
+                factoryObjectName: \Neos\ContentRepository\Search\CatchUpHook\RealTimeIndexCatchUpHookFactory
+
+
+Flowpack:
+  ElasticSearch:
+    clients:
+      default:
+        - host: elasticsearch
+          port: 9200
+    index:
+      name: 'neoscr'
+      settings:
+        number_of_shards: 1
+        number_of_replicas: 0
+        analysis:
+          analyzer:
+            default:
+              type: standard
+            html_strip_analyzer:
+              type: custom
+              tokenizer: standard
+              filter: [lowercase, asciifolding]
+              char_filter: [html_strip]
+
+    # Mapping defaults for nodes
+    mapping:
+      properties:
+        title:
+          type: text
+          analyzer: html_strip_analyzer
+        text:
+          type: text
+          analyzer: html_strip_analyzer
+        nodeType:
+          type: keyword
+        path:
+          type: keyword
+        parentPath:
+          type: keyword
+        hidden:
+          type: boolean
+        workspace:
+          type: keyword
