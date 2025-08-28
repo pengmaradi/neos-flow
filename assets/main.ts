@@ -1,6 +1,7 @@
 import './style.pcss'
 
 import Alpine from 'alpinejs'
+import DarkMode from './JavaScript/DarkMode'
 
 declare global {
   interface Window {
@@ -10,7 +11,8 @@ declare global {
 
 const initializeComponents = () => {
   // call all components here!!!
-  console.log(`start components 😂...`);
+  console.log(`start components 😂...`)
+  DarkMode()
   
 }
 
