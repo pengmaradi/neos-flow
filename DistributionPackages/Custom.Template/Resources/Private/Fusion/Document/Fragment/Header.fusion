@@ -1,0 +1,14 @@
+
+prototype(Custom.Template:Document.Fragment.Header) < prototype(Neos.Fusion:Component) {
+    renderer = afx`
+        <header class="header z-10 sticky top-0 bg-white shadow-black dark:bg-gray-900 dark:shadow-white">
+            <div class="container">
+                <div class="flex justify-between self-center my-auto w-full">
+                        {props.logoLink}
+                        <nav class="flex items-center self-center max-w-screen-lg">{props.menu}</nav>
+                        {props.language}
+                </div>
+            </div>
+      </header>
+    `
+}

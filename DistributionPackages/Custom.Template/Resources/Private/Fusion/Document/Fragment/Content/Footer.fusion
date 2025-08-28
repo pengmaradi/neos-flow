@@ -1,5 +1,0 @@
-prototype(Custom.Template:Document.Fragment.Content.Footer) < prototype(Neos.Fusion:Component) {
-    renderer = Neos.Neos:ContentCollection {
-        nodePath = 'footer'
-    }
-}

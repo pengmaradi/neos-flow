@@ -3,36 +3,16 @@ prototype(Custom.Template:Component.Template.Team) < prototype(Custom.Template:C
     categories = null
 
     renderer = afx`
-		<div {...props.divWrapper}>
-			<div class="headerImage flex items-center justify-center bg-contain bg-fixed bg-top" data-aos="fade-up" data-aos-duration="1000" @if={props.headerImage} style={'background-image: url(' +  props.headerImage + ');'}>
-				<img class="w-full invisible" src={props.headerImage} />
-			</div>
-			<header class="header z-10 sticky top-0 bg-white shadow-black">
-				{props.header}
-				<div class="container">
-					<div class="flex justify-between self-center my-auto w-full">
-						<div class="logo" @if={props.logo}>
-							<Neos.Neos:NodeLink node={q(site).get(0)} class="h-5 w-5 inline-block">{props.logo}</Neos.Neos:NodeLink>
-						</div>
-						<nav class="flex items-center self-center max-w-screen-lg">{props.menu}</nav>
-						{props.language}
-					</div>
-				</div>
-			</header>
+		 <Custom.Template:Document.Fragment.DarkMode />
+		<Custom.Template:Document.Fragment.QuickTotop />
+		<div class="container mx-auto">
+			<Custom.Template:Document.Fragment.HeaderImage @if={props.headerImage} {...props} />
+			<Custom.Template:Document.Fragment.Header {...props} />
 			<main>
-<!--                <div class="container" @if={props.categories}>-->
-<!--                    <form action="/">-->
-<!--                        <select name="cat">-->
-<!--                            <option value="">Select one</option>-->
-<!--							<Neos.Fusion:Loop items={props.categories} itemName="category" iterationName="iterator">-->
-<!--								<option class={category.identifier + ' category__' + iterator.index} value={category.properties.title}>{category.properties.title}</option>-->
-<!--							</Neos.Fusion:Loop>-->
-<!--                        </select>-->
-<!--                    </form>-->
-<!--                </div>-->
+				<h1 class="text-sky-500 text-3xl my-15">{props.title}</h1>
 				{props.content}
 			</main>
-			<footer class="container mx-auto mt-30 p-5 bg-gray-600">{props.footer}</footer>
+			<Custom.Template:Document.Fragment.Footer />
 		</div>
 
     `

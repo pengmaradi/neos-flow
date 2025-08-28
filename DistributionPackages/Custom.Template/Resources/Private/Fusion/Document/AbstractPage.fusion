@@ -1,10 +1,28 @@
 prototype(Custom.Template:Document.AbstractPage) < prototype(Neos.Neos:Page) {
+    @context {
+        title = ${q(node).property('title')}
+        // get custom settings {settings.logo}, color, linkColor, animation
+        settings = ${Configuration.setting('Custom.Template.settings.themes.default')}
+    }
+
+    # alpine js for dark mode
+    htmlTag {
+        attributes {
+        x-data {
+            data = "{ bodyClass: '' }"
+        }
+        ':class' {
+            alpine = "[bodyClass, (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) ? 'dark' : '']"
+        }
+        }
+    }
+
     head {
         headTags = Custom.Template:Document.Fragment.MetaData
 
         titleTag = Neos.Fusion:Tag {
             tagName = 'title'
-            content = ${q(node).property('title')}
+            content = ${title}
         }
 
         # Add stylesheets to your page
@@ -27,13 +45,33 @@ prototype(Custom.Template:Document.AbstractPage) < prototype(Neos.Neos:Page) {
             width = 2560
         }
 
-        title = ${q(documentNode).property('title')}
+        title = ${title}
+        logo = ${settings.logo}
 
-        logo = ${Configuration.setting('Custom.Template.settings.themes.default.logo')}
+        logoLink = Neos.Fusion:Tag {
+            attributes {
+                class {
+                    name = 'logo'
+                    width = 'h-8 w-8'
+                }
+            }
+            content = Neos.Neos:NodeLink {
+                node = ${q(site).get(0)}
+                attributes {
+                    class = "h-8 w-8 inline-block text-sky-500 hover:text-red-500"
+                    title = ${title}
+                }
+                content = ${settings.logo}
+            }
+        }
+
+        // darkMode = Custom.Template:Document.Fragment.DarkMode
+        // quickTotop = Custom.Template:Document.Fragment.QuickTotop
+        // header = Custom.Template:Document.Fragment.Header
+        // footer = Custom.Template:Document.Fragment.Footer
 
         menu = Custom.Template:Document.Fragment.Menu.Main
         language = Custom.Template:Document.Fragment.Menu.Language
-        footer = Custom.Template:Document.Fragment.Footer
 
         content = Neos.Fusion:Component {
             main = Neos.Neos:ContentCollection {

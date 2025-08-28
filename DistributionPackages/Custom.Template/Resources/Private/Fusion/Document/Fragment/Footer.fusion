@@ -1,6 +1,17 @@
 prototype(Custom.Template:Document.Fragment.Footer) < prototype(Neos.Fusion:Component) {
+    
+    
     renderer = Neos.Neos:ContentCollection {
         @context.node = ${q(site).children('footer').get(0)}
-        attributes.class = 'footer-content'
+
+        tagName = 'footer'
+        attributes = Neos.Fusion:DataStructure {
+            class {
+                name = 'footerr-content'
+                width = 'container mx-auto'
+                color = 'bg-gray-600'
+                distance = 'mt-30 p-5'
+            }
+        }
     }
 }

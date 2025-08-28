@@ -1,0 +1,19 @@
+
+prototype(Custom.Template:Document.Fragment.HeaderImage) < prototype(Neos.Fusion:Component) {
+    
+    attributes = Neos.Fusion:DataStructure {
+        class {
+            name = 'headerImage'
+            position = ${props.position || 'relative'}
+            background = 'bg-cover bg-fixed bg-center'
+            // bgurl = ${'bg-[url(' +  props.headerImage + ')]'} // works not
+        }
+        style = ${'background-image: url(' +  props.headerImage + ');'}
+    }
+
+    renderer = afx`
+        <div {...props.attributes}>
+            <img class="w-full invisible" src={props.headerImage} />
+        </div>
+    `
+}
