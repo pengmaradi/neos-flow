@@ -13,6 +13,7 @@
 
   properties:
     limit:
+      type: integer
       defaultValue: 4
       validation:
         'Neos.Neos/Validation/NotEmptyValidator': []

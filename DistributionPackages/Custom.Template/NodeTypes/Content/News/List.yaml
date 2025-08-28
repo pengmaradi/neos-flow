@@ -18,7 +18,7 @@
       defaultValue: 'News'
 
     limit:
-      type: string
+      type: integer
       defaultValue: 0
       ui:
         label: 'Max. Anzahl Artikel (0 = alle)'
