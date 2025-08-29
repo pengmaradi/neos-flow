@@ -11,9 +11,9 @@ Neos:
               segments:
                 - dimensionIdentifier: language
                   dimensionValueMapping:
+                    zh: ''
                     en: en
                     de: de
-                    zh: zh
 
   ContentRepositoryRegistry:
     contentRepositories:
@@ -22,10 +22,11 @@ Neos:
           language:
             label: 'language'
             icon: language
-            values:
-              'en':
-                label: English (US)
-              'de':
-                label: Deutsch
+            values: 
+            # the order @see in menu
               'zh': 
                 label: 中文
+              'de':
+                label: Deutsch
+              'en':
+                label: English

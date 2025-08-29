@@ -1,14 +1,15 @@
-prototype(Custom.Template:Document.Fragment.Menu.Main) < prototype(Neos.Neos:Menu) {
-
-    maximumLevels = 3
-
-    // set News not in menu
-    filter = 'Neos.Neos:Document,!Custom.Template:Document.News'
+prototype(Custom.Template:Document.Fragment.Menu.Main) < prototype(Neos.Neos:MenuItems) {
 
     // default set li normal, current class
     calculateItemStates = true
+    maximumLevels = 3
+    
+    // set News not in menu
+    filter = 'Neos.Neos:Document,!Custom.Template:Document.News'
 
-    attributes = Neos.Fusion:DataStructure {
-        class = "flex h-full space-x-8"
-    }
+    // works only with Neos.Neos:Menu
+    // attributes = Neos.Fusion:DataStructure {
+    //     class = "flex h-full space-x-8"
+    // }
 }
+

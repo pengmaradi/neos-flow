@@ -19,3 +19,7 @@
 |@children|指定接收子内容的属性名称|自定义子元素的注入位置 `<div @children="bodyContent">...</div>`|
 
 这些元属性使得 Neos Fusion 非常强大和灵活，能够处理复杂的渲染逻辑、性能优化和代码组织需求。
+
+### Arbitrary Value Syntax
+
+`lg:[&:hover>ul]:block [&.current>a]:text-red-500 [&.active>a]:text-red-500`
