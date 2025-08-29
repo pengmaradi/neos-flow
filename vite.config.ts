@@ -13,11 +13,11 @@ const VITE_ENTRYPOINTS = [
     resolve(__dirname, 'assets/main.ts'),
     resolve(__dirname, 'assets/Styles/debug.pcss'),
 ]
-const plugins = [tailwindcss()]
 
-export default defineConfig(({command, mode}) => {
-  if (command === 'build' && mode === 'production') {
-    plugins.push(
+export default defineConfig({
+    base: '/',
+    plugins: [
+      tailwindcss(),
       viteStaticCopy({
         targets: [
           {
@@ -31,12 +31,7 @@ export default defineConfig(({command, mode}) => {
         silent: false,
         structured: false,
       }),
-    )    
-  }
-
-  return {
-    base: '/',
-    plugins: plugins,
+    ],
 
     server: {
       host: '0.0.0.0',
@@ -49,6 +44,17 @@ export default defineConfig(({command, mode}) => {
       manifest: true,
       outDir: 'DistributionPackages/Custom.Template/Resources/Public',
       emptyOutDir: true,
+      watch: {
+        exclude: [
+          'bin/**',
+          'Build/**',
+          'Configuration/**',
+          'Data/**',
+          'Packages/**',
+          'Web/**',
+          'DistributionPackages/**/Resources/Public'
+        ]
+      },
       sourcemap: true,
       rollupOptions: {
         input: VITE_ENTRYPOINTS.map((entry) => resolve(rootPath, entry)),
@@ -60,5 +66,4 @@ export default defineConfig(({command, mode}) => {
         }
       },
     }
-  }
 })
