@@ -33,8 +33,6 @@ const DarkMode = () => {
 
     toggleDarkmode() {
       this.darkmode = !this.darkmode
-      console.log('toggle...');
-      
     },
   }))
 }

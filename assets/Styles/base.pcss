@@ -50,19 +50,22 @@ h3 {
     }
 }
 
-
-/* a[href^="tel:"] {
+/**
+ * only on neos cms!!!
+ * url('../Custom.Template/pathTo.img')
+ */
+a[href^="tel:"] {
     @apply relative pl-7.5;
     &:before {
-        @apply absolute left-0 top-70/100 w-5 -translate-y-1/2 content-[url('/Images/tel.svg')];
+        @apply absolute left-0 top-0 w-5 h-5 content-[url('../Custom.Template/Images/phone.svg')];
     }
 }
 
 a[href^="mailto:"] {
     @apply relative pl-7.5;
     &:before {
-        @apply absolute left-0 top-70/100 w-7.5 -translate-y-1/2 content-[url('/Images/mail.svg')];
+        @apply absolute left-0 top-0 w-7.5 h-10 content-[url('../Custom.Template/Images/mail.svg')];
     }
-} */
+}
 
 

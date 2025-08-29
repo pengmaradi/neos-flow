@@ -1,0 +1,21 @@
+'Custom.Template:Content.Circle':
+  superTypes:
+    'Custom.Template:Mixin.Content.Section': true
+  ui:
+    icon: icon-picture
+    label: Circle
+    group: general
+    inspector:
+      groups:
+        image:
+          label: Image
+          icon: 'icon-files-o'
+          position: 30
+  properties:
+    images:
+      type: array<Neos\Media\Domain\Model\Asset>
+      ui:
+        label: pictures
+        inspector:
+          group: image
+        reloadIfChanged: true

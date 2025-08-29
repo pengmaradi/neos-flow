@@ -1,0 +1,24 @@
+prototype(Custom.Template:Content.Circle) < prototype(Neos.Neos:ContentComponent) {
+    
+    imageAssets = Neos.Fusion:Loop {
+        items = ${q(node).property('images')}
+        itemName = 'item'
+        itemRenderer = Neos.Fusion:Join {
+            first = ""
+            item = Neos.Fusion:ResourceUri {
+                resource = ${item.resource}
+            }
+            last = ","
+            @glue = ""
+        }
+    }
+
+
+    renderer = afx`
+        <div x-data="dialRotation()"
+        data-assets={props.imageAssets}
+        class="viewport-box w-full h-full flex justify-center items-center mt-20">
+            <div x-ref="mainCircle" class="main-circle w-100 h-100 border rounded-full"></div>
+        </div>
+    `
+}

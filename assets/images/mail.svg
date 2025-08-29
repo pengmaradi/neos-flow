@@ -1,8 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+<svg xmlns="http://www.w3.org/2000/svg" 
+version="1.1" 
+width="25" 
+height="25" 
+viewBox="0 0 256 256"
+fill="#ffffff"
+xml:space="preserve">
 	<desc>Created with Fabric.js 1.7.22</desc>
-	<style type="text/css">
-		.body{fill:white;}
-	</style>
 	<g transform="translate(128 128) scale(0.72 0.72)">
 		<g transform="translate(-175.05 -175.05000000000004) scale(3.89 3.89)">
 			<path class="body" d="M 75.546 78.738 H 14.455 C 6.484 78.738 0 72.254 0 64.283 V 25.716 c 0 -7.97 6.485 -14.455 14.455 -14.455 h 61.091 c 7.97 0 14.454 6.485 14.454 14.455 v 38.567 C 90 72.254 83.516 78.738 75.546 78.738 z M 14.455 15.488 c -5.64 0 -10.228 4.588 -10.228 10.228 v 38.567 c 0 5.64 4.588 10.229 10.228 10.229 h 61.091 c 5.64 0 10.228 -4.589 10.228 -10.229 V 25.716 c 0 -5.64 -4.588 -10.228 -10.228 -10.228 H 14.455 z" transform="matrix(1 0 0 1 0 0)" stroke-linecap="round" />

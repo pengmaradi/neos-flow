@@ -53,6 +53,7 @@
           'Neos.NodeTypes.ContentReferences:ContentReferences': true
           'Neos.NodeTypes.Navigation:Navigation': false
           'Neos.NodeTypes.AssetList:AssetList': false
+          'Custom.Template:Content.Circle': true
 
   properties:
     uriPathSegment:
