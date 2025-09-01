@@ -31,15 +31,10 @@ use Neos\Media\Domain\Model\Image;
 use Neos\Media\Domain\Model\Asset;
 use Neos\Media\Domain\Service\AssetService;
 
-/**
- * 
- * run ddev flow news:newsimport --dryRun=true
- */
 #[Flow\Scope("singleton")]
 final class NewsCommandController extends CommandController
 {
-
-    const NEWS_API = 'https://newsapi.org/v2/everything?q=China&language=zh&sortBy=publishedAt&apiKey=';
+    const NEWS_API = 'https://newsapi.org/v2/everything?q=%s&language=%s&sortBy=publishedAt&apiKey=%s';
     
     protected Client $client;
 
@@ -58,19 +53,17 @@ final class NewsCommandController extends CommandController
     #[Flow\Inject]
     protected ResourceRepository $resourceRepository;
 
-    public function newsImportCommand(bool $dryRun = false): void
+    /**
+     * 
+     * run `ddev flow news:newsimport Switzerland de --dryRun=true` `ddev flow news:newsimport China zh`
+     * 
+     */
+    public function newsImportCommand(string $country, string $language, bool $dryRun = false): void
     {
         if ($dryRun) $this->outputLine('<info>DRY RUN MODE - No nodes will be created</info>');
 
-        // 1. get .env news api key
-        $key = $_ENV['NEWS_API'];
-        if (!strlen($key)) {
-            throw new \Exception('未找到news API key');
-        }
-        
-
         try {
-            $this->createNewsNode($dryRun);
+            $this->createNewsNode($country, $language, $dryRun);
         } catch (\Exception $e) {
             $this->outputLine('<error>Import failed: ' . $e->getMessage() . '</error>');
             $this->outputLine('<error>Stack trace: ' . $e->getTraceAsString() . '</error>');
@@ -129,7 +122,7 @@ final class NewsCommandController extends CommandController
         throw new \Exception('未找到站点节点');
     }
 
-    private function createNewsNode($dryRun = false): bool 
+    private function createNewsNode(string $country, string $language, bool $dryRun = false): bool 
     {
 
         $contentRepositoryId = ContentRepositoryId::fromString('default');
@@ -138,28 +131,33 @@ final class NewsCommandController extends CommandController
         // 2. 获取 live workspace
         $workspaceName = WorkspaceName::forLive();
 
-        $dimensionSpacePoint = DimensionSpacePoint::fromArray(['language' => 'en']);
+        $dimensionSpacePoint = DimensionSpacePoint::fromArray(['language' => $language]);
         $originDimensionSpacePoint = OriginDimensionSpacePoint::fromDimensionSpacePoint($dimensionSpacePoint);
         $newsNodeName = NodeTypeName::fromString('Custom.Template:Document.News');
 
         $imported = 0;
-        $newsData = $this->fetchNews();
+        $newsData = $this->fetchNews($country, $language);
 
-        $newsListNode = $this->getChildNodeByName();        
+        $newsListNode = $this->getChildNodeByName();
 
-        $this->removeOldNews($newsListNode, $contentRepository);
+        // $this->removeOldNews($newsListNode, $contentRepository, $language);
 
         if ($newsData['totalResults']) {
                 foreach ($newsData['articles'] as $event) {
                     $nodeAggregateId = NodeAggregateId::create();
-                    $uriName = NodeName::fromString($this->generateNodeName($event['title']));
+                    $title = substr($event['title'], 0, 50);
+                    if ($language == 'zh') {
+                        $title = $event['title'];
+                    }
+                    $uriName = NodeName::fromString($this->generateNodeName($title));
+
                     $propertyValues = PropertyValuesToWrite::fromArray([
                         'source_name' => $event['source']['name'],
                         'author' => $event['author'],
-                        'title' => $event['title'],
+                        'title' => $title,
                         'description' => $event['description'],
                         'url' => $event['url'],
-                        'image' => $event['urlToImage'] ? $this->downloadAndCreateImageAsset($event['urlToImage'], $event['title']) : null,
+                        'image' => $event['urlToImage'] ? $this->downloadAndCreateImageAsset($event['urlToImage'], $title) : null,
                         'date' => new \DateTimeImmutable($event['publishedAt']) ?? new \DateTimeImmutable(),
                         'uriPathSegment' => (string)$uriName ?? uniqid('news-'),
                     ]);
@@ -180,7 +178,7 @@ final class NewsCommandController extends CommandController
                     if (!$dryRun) {
                         $contentRepository->handle($command);
                         $this->persistenceManager->persistAll();
-                        $this->outputLine(sprintf('<success>imported %d news: %s</success>', $imported, $event['title']));
+                        $this->outputLine(sprintf('<success>imported %d news: %s</success>', $imported, $title));
                     } else {
                         $this->outputLine(sprintf('<info>Would import %d news: %s</info>', $imported, $uriName));
                     }
@@ -304,26 +302,6 @@ final class NewsCommandController extends CommandController
         return NodeAggregateId::fromString($identifier);
     }
 
-    private function sanitizeFilename(string $filename): string
-    {
-        // Convert to ASCII
-        $filename = $this->transliterateChinese($filename);
-        
-        // Remove or replace invalid characters
-        $filename = preg_replace('/[^a-zA-Z0-9\-_\.]/', '-', $filename);
-        $filename = preg_replace('/-+/', '-', $filename);
-        $filename = trim($filename, '-');
-        
-        // Limit length
-        $filename = substr($filename, 0, 100);
-        
-        if (empty($filename)) {
-            $filename = 'news-image-' . date('Y-m-d-H-i-s');
-        }
-        
-        return $filename;
-    }
-
     private function getExtensionFromContentType(string $contentType): string
     {
         // Clean content type (remove charset etc.)
@@ -354,7 +332,7 @@ final class NewsCommandController extends CommandController
         }
     }
 
-    private function removeOldNews($newsListNode, $contentRepository)
+    private function removeOldNews($newsListNode, $contentRepository, string $language)
     {
         $newsNodeName = NodeTypeName::fromString('Custom.Template:Document.News');
         $workspaceName = WorkspaceName::forLive();
@@ -366,7 +344,7 @@ final class NewsCommandController extends CommandController
                 $removeCommand = RemoveNodeAggregate::create(
                     $workspaceName,
                     $newsNode->nodeAggregateId,
-                    DimensionSpacePoint::fromArray(['language' => 'en']),
+                    DimensionSpacePoint::fromArray(['language' => $language]),
                     NodeVariantSelectionStrategy::STRATEGY_ALL_VARIANTS
                 );
                 $contentRepository->handle($removeCommand);
@@ -376,7 +354,7 @@ final class NewsCommandController extends CommandController
         }
     }
 
-    private function fetchNews(): mixed
+    private function fetchNews(string $country, string $language): mixed
     {
         $this->client = new Client([
             'timeout' => 0,
@@ -393,15 +371,17 @@ final class NewsCommandController extends CommandController
             throw new \Exception('未找到news API key');
         }
 
-        if (!filter_var(self::NEWS_API . $key, FILTER_SANITIZE_URL)) {
+        $apiUrl = sprintf(self::NEWS_API, $country, $language, $key);
+
+        if (!filter_var($apiUrl, FILTER_SANITIZE_URL)) {
             $this->outputLine("<error>Invalid news API</error>");
             die;
         }
 
-        $response = $this->client->get(self::NEWS_API . $key);
+        $response = $this->client->get($apiUrl);
 
         if ($response->getStatusCode() !== 200) {
-            throw new \InvalidArgumentException('Invalid XML URL' . self::NEWS_API . $key, 1754634271);
+            throw new \InvalidArgumentException('Invalid XML URL' . $apiUrl, 1754634271);
         }
 
         $content = $response->getBody()->getContents();
