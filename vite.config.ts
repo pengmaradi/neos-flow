@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig, UserConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 import { resolve, dirname } from 'path'
 import { fileURLToPath } from 'url'
@@ -14,56 +14,64 @@ const VITE_ENTRYPOINTS = [
     resolve(__dirname, 'assets/Styles/debug.pcss'),
 ]
 
-export default defineConfig({
-    base: '/',
-    plugins: [
-      tailwindcss(),
-      viteStaticCopy({
-        targets: [
-          {
-            src: resolve(rootPath, 'assets/Images'),
-            dest: '',
-          }
-        ],
-        watch: {
-          reloadPageOnChange: false
-        },
-        silent: false,
-        structured: false,
-      }),
-    ],
+export default defineConfig((config: UserConfig) => {
 
-    server: {
-      host: '0.0.0.0',
-      port: 8989,
-      origin: 'http://localhost:8989',
-      open: false,
-    },
+  return {
+     base: '/',
+     plugins: [
+       tailwindcss(),
+       viteStaticCopy({
+         targets: [
+           {
+             src: resolve(rootPath, 'assets/Images'),
+             dest: '',
+           }
+         ],
+         watch: {
+           reloadPageOnChange: false
+         },
+         silent: false,
+         structured: false,
+       }),
+     ],
+ 
+     server: {
+       host: '0.0.0.0',
+       port: 8989,
+       origin: 'http://localhost:8989',
+       open: false,
+       hmr: {
+        host: 'localhost'
+       }
+     },
+ 
+     build: {
+       manifest: true,
+       outDir: 'DistributionPackages/Custom.Template/Resources/Public',
+       emptyOutDir: true,
+       
+       watch: (config.mode == 'development') ? {
+         exclude: [
+           'bin/**',
+           'Build/**',
+           'Configuration/**',
+           'Data/**',
+           'Packages/**',
+           'Web/**',
+           'DistributionPackages/**/Resources/Public'
+         ]
+       } : null,
 
-    build: {
-      manifest: true,
-      outDir: 'DistributionPackages/Custom.Template/Resources/Public',
-      emptyOutDir: true,
-      watch: {
-        exclude: [
-          'bin/**',
-          'Build/**',
-          'Configuration/**',
-          'Data/**',
-          'Packages/**',
-          'Web/**',
-          'DistributionPackages/**/Resources/Public'
-        ]
-      },
-      sourcemap: true,
-      rollupOptions: {
-        input: VITE_ENTRYPOINTS.map((entry) => resolve(rootPath, entry)),
-
-        output: {
-          entryFileNames: '[name].js',
-          chunkFileNames: '[name].js',
-          assetFileNames: '[name].css',
-        }
-      },
-    }
+       sourcemap: true,
+       rollupOptions: {
+         input: VITE_ENTRYPOINTS.map((entry) => resolve(rootPath, entry)),
+ 
+         output: {
+           entryFileNames: '[name].js',
+           chunkFileNames: '[name].js',
+           assetFileNames: '[name].css',
+         }
+       },
+     }
+ }
 })
