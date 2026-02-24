@@ -4,14 +4,14 @@ prototype(Neos.Neos:ContentComponent) {
     anchor = ${q(node).property('anchor')}
     sectionNavigation = ${q(node).property('sectionNavigation')}
     sectionNavigationTitle = ${q(node).property('sectionNavigationTitle')}
-    sectionStyle = ${q(node).property('sectionStyle')}
+    sectionStyle = ${q(node).property('styleOption')}
     // type = ${node.nodeTypeName}
 
     sectionBackground = Neos.Fusion:Case {
         asset {
-            condition = ${q(node).property('sectionBackground')}
+            condition = ${q(node).property('backgroundOption')}
             renderer = Neos.Neos:ImageUri {
-                asset = ${q(node).property('sectionBackground')}
+                asset = ${q(node).property('backgroundOption')}
             }
         }
         dummy {

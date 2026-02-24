@@ -1,0 +1,55 @@
+prototype(Custom.Template:Search) < prototype(Neos.Fusion:Component) {
+    searchTerm = ${request.arguments.q || ''}
+    currentPage = ${documentNode}
+    searchPageNode = ${q(site).children('[uriPathSegment="search"]').get(0)}
+    itemsPerPage = 10
+
+    searchQuery = ${this.searchTerm ? Search.query(site).fulltext(this.searchTerm).nodeType('Neos.Neos:Document') : null}
+    searchResults = ${this.searchQuery ? this.searchQuery.execute() : []}
+    totalResults = ${this.searchQuery ? this.searchQuery.count() : 0}
+
+    actionUri = Neos.Neos:NodeUri {
+        node = ${q(site).children('[uriPathSegment="search"]').get(0)}
+    }
+
+    # Pagination calculation
+    totalPages = ${Math.ceil(this.totalResults / this.itemsPerPage)}
+    startIndex = ${(this.currentPage - 1) * this.itemsPerPage}
+    
+    # Paginated results
+    paginatedResults = Neos.Fusion:Loop {
+        collection = ${this.searchQuery ? this.searchQuery.execute() : []}
+        itemName = 'searchResult'
+        itemKey = 'searchResultIndex'
+        @process.slice = ${Array.slice(value, props.startIndex, props.itemsPerPage)}
+        itemRenderer = Neos.Neos:Content {
+            templatePath = 'resource://Custom.Template/Private/Templates/SearchResult.html'
+            node = ${item}
+        }
+    }
+    
+    renderer = afx`
+        <form class="search-form" method="get" action={props.actionUri}>
+            <div class="search-input-group flex justify-center items-center">
+                <input 
+                    type="search" 
+                    name="q" 
+                    value={props.searchTerm}
+                    placeholder="Search..."
+                    class="search-input p-2 border rounded"
+                    required
+                />
+                <button type="submit" class="search-button p-2.5 border rounded">
+                    <span class="sr-only">Search</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="M21 21l-4.35-4.35"></path>
+                    </svg>
+                </button>
+            </div>
+        </form>
+
+        
+
+    `
+}

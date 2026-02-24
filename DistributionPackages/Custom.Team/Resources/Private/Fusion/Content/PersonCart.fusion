@@ -1,3 +1,5 @@
+// TODO Neos.Neos-20251005080230 Line 57: You may need to rewrite "VARIABLE.identifier" to "VARIABLE.aggregateId". We did not auto-apply this migration because we cannot be sure whether the variable is a Node.
+// TODO Neos.Neos-20251005080230 Line 85: You may need to rewrite "VARIABLE.identifier" to "VARIABLE.aggregateId". We did not auto-apply this migration because we cannot be sure whether the variable is a Node.
 prototype(Custom.Team:Content.PersionCart) < prototype(Neos.Neos:ContentComponent) {
     photo1 = ${q(node).property('photo1')}
     photo2 = ${q(node).property('photo2')}
@@ -77,7 +79,7 @@ prototype(Custom.Team:Content.PersionCart) < prototype(Neos.Neos:ContentComponen
                     <p>{props.description}</p>
                 </div>
             </div>
-            <ul class="category" @if={props.categories && documentNode.context.inBackend}>
+            <ul class="category" @if={props.categories && renderingMode.isEdit}>
                 <li>分类 [backend only]</li>
                 <Neos.Fusion:Loop items={props.categories} itemName="category" iterationName="iterator">
                     <li data-identifier={category.identifier} class={'category category__' + iterator.index}>{category.properties.title}</li>

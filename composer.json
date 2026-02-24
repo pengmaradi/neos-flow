@@ -10,9 +10,9 @@
         }
     },
     "require": {
-        "neos/neos": "~9.0.0",
-        "neos/contentgraph-doctrinedbaladapter": "~9.0.0",
-        "neos/neos-ui": "~9.0.0",
+        "neos/neos": "~9.1.0",
+        "neos/contentgraph-doctrinedbaladapter": "~9.1.0",
+        "neos/neos-ui": "~9.1.0",
         "neos/seo": "~4.1",
         "neos/form": "^6.0",
         "neos/nodetypes": "^9.0",
@@ -32,7 +32,7 @@
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^9.0",
         "neos/neos-setup": "^4.0",
-        "neos/site-kickstarter": "~9.0.0"
+        "neos/site-kickstarter": "~9.1.0"
     },
     "repositories": {
         "distributionPackages": {

@@ -1,3 +1,4 @@
+// TODO Neos.Neos-20251005080230 Line 20: You may need to rewrite "VARIABLE.identifier" to "VARIABLE.aggregateId". We did not auto-apply this migration because we cannot be sure whether the variable is a Node.
 prototype(Custom.Team:Content.PersionSearch) < prototype(Neos.Neos:ContentComponent) {
     title = Neos.Neos:Editable {
         property = 'title'

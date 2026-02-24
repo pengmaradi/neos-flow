@@ -23,3 +23,26 @@
 ### Arbitrary Value Syntax
 
 `lg:[&:hover>ul]:block [&.current>a]:text-red-500 [&.active>a]:text-red-500`
+
+
+## 什么是SVG Path？
+### 移动命令 M x y - 移动到指定坐标
+### 直线命令
+
+```
+L x y - 绘制直线到指定坐标
+H x - 绘制水平线
+V y - 绘制垂直线
+```
+
+### 曲线命令
+
+```
+C x1 y1, x2 y2, x y - 三次贝塞尔曲线
+Q x1 y1, x y - 二次贝塞尔曲线
+```
+### 弧线命令
+
+`A rx ry x-axis-rotation large-arc-flag sweep-flag x y - 椭圆弧线`
+
+### 闭合命令 Z - 闭合路径

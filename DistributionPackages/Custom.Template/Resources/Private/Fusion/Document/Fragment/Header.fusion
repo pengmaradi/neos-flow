@@ -1,3 +1,7 @@
+// TODO Neos.Neos-20251005080230 Line 58: You very likely need to rewrite "VARIABLE.label" to "Neos.Node.label(VARIABLE)". We did not auto-apply this migration because we cannot be sure whether the variable is a Node.
+// TODO Neos.Neos-20251005080230 Line 62: You very likely need to rewrite "VARIABLE.label" to "Neos.Node.label(VARIABLE)". We did not auto-apply this migration because we cannot be sure whether the variable is a Node.
+// TODO Neos.Neos-20251005080230 Line 66: You very likely need to rewrite "VARIABLE.label" to "Neos.Node.label(VARIABLE)". We did not auto-apply this migration because we cannot be sure whether the variable is a Node.
+// TODO Neos.Neos-20251005080230 Line 32: You may need to rewrite "VARIABLE.path" to Neos.Node.path(VARIABLE). We did not auto-apply this migration because we cannot be sure whether the variable is a Node.
 
 prototype(Custom.Template:Document.Fragment.Header) < prototype(Neos.Fusion:Component) {
 
@@ -37,36 +41,40 @@ prototype(Custom.Template:Document.Fragment.Header) < prototype(Neos.Fusion:Comp
     
     renderer = afx`
         <header class="header z-10 sticky top-0 bg-white shadow-black dark:bg-gray-900 dark:shadow-white">
-            <div class="container">
-                <div class="flex justify-between self-center my-auto w-full">
-                    {props.logoLink}
 
-                    <nav x-data class="flex items-center self-center max-w-screen-lg invisible lg:visible">
-                        <ul class="flex h-full space-x-8"
-                            @if={Type.isArray(props.menu) && Array.length(props.menu)}>
-                            <Neos.Fusion:Loop items={props.menu}>
-                                <li class={item.state.value + ' relative lg:[&:hover>ul]:block [&.current>a]:text-sky-500 [&.active>a]:text-red-500' + (props.isHome && (currentUriPath == item.uri) ? ' current' : '')}>
-                                    <span @if={Type.isArray(item.children) && Array.length(item.children)} class="sr-only">.</span>
-                                    <a href={item.uri} class="block p-1 text-lg lg:text-sm whitespace-nowrap hover:text-sky-500"
-                                    >{item.label}</a>
-                                    <ul @if={Type.isArray(item.subItems) && Array.length(item.subItems)} class={'absolute lg:hidden level-' + item.menuLevel}>
-                                        <Neos.Fusion:Loop items={item.subItems}>
-                                            <li class={item.state.value + ' relative [&:hover>ul]:block'}><span class="sr-only" @if={Type.isArray(item.children) && Array.length(item.children)}>.</span>
-                                                <a href={item.uri} class="block text-base p-1 whitespace-nowrap">{item.label}</a>
-                                                <ul @if={Type.isArray(item.subItems) && Array.length(item.subItems)} class={'lg:hidden absolute top-0 -right-10 bg-sky-500 level-' + item.menuLevel}>
-                                                    <Neos.Fusion:Loop items={item.subItems}>
-                                                        <li class={item.state.value}>
-                                                            <a href={item.uri} class="block text-base p-1 whitespace-nowrap">{item.label}</a>
-                                                        </li>
-                                                    </Neos.Fusion:Loop>
-                                                </ul>
-                                            </li>
-                                        </Neos.Fusion:Loop>
-                                    </ul>
-                                </li>
-                            </Neos.Fusion:Loop>
-                        </ul>
-                    </nav>
+            <div class="flex justif-center items-center my-auto w-full" x-data="mainMenu">
+                {props.logoLink}
+
+                <div class="bars lg:invisible lg:hidden" :class="show && 'active'"></div>
+
+                <nav class="nav" :class="show && 'active'">
+                    <div class="deco"></div>
+                    <ul class="navigation"
+                        @if={Type.isArray(props.menu) && Array.length(props.menu)}>
+                        <Neos.Fusion:Loop items={props.menu}>
+                            <li class={item.state.value + ' relative lg:[&:hover>ul]:block [&.current>a]:text-sky-500 [&.active>a]:text-red-500' + (props.isHome && (currentUriPath == item.uri) ? ' current' : '')}>
+                                <span @if={Type.isArray(item.children) && Array.length(item.children)} class="sr-only">.</span>
+                                <a href={item.uri} class="block p-1 text-lg lg:text-sm whitespace-nowrap hover:text-sky-500"
+                                >{item.label}</a>
+                                <ul @if={Type.isArray(item.subItems) && Array.length(item.subItems)} class={'absolute lg:hidden level-' + item.menuLevel}>
+                                    <Neos.Fusion:Loop items={item.subItems}>
+                                        <li class={item.state.value + ' relative [&:hover>ul]:block'}><span class="sr-only" @if={Type.isArray(item.children) && Array.length(item.children)}>.</span>
+                                            <a href={item.uri} class="block text-base p-1 whitespace-nowrap">{item.label}</a>
+                                            <ul @if={Type.isArray(item.subItems) && Array.length(item.subItems)} class={'lg:hidden absolute top-0 -right-10 bg-sky-500 level-' + item.menuLevel}>
+                                                <Neos.Fusion:Loop items={item.subItems}>
+                                                    <li class={item.state.value}>
+                                                        <a href={item.uri} class="block text-base p-1 whitespace-nowrap">{item.label}</a>
+                                                    </li>
+                                                </Neos.Fusion:Loop>
+                                            </ul>
+                                        </li>
+                                    </Neos.Fusion:Loop>
+                                </ul>
+                            </li>
+                        </Neos.Fusion:Loop>
+                    </ul>
+                </nav>
+                <div class="language invisible lg:visible hidden lg:block">
                     {props.language}
                 </div>
             </div>

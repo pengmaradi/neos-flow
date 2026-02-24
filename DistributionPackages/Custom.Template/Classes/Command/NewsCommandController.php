@@ -136,11 +136,10 @@ final class NewsCommandController extends CommandController
         $newsNodeName = NodeTypeName::fromString('Custom.Template:Document.News');
 
         $imported = 0;
-        $newsData = $this->fetchNews($country, $language);
-
         $newsListNode = $this->getChildNodeByName();
-
-        // $this->removeOldNews($newsListNode, $contentRepository, $language);
+        $this->removeOldNews($newsListNode, $contentRepository, $language);
+        die(' on line ' . __LINE__);
+        $newsData = $this->fetchNews($country, $language);
 
         if ($newsData['totalResults']) {
                 foreach ($newsData['articles'] as $event) {
@@ -347,6 +346,8 @@ final class NewsCommandController extends CommandController
                     DimensionSpacePoint::fromArray(['language' => $language]),
                     NodeVariantSelectionStrategy::STRATEGY_ALL_VARIANTS
                 );
+                var_dump($removeCommand);
+                die(__LINE__);
                 $contentRepository->handle($removeCommand);
                 $num ++;
                 $this->outputLine(sprintf('<info>removed news: %s - %d / %d</info>', $newsNode->nodeAggregateId, $num, $newsCount));

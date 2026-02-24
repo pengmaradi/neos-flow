@@ -11,7 +11,7 @@ Custom:
   Template:
     settings:
       development: true
-      watchServe: true
+      watchServe: false
       staging: false     # To enable Staging-Badge
-      debugcss: true   # True needs vite serve `npm run watch-serve`
+      debugcss: false   # True needs vite serve `npm run watch-serve`
       noindex: true     # To force NOINDEX

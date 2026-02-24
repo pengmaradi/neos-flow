@@ -1,148 +1,114 @@
-## werks on neos 9.0 well!!!
-# changed Backend login url as typo3 :)
-
 -
-  name: 'Backend'
-  uriPattern: 'typo3/<BackendSubRoutes>'
+  name: Backend
+  uriPattern: typo3/<BackendSubRoutes>
   defaults:
-    '@package': 'Neos.Neos.Ui'
-    '@action': 'index'
-    '@format': 'html'
+    '@package': Neos.Neos.Ui
+    '@action': index
+    '@format': html
   subRoutes:
-    'BackendSubRoutes':
-      package: 'Neos.Neos.Ui'
-      suffix: 'Backend'
-
-##
-# Service
-
+    BackendSubRoutes:
+      package: Neos.Neos.Ui
+      suffix: Backend
 -
-  name: 'Backend'
-  uriPattern: 'typo3/ui-services/<ServiceSubRoutes>'
+  name: Backend
+  uriPattern: typo3/ui-services/<ServiceSubRoutes>
   defaults:
-    '@package': 'Neos.Neos.Ui'
-    '@action': 'index'
-    '@format': 'html'
+    '@package': Neos.Neos.Ui
+    '@action': index
+    '@format': html
   subRoutes:
-    'ServiceSubRoutes':
-      package: 'Neos.Neos.Ui'
-      suffix: 'Service'
-
-##
-# Authentication
-
+    ServiceSubRoutes:
+      package: Neos.Neos.Ui
+      suffix: Service
 -
-  name: 'Authentication'
-  uriPattern: 'typo3/<AuthenticationSubRoutes>'
+  name: Authentication
+  uriPattern: typo3/<AuthenticationSubRoutes>
   defaults:
-    '@package': 'Neos.Neos'
-    '@controller': 'Login'
-    '@action': 'index'
-    '@format': 'html'
+    '@package': Neos.Neos
+    '@controller': Login
+    '@action': index
+    '@format': html
   subRoutes:
-    'AuthenticationSubRoutes':
-      package: 'Neos.Neos'
-      suffix: 'Authentication'
-
-##
-# Backend
-
+    AuthenticationSubRoutes:
+      package: Neos.Neos
+      suffix: Authentication
 -
-  name: 'Backend'
-  uriPattern: 'typo3/<BackendSubRoutes>'
+  name: Backend
+  uriPattern: typo3/<BackendSubRoutes>
   defaults:
-    '@package': 'Neos.Neos'
-    '@action': 'index'
-    '@format': 'html'
+    '@package': Neos.Neos
+    '@action': index
+    '@format': html
   subRoutes:
-    'BackendSubRoutes':
-      package: 'Neos.Neos'
-      suffix: 'Backend'
-
-##
-# Service
-
+    BackendSubRoutes:
+      package: Neos.Neos
+      suffix: Backend
 -
-  name: 'Service'
-  uriPattern: 'typo3/service/<ServiceSubRoutes>'
+  name: Service
+  uriPattern: typo3/service/<ServiceSubRoutes>
   defaults:
-    '@package': 'Neos.Neos'
-    '@action': 'index'
+    '@package': Neos.Neos
+    '@action': index
   subRoutes:
-    'ServiceSubRoutes':
-      package: 'Neos.Neos'
-      suffix: 'Service'
-
-##
-# media
-
+    ServiceSubRoutes:
+      package: Neos.Neos
+      suffix: Service
 -
   name: 'Image Browser'
   uriPattern: 'typo3/media/browser/images(/{@action}).{@format}'
   defaults:
-    '@package': 'Neos.Media.Browser'
-    '@controller': 'Image'
-    '@format': 'html'
-    '@action': 'index'
+    '@package': Neos.Media.Browser
+    '@controller': Image
+    '@format': html
+    '@action': index
   appendExceedingArguments: true
-
 -
   name: 'Asset Browser'
   uriPattern: 'typo3/media/browser/assets(/{@action}).{@format}'
   defaults:
-    '@package': 'Neos.Media.Browser'
-    '@controller': 'Asset'
-    '@format': 'html'
-    '@action': 'index'
+    '@package': Neos.Media.Browser
+    '@controller': Asset
+    '@format': html
+    '@action': index
   appendExceedingArguments: true
-
 -
   name: 'Asset Proxy Service'
   uriPattern: 'typo3/media/browser/asset-proxies(/{@action}).{@format}'
   defaults:
-    '@package': 'Neos.Media.Browser'
-    '@controller': 'AssetProxy'
-    '@format': 'json'
-    '@action': 'index'
+    '@package': Neos.Media.Browser
+    '@controller': AssetProxy
+    '@format': json
+    '@action': index
   appendExceedingArguments: true
-
 -
   name: 'ImageVariant Service'
   uriPattern: 'typo3/media/browser/image-variant(/{@action}).{@format}'
   defaults:
-    '@package': 'Neos.Media.Browser'
-    '@controller': 'ImageVariant'
-    '@format': 'json'
-    '@action': 'index'
+    '@package': Neos.Media.Browser
+    '@controller': ImageVariant
+    '@format': json
+    '@action': index
   appendExceedingArguments: true
-
-##
-# preview
-
 -
-  name: 'Preview'
-  uriPattern: 'typo3/preview'
+  name: Preview
+  uriPattern: typo3/preview
   defaults:
-    '@action': 'preview'
+    '@action': preview
   appendExceedingArguments: true
-
-##
-# Frontend
-
 -
-  name: 'Frontend'
+  name: Frontend
   uriPattern: '<FrontendSubRoutes>'
   defaults:
-    '@package': 'Neos.Neos'
-    '@controller': 'Frontend\Node'
-    '@action': 'show'
-    '@format': 'html'
+    '@package': Neos.Neos
+    '@controller': Frontend\Node
+    '@action': show
+    '@format': html
   routeParts:
-    'node':
-      handler: 'Neos\Neos\Routing\FrontendNodeRoutePartHandlerInterface'
+    node:
+      handler: Neos\Neos\FrontendRouting\FrontendNodeRoutePartHandlerInterface
   subRoutes:
-    'FrontendSubRoutes':
-      package: 'Neos.Neos'
-      suffix: 'Frontend'
+    FrontendSubRoutes:
+      package: Neos.Neos
+      suffix: Frontend
       variables:
-        'defaultUriSuffix': ''
+        defaultUriSuffix: ''

@@ -18,17 +18,40 @@ prototype(Custom.Template:Content.Teaser) < prototype(Neos.Neos:ContentComponent
         }
     }
 
-    @process.debug = Neos.Fusion:Debug.Console {
-        value = ${node.context}
+    @context.sectionBackground = Neos.Fusion:Case {
+        asset {
+            condition = ${q(node).property('backgroundOption')}
+            renderer = Neos.Neos:ImageUri {
+                asset = ${q(node).property('backgroundOption')}
+            }
+        }
+        dummy {
+            condition = ${renderingMode.isEdit}
+            renderer = Neos.Fusion:ResourceUri {
+                path = 'resource://Neos.Neos/Public/Images/dummy-image.svg'
+            }
+        }
+    }
+
+    decoAttributes = Neos.Fusion:DataStructure {
+        class {
+            name = 'demo'
+            // bgurl = ${'bg-[url("' + sectionBackground + '")]'}
+            size = 'bg-cover bg-center bg-fixed'
+            height = 'min-h-100'
+
+        }
     }
 
     renderer = afx`
         <div {...props.sectionAttributes}>
-            <div class="content">
-                <div class="deco"
-                     @if={props.sectionBackground && props.sectionStyle == 'image'}
-                     style={'background-image: url(' + props.sectionBackground + ');'}></div>
-                {props.title}
+            <div {...props.decoAttributes} style={'background-image:url('+ sectionBackground +')'}
+                 @if={sectionBackground && props.sectionStyle == 'image'}>
+                <img src={props.sectionBackground} class="sr-only" />
+            </div>
+            <div class="content flex justify-center items-center">
+                <div class="absolute bottom-10 right-17 bg-sky-500 border border-transparent rounded-2xl flex justify-center items-center p-4 text-shadow-lg shadow-xl/30
+                hover:bg-sky-500/60 animate -rotate-5">{props.title}</div>
                 <img src={props.src} alt={props.alt} class={props.imgClass} @if={props.src} />
 			</div>
         </div>

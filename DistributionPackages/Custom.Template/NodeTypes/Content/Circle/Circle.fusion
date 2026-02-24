@@ -17,7 +17,7 @@ prototype(Custom.Template:Content.Circle) < prototype(Neos.Neos:ContentComponent
     renderer = afx`
         <div x-data="dialRotation()"
         data-assets={props.imageAssets}
-        class="viewport-box w-full h-full flex justify-center items-center mt-20">
+        class="viewport-box w-full h-full flex justify-center items-center py-60">
             <div x-ref="mainCircle" class="main-circle w-100 h-100 border rounded-full"></div>
         </div>
     `
