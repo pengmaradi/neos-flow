@@ -3,6 +3,7 @@ import './style.pcss'
 import Alpine from 'alpinejs'
 import DarkMode from './JavaScript/DarkMode'
 import DialRotation from './JavaScript/DialRotation'
+import MainMenu from './JavaScript/MainMenu'
 
 declare global {
   interface Window {
@@ -13,6 +14,7 @@ declare global {
 const initializeComponents = () => {
   // call all components here!!!
   DarkMode()
+  MainMenu()
   DialRotation()
   
 }

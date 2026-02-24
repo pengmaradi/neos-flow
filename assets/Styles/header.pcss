@@ -1,0 +1,69 @@
+.header {
+    .bars {
+        @apply fixed top-30 right-10 cursor-pointer flex items-center z-10 w-9 h-5;
+
+        &:before,
+        &:after {
+            @apply absolute content-[''] h-0.5 w-9 bg-white shadow-xl/30;
+        }
+
+        &:before {
+            @apply top-1 left-0;
+        }
+
+        &:after {
+            @apply bottom-1 left-0;
+        }
+
+        &.active {
+            @apply before:rotate-45 before:top-2.5 before:left-0 after:-rotate-45 after:bottom-2 after:left-0 animate;
+        }
+    }
+
+    .nav {
+        @apply w-full h-full z-1;
+
+        &.active {
+            @apply items-center;
+        }
+
+        .navigation {
+            @apply flex justify-center items-center space-x-5 text-3xl text-white;
+
+            li {
+                @apply transition duration-300 ease-in-out;
+
+                &:hover {
+                    @apply text-sky-500;
+                }
+
+                a {
+                    @apply no-underline;
+                }
+            }
+        }
+
+        .deco {
+            @apply absolute -z-1 inset-0 w-full h-full bg-gradient-to-r from-sky-500 to-indigo-500 hidden opacity-0;
+        }
+    }
+
+    .language {
+        .language-menu {
+            @apply min-w-8 inline-block;
+        }
+
+        .normal {
+            &:hover {
+                .language-menu {
+                    @apply text-sky-500;
+                }
+            }
+        }
+        .active {
+            .language-menu {
+                @apply text-sky-500;
+            }
+        }
+    }
+}
